@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>hu.blackbelt.judo.meta</groupId>
+		<artifactId>hu.blackbelt.judo.meta.query</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
+	<artifactId>hu.blackbelt.judo.meta.query.osgi</artifactId>
+	<packaging>bundle</packaging>
+
+	<name>Judo :: Query :: Model :: OSGi</name>
+	<description>Judo Query Model OSGI Runtime</description>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>3.3.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<obrRepository>NONE</obrRepository>
+					<instructions>
+						<Import-Package>
+                            ${osgi-default-import},
+							*
+						</Import-Package>
+						<Export-Package>
+                            hu.blackbelt.judo.meta.query*;version=${project.version},
+                        </Export-Package>
+						<Include-Resource>{maven-resources},meta/query=../model/model,validations=../model/src/main/epsilon/validations</Include-Resource>
+					</instructions>
+				</configuration>
+			</plugin>
+        </plugins>
+	</build>
+    <dependencies>
+        <dependency>
+            <groupId>hu.blackbelt.judo.meta</groupId>
+            <artifactId>hu.blackbelt.judo.meta.query.model</artifactId>
+        </dependency>
+
+		<dependency>
+			<groupId>hu.blackbelt.epsilon</groupId>
+			<artifactId>epsilon-runtime-osgi</artifactId>
+			<version>${epsilon-runtime-version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>hu.blackbelt.epsilon</groupId>
+			<artifactId>epsilon-runtime-execution</artifactId>
+			<version>${epsilon-runtime-version}</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+</project>

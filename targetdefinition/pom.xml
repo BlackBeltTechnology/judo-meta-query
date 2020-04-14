@@ -1,0 +1,115 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>hu.blackbelt.judo.meta</groupId>
+        <artifactId>hu.blackbelt.judo.meta.query</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <artifactId>hu.blackbelt.judo.meta.query.targetdefinition</artifactId>
+    <packaging>eclipse-target-definition</packaging>
+
+    <name>Judo :: Query :: Model :: Eclipse Target Definition</name>
+    <description>Judo Query model eclipse target definition</description>
+
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <id>update-target-versions</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.google.code.maven-replacer-plugin</groupId>
+                        <artifactId>replacer</artifactId>
+                        <version>1.5.3</version>
+                        <executions>
+                            <execution>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>replace</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <file>${project.basedir}/${project.artifactId}.target</file>
+                            <replacements>
+                                <!-- EMF Genmodel generator version -->
+                                <replacement>
+                                    <token>(hu.blackbelt.eclipse.emf.genmodel.generator.feature.feature.group\"\ version\=\")(.*)(\"\/&gt;)</token>
+                                    <value>$1${emf-genmodel-generator-version}"/&gt;</value>
+                                </replacement>
+                                <replacement>
+                                    <token>(emf-genmodel-generator\/)(.*)(\"\/&gt;)</token>
+                                    <value>$1${emf-genmodel-generator-version}"/&gt;</value>
+                                </replacement>
+
+                                <!-- JUDO Genmodel generator version -->
+                                <replacement>
+                                    <token>(hu.blackbelt.judo.eclipse.emf.genmodel.generator.feature.feature.group\"\ version\=\")(.*)(\"\/&gt;)</token>
+                                    <value>$1${judo-genmodel-generator-version}"/&gt;</value>
+                                </replacement>
+                                <replacement>
+                                    <token>(judo-genmodel-generator\/)(.*)(\"\/&gt;)</token>
+                                    <value>$1${judo-genmodel-generator-version}"/&gt;</value>
+                                </replacement>
+
+                                <!-- Epsilon Runtime -->
+                                <replacement>
+                                    <token>(hu.blackbelt.epsilon.runtime.feature.feature.group\"\ version\=\")(.*)(\"\/&gt;)</token>
+                                    <value>$1${epsilon-runtime-eclipse-version}"/&gt;</value>
+                                </replacement>
+                                <replacement>
+                                    <token>(epsilon-runtime-eclipse\/)(.*)(\"\/&gt;)</token>
+                                    <value>$1${epsilon-runtime-eclipse-version}"/&gt;</value>
+                                </replacement>
+
+                            </replacements>
+                            <regex>true</regex>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>
+                                            com.google.code.maven-replacer-plugin
+                                        </groupId>
+                                        <artifactId>
+                                            replacer
+                                        </artifactId>
+                                        <versionRange>
+                                            [1.5.3,)
+                                        </versionRange>
+                                        <goals>
+                                            <goal>replace</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

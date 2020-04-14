@@ -1,0 +1,5 @@
+import "query.evl";
+
+pre {
+  var queryUtils = new Native("hu.blackbelt.judo.meta.query.runtime.QueryUtils")(QUERY.resource.resourceSet, false);
+}
