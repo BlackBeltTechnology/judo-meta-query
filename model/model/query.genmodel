@@ -108,19 +108,19 @@
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Feature">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Feature/targetAttribute"/>
-      <genOperations ecoreOperation="query.ecore#//Feature/getTarget" body="return ((hu.blackbelt.judo.meta.query.Target) eContainer());"/>
+      <genOperations ecoreOperation="query.ecore#//Feature/getTarget" body="// FIXME&#xA;return (eContainer() instanceof hu.blackbelt.judo.meta.query.Target) ? (hu.blackbelt.judo.meta.query.Target) eContainer() : null;"/>
       <genOperations ecoreOperation="query.ecore#//Feature/getTargetAsString" body="return (getTargetAttribute() != null ? &quot; AS &quot; + getTargetAttribute().getName() + (getTarget() != null ? &quot;@&quot; + getTarget().getIndex() : &quot;&quot;) : &quot;&quot;);"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Filter">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Filter/joins"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Filter/feature"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Filter/feature"/>
       <genOperations ecoreOperation="query.ecore#//Filter/toString" body="return getFeature().toString() + &quot; [&quot; + getJoins().stream().map(j -> j.toString()).collect(java.util.stream.Collectors.joining(&quot;,&quot;)) + &quot;]&quot;;"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Function">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Function/signature"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Function/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Function/constraints"/>
-      <genOperations ecoreOperation="query.ecore#//Function/toString" body="return getSignature() +&#xA;&#x9;&#x9;                &quot;(&quot; + getParameters().stream().map(p -> &quot;[&quot; + p.getParameterName() + &quot;:] &quot; + p.getFeature()).collect(java.util.stream.Collectors.joining(&quot;, &quot;)) + &quot;)&quot; +&#xA;&#x9;&#x9;                getTargetAsString();"/>
+      <genOperations ecoreOperation="query.ecore#//Function/toString" body="return getSignature() +&#xA;&#x9;&#x9;                &quot;(&quot; + getParameters().stream().map(p -> &quot;[&quot; + p.getParameterName() + &quot;:] &quot; + p.getParameterValue()).collect(java.util.stream.Collectors.joining(&quot;, &quot;)) + &quot;)&quot; +&#xA;&#x9;&#x9;                getTargetAsString();"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//FunctionConstraint">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FunctionConstraint/resultConstraint"/>
@@ -128,7 +128,7 @@
     </genClasses>
     <genClasses ecoreClass="query.ecore#//FunctionParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FunctionParameter/parameterName"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference query.ecore#//FunctionParameter/feature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FunctionParameter/parameterValue"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//IdAttribute">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//IdAttribute/node"/>
@@ -137,7 +137,7 @@
     <genClasses ecoreClass="query.ecore#//Join">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Join/reference"/>
       <genOperations ecoreOperation="query.ecore#//Join/getAllJoins" body="return org.eclipse.emf.common.util.ECollections.asEList(java.util.stream.Stream.concat(getJoins().stream(), getJoins().stream().flatMap(j -> j.getAllJoins().stream())).collect(java.util.stream.Collectors.toList()));"/>
-      <genOperations ecoreOperation="query.ecore#//Join/getPartner" body="return (hu.blackbelt.judo.meta.query.Node) eContainer();"/>
+      <genOperations ecoreOperation="query.ecore#//Join/getPartner" body="if (eContainer() instanceof hu.blackbelt.judo.meta.query.Node) {&#xA;    return (hu.blackbelt.judo.meta.query.Node) eContainer();    &#xA;} else if (eContainer() instanceof hu.blackbelt.judo.meta.query.Filter) {&#xA;    return (hu.blackbelt.judo.meta.query.Node) ((hu.blackbelt.judo.meta.query.Filter) eContainer()).eContainer();&#xA;} else if (eContainer() instanceof hu.blackbelt.judo.meta.query.OrderBy) {&#xA;    return (hu.blackbelt.judo.meta.query.Node) ((hu.blackbelt.judo.meta.query.OrderBy) eContainer()).eContainer();&#xA;} else {&#xA;    return null;&#xA;}"/>
       <genOperations ecoreOperation="query.ecore#//Join/getPath" body="        final org.eclipse.emf.common.util.EList&lt;org.eclipse.emf.ecore.EReference> path = org.eclipse.emf.common.util.ECollections.newBasicEList(); &#xA;        path.add(getReference());&#xA;&#xA;        hu.blackbelt.judo.meta.query.Node parent = getPartner();&#xA;        while (parent != null) {&#xA;            if (parent instanceof hu.blackbelt.judo.meta.query.Join) {&#xA;                path.add(((hu.blackbelt.judo.meta.query.Join) parent).getReference());&#xA;                parent = ((hu.blackbelt.judo.meta.query.Join) parent).getPartner();&#xA;            } else if (parent instanceof hu.blackbelt.judo.meta.query.Select) {&#xA;                parent = null;&#xA;            } else {&#xA;                throw new IllegalStateException(&quot;Unsupported node&quot;);&#xA;            }&#xA;        }&#xA;&#xA;        org.eclipse.emf.common.util.ECollections.reverse(path);&#xA;&#xA;        return org.eclipse.emf.common.util.ECollections.unmodifiableEList(path);"/>
       <genOperations ecoreOperation="query.ecore#//Join/getType" body="return getReference().getEReferenceType();"/>
       <genOperations ecoreOperation="query.ecore#//Join/toString" body="return getPartner() != null ? getPartner().getAlias() + &quot;.&quot; + getReference().getName() + &quot;&lt;&quot; + getReference().getEReferenceType().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
@@ -152,7 +152,7 @@
     </genClasses>
     <genClasses ecoreClass="query.ecore#//OrderBy">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//OrderBy/descending"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//OrderBy/feature"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//OrderBy/feature"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//OrderBy/joins"/>
       <genOperations ecoreOperation="query.ecore#//OrderBy/toString" body="return getFeature().toString() + &quot; [&quot; + getJoins().stream().map(j -> j.toString()).collect(java.util.stream.Collectors.joining(&quot;,&quot;)) + &quot;]&quot;;"/>
     </genClasses>
@@ -170,13 +170,13 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelect/partner"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelect/select"/>
       <genOperations ecoreOperation="query.ecore#//SubSelect/getBase" body="return (hu.blackbelt.judo.meta.query.Node) eContainer();"/>
-      <genOperations ecoreOperation="query.ecore#//SubSelect/getNavigationJoins" body="final EList&lt;hu.blackbelt.judo.meta.query.Join> path = org.eclipse.emf.common.util.ECollections.newBasicEList();&#xA;&#xA;        for (final hu.blackbelt.judo.meta.query.Join join : getBase().getJoins()) {&#xA;            path.add(join);&#xA;            path.addAll(join.getAllJoins());&#xA;        }&#xA;&#xA;        final EList&lt;hu.blackbelt.judo.meta.query.Join> additionalJoins = org.eclipse.emf.common.util.ECollections.newBasicEList();&#xA;        hu.blackbelt.judo.meta.query.Join additionalJoin = getPartner();&#xA;        while (additionalJoin != null &amp;&amp; !org.eclipse.emf.ecore.util.EcoreUtil.equals(additionalJoin, getBase()) &amp;&amp; !path.contains(additionalJoin) &amp;&amp; !additionalJoins.contains(additionalJoin)) {&#xA;            additionalJoins.add(additionalJoin);&#xA;            additionalJoin = (additionalJoin.getPartner() instanceof Join) ? ((Join) additionalJoin.getPartner()) : null;&#xA;        }&#xA;&#xA;        org.eclipse.emf.common.util.ECollections.reverse(additionalJoins);&#xA;        path.addAll(additionalJoins);&#xA;&#xA;        return org.eclipse.emf.common.util.ECollections.unmodifiableEList(path);"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelect/getNavigationJoins" body="final EList&lt;hu.blackbelt.judo.meta.query.Join> path = org.eclipse.emf.common.util.ECollections.newBasicEList();&#xA;&#xA;        if (getBase() != null) {&#xA;            for (final hu.blackbelt.judo.meta.query.Join join : getBase().getJoins()) {&#xA;                path.add(join);&#xA;                path.addAll(join.getAllJoins());&#xA;            }&#xA;        }&#xA;&#xA;        final EList&lt;hu.blackbelt.judo.meta.query.Join> additionalJoins = org.eclipse.emf.common.util.ECollections.newBasicEList();&#xA;        hu.blackbelt.judo.meta.query.Join additionalJoin = getPartner();&#xA;        while (additionalJoin != null &amp;&amp; !org.eclipse.emf.ecore.util.EcoreUtil.equals(additionalJoin, getBase()) &amp;&amp; !path.contains(additionalJoin) &amp;&amp; !additionalJoins.contains(additionalJoin)) {&#xA;            additionalJoins.add(additionalJoin);&#xA;            additionalJoin = (additionalJoin.getPartner() instanceof Join) ? ((Join) additionalJoin.getPartner()) : null;&#xA;        }&#xA;&#xA;        org.eclipse.emf.common.util.ECollections.reverse(additionalJoins);&#xA;        path.addAll(additionalJoins);&#xA;&#xA;        return org.eclipse.emf.common.util.ECollections.unmodifiableEList(path);"/>
       <genOperations ecoreOperation="query.ecore#//SubSelect/isAggregated" body="return getSelect().getJoinedTargets().stream()&#xA;&#x9;&#x9;&#x9;&#x9;.anyMatch(t -> t.getFeatures().stream()&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;.anyMatch(f -> (f instanceof hu.blackbelt.judo.meta.query.Function) &amp;&amp; hu.blackbelt.judo.meta.query.runtime.QueryUtils.isAggregated(((hu.blackbelt.judo.meta.query.Function) f).getSignature())));"/>
-      <genOperations ecoreOperation="query.ecore#//SubSelect/toString" body="return &quot;(&quot; + getBase().getAlias() + &quot;.&quot; + (getTransferRelation() != null ? getTransferRelation().getName() : &quot;&quot;) + &quot; => [&quot; + getNavigationJoins().stream().map(j -> j.toString()).collect(java.util.stream.Collectors.joining(&quot;,&quot;)) + &quot;]) AS &quot; + getAlias();"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelect/toString" body="return &quot;(&quot; + (getBase() != null ? getBase().getAlias() : &quot;N/A&quot;) + &quot;.&quot; + (getTransferRelation() != null ? getTransferRelation().getName() : &quot;&quot;) + &quot; => [&quot; + getNavigationJoins().stream().map(j -> j.toString()).collect(java.util.stream.Collectors.joining(&quot;,&quot;)) + &quot;]) AS &quot; + getAlias();"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//SubSelectFeature">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelectFeature/subSelect"/>
-      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelectFeature/subSelectFeature"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelectFeature/subSelectFeature"/>
       <genOperations ecoreOperation="query.ecore#//SubSelectFeature/toString" body="if ((getSubSelectFeature() instanceof hu.blackbelt.judo.meta.query.Function) &amp;&amp; hu.blackbelt.judo.meta.query.runtime.QueryUtils.isAggregated(((hu.blackbelt.judo.meta.query.Function) getSubSelectFeature()).getSignature())) {&#xA;            final hu.blackbelt.judo.meta.query.Function f = (hu.blackbelt.judo.meta.query.Function) getSubSelectFeature();&#xA;            return getSubSelect().getAlias() + &quot;.&quot; + f.getTargetAsString().replace(&quot; AS &quot;, &quot;&quot;) + getTargetAsString();&#xA;        } else {&#xA;            return &quot;N/A&quot;;&#xA;        }"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Target">
