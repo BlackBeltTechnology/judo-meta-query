@@ -128,7 +128,7 @@
     </genClasses>
     <genClasses ecoreClass="query.ecore#//FunctionParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FunctionParameter/parameterName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FunctionParameter/parameterValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FunctionParameter/parameterValue"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//IdAttribute">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//IdAttribute/node"/>
@@ -200,5 +200,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ReferencedTarget/target"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ReferencedTarget/reference"/>
     </genClasses>
+    <genClasses ecoreClass="query.ecore#//ParameterType"/>
   </genPackages>
 </genmodel:GenModel>

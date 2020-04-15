@@ -11,11 +11,11 @@
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EntityTypeName">
+  <eClassifiers xsi:type="ecore:EClass" name="EntityTypeName" eSuperTypes="#//ParameterType">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true" eSuperTypes="#//ParameterType">
     <eOperations name="getTarget" eType="#//Target"/>
     <eOperations name="getTargetAsString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
@@ -39,13 +39,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="FunctionConstraint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultConstraint" lowerBound="1"
         eType="#//ResultConstraint"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionParameter">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterName" lowerBound="1"
         eType="#//ParameterName"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterValue" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValue" lowerBound="1"
+        eType="#//ParameterType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="FunctionSignature">
     <eLiterals name="NOT"/>
@@ -173,7 +173,7 @@
         eType="#//Target" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SubSelect">
+  <eClassifiers xsi:type="ecore:EClass" name="SubSelect" eSuperTypes="#//ParameterType">
     <eOperations name="getBase" eType="#//Node"/>
     <eOperations name="getNavigationJoins" upperBound="-1" eType="#//Join"/>
     <eOperations name="isAggregated" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -216,4 +216,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterType" abstract="true"/>
 </ecore:EPackage>
