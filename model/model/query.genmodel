@@ -129,6 +129,7 @@
     <genClasses ecoreClass="query.ecore#//FunctionParameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FunctionParameter/parameterName"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FunctionParameter/parameterValue"/>
+      <genOperations ecoreOperation="query.ecore#//FunctionParameter/toString" body="return getParameterName() + &quot;: &quot; + getParameterValue();"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//IdAttribute">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//IdAttribute/node"/>
@@ -192,7 +193,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Target/node"/>
       <genOperations ecoreOperation="query.ecore#//Target/getAllTargets" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.getAllTargetsOfTarget(this);"/>
       <genOperations ecoreOperation="query.ecore#//Target/setContainerWithIdFeature"
-          body="&#x9;&#x9;setNode(node);&#xA;&#x9;&#x9;final hu.blackbelt.judo.meta.query.Select select;&#xA;&#x9;&#x9;if (node instanceof hu.blackbelt.judo.meta.query.Select) {&#xA;&#x9;&#x9;&#x9;select = (hu.blackbelt.judo.meta.query.Select) node;&#xA;&#x9;&#x9;} else if (node instanceof hu.blackbelt.judo.meta.query.Join) {&#xA;&#x9;&#x9;&#x9;select = ((hu.blackbelt.judo.meta.query.Join) node).getBase();&#xA;&#x9;&#x9;} else {&#xA;&#x9;&#x9;&#x9;throw new IllegalStateException(&quot;Unsupported node&quot;);&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;select.getFeatures().add(hu.blackbelt.judo.meta.query.util.builder.QueryBuilders.newIdAttributeBuilder().withNode(node).build());&#xA;&#x9;&#x9;select.getFeatures().add(hu.blackbelt.judo.meta.query.util.builder.QueryBuilders.newTypeAttributeBuilder().withNode(node).build());&#xA;">
+          body="&#x9;&#x9;setNode(node);&#xA;&#x9;&#x9;final hu.blackbelt.judo.meta.query.Select select;&#xA;&#x9;&#x9;if (node instanceof hu.blackbelt.judo.meta.query.Select) {&#xA;&#x9;&#x9;&#x9;select = (hu.blackbelt.judo.meta.query.Select) node;&#xA;&#x9;&#x9;} else if (node instanceof hu.blackbelt.judo.meta.query.Join) {&#xA;&#x9;&#x9;&#x9;select = ((hu.blackbelt.judo.meta.query.Join) node).getBase();&#xA;&#x9;&#x9;} else {&#xA;&#x9;&#x9;&#x9;throw new IllegalStateException(&quot;Unsupported node&quot;);&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;select.getFeatures().add(hu.blackbelt.judo.meta.query.util.builder.QueryBuilders.newIdAttributeBuilder()&#xA;&#x9;&#x9;&#x9;&#x9;.withTarget(this)&#xA;&#x9;&#x9;&#x9;&#x9;.withNode(node).build());&#xA;&#x9;&#x9;select.getFeatures().add(hu.blackbelt.judo.meta.query.util.builder.QueryBuilders.newTypeAttributeBuilder()&#xA;&#x9;&#x9;&#x9;&#x9;.withTarget(this)&#xA;&#x9;&#x9;&#x9;&#x9;.withNode(node).build());">
         <genParameters ecoreParameter="query.ecore#//Target/setContainerWithIdFeature/node"/>
       </genOperations>
       <genOperations ecoreOperation="query.ecore#//Target/toString" body="return (getType() != null ? getType().getName() : &quot;&quot;) + &quot;@&quot; + getIndex();"/>
