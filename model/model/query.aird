@@ -7,7 +7,7 @@
     <semanticResources>platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_xuDTkHplEeqTCYEtupSWEA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0OcMsHplEeqTCYEtupSWEA" name="query class diagram" repPath="#_0MnnwHplEeqTCYEtupSWEA" changeId="7a9d1094-2262-4cac-bfd1-d3f87caaf2e6">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0OcMsHplEeqTCYEtupSWEA" name="query class diagram" repPath="#_0MnnwHplEeqTCYEtupSWEA" changeId="5463942d-5df6-403c-9ec5-eaafaf13bef2">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="query.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -196,10 +196,6 @@
             <children xmi:type="notation:Node" xmi:id="_nz4sUHpsEeq7nMs6aeaOkQ" type="3010" element="_nz0a4XpsEeq7nMs6aeaOkQ">
               <styles xmi:type="notation:FontStyle" xmi:id="_nz4sUXpsEeq7nMs6aeaOkQ" fontName="Noto Sans" fontHeight="8" bold="true"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_nz4sUnpsEeq7nMs6aeaOkQ"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_N3WDwH47Eeqs48x95NbBFQ" type="3010" element="_N3DI1347Eeqs48x95NbBFQ">
-              <styles xmi:type="notation:FontStyle" xmi:id="_N3WDwX47Eeqs48x95NbBFQ" fontName="Noto Sans" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_N3WDwn47Eeqs48x95NbBFQ"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_WXU04H5IEeqs48x95NbBFQ" type="3010" element="_WXJ1wH5IEeqs48x95NbBFQ">
               <styles xmi:type="notation:FontStyle" xmi:id="_WXU04X5IEeqs48x95NbBFQ" fontName="Noto Sans" fontHeight="8"/>
@@ -1634,14 +1630,6 @@
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_N3DI1347Eeqs48x95NbBFQ" name="getAllTargets() : Target" tooltipText="getAllTargets() : Target">
-        <target xmi:type="ecore:EOperation" href="query.ecore#//Target/getAllTargets"/>
-        <semanticElements xmi:type="ecore:EOperation" href="query.ecore#//Target/getAllTargets"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_N3DI2H47Eeqs48x95NbBFQ" labelAlignment="LEFT">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
       </ownedElements>
       <ownedElements xmi:type="diagram:DNodeListElement" uid="_WXJ1wH5IEeqs48x95NbBFQ" name="setContainerWithIdFeature(node Node)" tooltipText="setContainerWithIdFeature(node)">
         <target xmi:type="ecore:EOperation" href="query.ecore#//Target/setContainerWithIdFeature"/>

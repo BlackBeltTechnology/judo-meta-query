@@ -54,21 +54,6 @@ public class QueryUtils {
         return collectAllJoins(found, newTargets.stream().flatMap(t -> t.getJoins().stream()).collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 
-    public static EList<Target> getAllTargetsOfTarget(final Target target) {
-        return collectTargets(ECollections.newBasicEList(), Collections.singleton(target));
-    }
-
-    private static EList<Target> collectTargets(final EList<Target> found, final Collection<Target> processing) {
-        if (processing.isEmpty()) {
-            return found;
-        }
-
-        final Collection<Target> newTargets = processing.stream().filter(t -> !found.contains(t)).collect(Collectors.toList());
-        found.addAll(newTargets);
-
-        return collectTargets(found, newTargets.stream().flatMap(t -> t.getReferencedTargets().stream().map(rt -> rt.getTarget())).collect(Collectors.toSet()));
-    }
-
     public static EMap<EList<EReference>, Target> getAllTargetPaths(final Target target) {
         final EMap<EList<EReference>, Target> result = ECollections.asEMap(new HashMap<>());
         result.put(ECollections.emptyEList(), target);
@@ -90,7 +75,7 @@ public class QueryUtils {
     }
 
     public static EList<Target> getJoinedTargets(final Select select) {
-        final Set<Target> targets = select.getMainTarget().getAllTargets().stream()
+        final Set<Target> targets = select.getTargets().stream()
                 .flatMap(target -> getTargetsByNodes(target, ImmutableList.<Node>builder().add(select).addAll(getAllJoinsOfSelect(select)).build()).values().stream())
                 .collect(Collectors.toSet());
         return ECollections.asEList(new ArrayList<>(targets));
@@ -134,7 +119,7 @@ public class QueryUtils {
                 pad(level) + "  FEATURES=" + select.getFeatures() + "\n" +
                 pad(level) + "  FROM=" + select.getFrom().getName() + " AS " + select.getAlias() + "\n" +
                 pad(level) + "  JOINING=" + select.getAllJoins() + "\n" +
-                pad(level) + "  TO=" + select.getMainTarget().getAllTargets() + "\n" +
+                pad(level) + "  TO=" + select.getTargets() + "\n" +
                 (select.getFilters().isEmpty() ? "" : pad(level) + "  WHERE=" + select.getFilters() + "\n") +
                 (select.getOrderBys().isEmpty() ? "" : pad(level) + "  ORDER BY=" + select.getOrderBys() + "\n") +
                 (select.getSubSelects().isEmpty() ? "" : select.getSubSelects().stream().map(s -> pad(level) + (s.isAggregated() ? " AGGREGATE " : "  TRAVERSE ") + s +

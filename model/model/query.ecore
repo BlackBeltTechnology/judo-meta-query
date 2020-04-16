@@ -204,7 +204,6 @@
         eType="#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Target">
-    <eOperations name="getAllTargets" upperBound="-1" eType="#//Target"/>
     <eOperations name="setContainerWithIdFeature">
       <eParameters name="node" eType="#//Node"/>
     </eOperations>
