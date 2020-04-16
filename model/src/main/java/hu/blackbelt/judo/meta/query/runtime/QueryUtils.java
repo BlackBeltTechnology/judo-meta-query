@@ -6,7 +6,6 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -91,7 +90,7 @@ public class QueryUtils {
     }
 
     public static EList<Target> getJoinedTargets(final Select select) {
-        final Set<Target> targets = select.getTarget().getAllTargets().stream()
+        final Set<Target> targets = select.getMainTarget().getAllTargets().stream()
                 .flatMap(target -> getTargetsByNodes(target, ImmutableList.<Node>builder().add(select).addAll(getAllJoinsOfSelect(select)).build()).values().stream())
                 .collect(Collectors.toSet());
         return ECollections.asEList(new ArrayList<>(targets));
@@ -125,17 +124,17 @@ public class QueryUtils {
 
     private static String formatSelect(final Select select, final int level, final EList<Select> selects) {
         if (selects.contains(select)) {
-            return pad(level) + "... (SELECT FROM " + select.getFrom().getName() + " TO " + select.getTarget().getIndex() + ")\n";
+            return pad(level) + "... (SELECT FROM " + select.getFrom().getName() + " TO " + select.getMainTarget().getIndex() + ")\n";
         }
 
         final EList<Select> visited = ECollections.newBasicEList(selects);
         visited.add(select);
 
         return pad(level) + "SELECT\n" +
-                pad(level) + "  FEATURES=" + select.getJoinedTargets().stream().flatMap(t -> t.getFeatures().stream()).collect(Collectors.toList()) + "\n" +
+                pad(level) + "  FEATURES=" + select.getFeatures() + "\n" +
                 pad(level) + "  FROM=" + select.getFrom().getName() + " AS " + select.getAlias() + "\n" +
                 pad(level) + "  JOINING=" + select.getAllJoins() + "\n" +
-                pad(level) + "  TO=" + select.getTarget().getAllTargets() + "\n" +
+                pad(level) + "  TO=" + select.getMainTarget().getAllTargets() + "\n" +
                 (select.getFilters().isEmpty() ? "" : pad(level) + "  WHERE=" + select.getFilters() + "\n") +
                 (select.getOrderBys().isEmpty() ? "" : pad(level) + "  ORDER BY=" + select.getOrderBys() + "\n") +
                 (select.getSubSelects().isEmpty() ? "" : select.getSubSelects().stream().map(s -> pad(level) + (s.isAggregated() ? " AGGREGATE " : "  TRAVERSE ") + s +
