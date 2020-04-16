@@ -5,7 +5,6 @@ import hu.blackbelt.judo.meta.query.*;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.EMap;
-import org.eclipse.emf.ecore.EReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,20 +22,14 @@ public class QueryUtils {
     public static final String JOIN_ALIAS_FORMAT = "j{0,number,00}";
     private static final String SUBSELECT_ALIAS_FORMAT = "ss{0,number,00}";
 
+    private static final Collection<FunctionSignature> AGGREGATED_FUNCTIONS = Arrays.asList(
+            FunctionSignature.COUNT,
+            FunctionSignature.SUM_INTEGER, FunctionSignature.MIN_INTEGER, FunctionSignature.MAX_INTEGER,
+            FunctionSignature.SUM_DECIMAL, FunctionSignature.MIN_DECIMAL, FunctionSignature.MAX_DECIMAL, FunctionSignature.AVG_DECIMAL
+    );
+
     public static boolean isAggregated(final FunctionSignature functionSignature) {
-        switch (functionSignature) {
-            case COUNT:
-            case SUM_INTEGER:
-            case MIN_INTEGER:
-            case MAX_INTEGER:
-            case SUM_DECIMAL:
-            case MIN_DECIMAL:
-            case MAX_DECIMAL:
-            case AVG_DECIMAL:
-                return true;
-            default:
-                return false;
-        }
+        return AGGREGATED_FUNCTIONS.contains(functionSignature);
     }
 
     public static EList<Join> getAllJoinsOfSelect(final Select select) {
@@ -52,26 +45,6 @@ public class QueryUtils {
         found.addAll(newTargets);
 
         return collectAllJoins(found, newTargets.stream().flatMap(t -> t.getJoins().stream()).collect(Collectors.toCollection(LinkedHashSet::new)));
-    }
-
-    public static EMap<EList<EReference>, Target> getAllTargetPaths(final Target target) {
-        final EMap<EList<EReference>, Target> result = ECollections.asEMap(new HashMap<>());
-        result.put(ECollections.emptyEList(), target);
-        return addReferencesToAllTargetPaths(result, ECollections.emptyEList(), target.getReferencedTargets());
-    }
-
-    private static EMap<EList<EReference>, Target> addReferencesToAllTargetPaths(final EMap<EList<EReference>, Target> found, final EList<EReference> path, final EList<ReferencedTarget> processing) {
-        if (processing.isEmpty()) {
-            return found;
-        }
-
-        final Map<EList<EReference>, Target> newTargets = processing.stream()
-                .filter(r -> !found.containsValue(r.getTarget()))
-                .collect(Collectors.toMap(r -> ECollections.asEList(ImmutableList.<EReference>builder().addAll(path).add(r.getReference()).build()), r -> r.getTarget()));
-        found.putAll(newTargets);
-
-        newTargets.entrySet().forEach(nt -> addReferencesToAllTargetPaths(found, nt.getKey(), nt.getValue().getReferencedTargets()));
-        return found;
     }
 
     public static EList<Target> getJoinedTargets(final Select select) {
@@ -122,11 +95,13 @@ public class QueryUtils {
                 pad(level) + "  TO=" + select.getTargets() + "\n" +
                 (select.getFilters().isEmpty() ? "" : pad(level) + "  WHERE=" + select.getFilters() + "\n") +
                 (select.getOrderBys().isEmpty() ? "" : pad(level) + "  ORDER BY=" + select.getOrderBys() + "\n") +
-                (select.getSubSelects().isEmpty() ? "" : select.getSubSelects().stream().map(s -> pad(level) + (s.isAggregated() ? " AGGREGATE " : "  TRAVERSE ") + s +
-                        "\n" + formatSelect(s.getSelect(), level + 1, visited)).collect(Collectors.joining())) +
+                (select.getSubSelects().isEmpty() ? "" : select.getSubSelects().stream().map(s -> pad(level) + (s.isAggregated() ? "  AGGREGATE " : "  TRAVERSE ") + s +
+                        "\n" + formatSelect(s.getSelect(), level + 1, visited) +
+                        (!s.isAggregated() && !s.getPartner().getOrderBys().isEmpty() ? "    ORDER BY=" + s.getPartner().getOrderBys() + "\n" : "")).collect(Collectors.joining())) +
                 select.getAllJoins().stream().map(join -> join.getSubSelects().stream().map(s ->
-                        pad(level) + (s.isAggregated() ? " AGGREGATE " : "  TRAVERSE ") + s +
-                                "\n" + formatSelect(s.getSelect(), level + 1, visited)).collect(Collectors.joining()))
+                        pad(level) + (s.isAggregated() ? "  AGGREGATE " : "  TRAVERSE ") + s +
+                                "\n" + formatSelect(s.getSelect(), level + 1, visited) +
+                                (!s.isAggregated() && !s.getPartner().getOrderBys().isEmpty() ? "    ORDER BY=" + s.getPartner().getOrderBys() + "\n" : "")).collect(Collectors.joining()))
                         .collect(Collectors.joining());
     }
 
