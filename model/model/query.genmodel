@@ -94,7 +94,6 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ResultConstraint/MAX_LENGTH"/>
     </genEnums>
     <genClasses ecoreClass="query.ecore#//Attribute">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Attribute/node"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Attribute/sourceAttribute"/>
       <genOperations ecoreOperation="query.ecore#//Attribute/toString" body="return getNode().getAlias() + &quot;.&quot; + getSourceAttribute().getName() + getTargetAsString();"/>
     </genClasses>
@@ -132,7 +131,6 @@
       <genOperations ecoreOperation="query.ecore#//FunctionParameter/toString" body="return getParameterName() + &quot;: &quot; + getParameterValue();"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//IdAttribute">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//IdAttribute/node"/>
       <genOperations ecoreOperation="query.ecore#//IdAttribute/toString" body="return &quot;ID of &quot; + getNode().getAlias() + (getTarget() != null ? &quot;@&quot; + getTarget().getIndex() : &quot;&quot;);"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Join">
@@ -183,15 +181,14 @@
     </genClasses>
     <genClasses ecoreClass="query.ecore#//SubSelectFeature">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelectFeature/subSelect"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelectFeature/subSelectFeature"/>
-      <genOperations ecoreOperation="query.ecore#//SubSelectFeature/toString" body="if ((getSubSelectFeature() instanceof hu.blackbelt.judo.meta.query.Function) &amp;&amp; hu.blackbelt.judo.meta.query.runtime.QueryUtils.isAggregated(((hu.blackbelt.judo.meta.query.Function) getSubSelectFeature()).getSignature())) {&#xA;            final hu.blackbelt.judo.meta.query.Function f = (hu.blackbelt.judo.meta.query.Function) getSubSelectFeature();&#xA;            return getSubSelect().getAlias() + &quot;.&quot; + f.getTargetAsString().replace(&quot; AS &quot;, &quot;&quot;) + getTargetAsString();&#xA;        } else {&#xA;            return &quot;N/A&quot;;&#xA;        }"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelectFeature/feature"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelectFeature/toString" body="if ((getFeature() instanceof hu.blackbelt.judo.meta.query.Function) &amp;&amp; hu.blackbelt.judo.meta.query.runtime.QueryUtils.isAggregated(((hu.blackbelt.judo.meta.query.Function) getFeature()).getSignature())) {&#xA;            final hu.blackbelt.judo.meta.query.Function f = (hu.blackbelt.judo.meta.query.Function) getFeature();&#xA;            return getSubSelect().getAlias() + &quot;.&quot; + f.getTargetAsString().replace(&quot; AS &quot;, &quot;&quot;) + getTargetAsString();&#xA;        } else {&#xA;            return &quot;N/A&quot;;&#xA;        }"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Target">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Target/index"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Target/referencedTargets"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Target/type"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Target/node"/>
-      <genOperations ecoreOperation="query.ecore#//Target/getAllTargets" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.getAllTargetsOfTarget(this);"/>
       <genOperations ecoreOperation="query.ecore#//Target/setContainerWithIdFeature"
           body="&#x9;&#x9;setNode(node);&#xA;&#x9;&#x9;final hu.blackbelt.judo.meta.query.Select select;&#xA;&#x9;&#x9;if (node instanceof hu.blackbelt.judo.meta.query.Select) {&#xA;&#x9;&#x9;&#x9;select = (hu.blackbelt.judo.meta.query.Select) node;&#xA;&#x9;&#x9;} else if (node instanceof hu.blackbelt.judo.meta.query.Join) {&#xA;&#x9;&#x9;&#x9;select = ((hu.blackbelt.judo.meta.query.Join) node).getBase();&#xA;&#x9;&#x9;} else {&#xA;&#x9;&#x9;&#x9;throw new IllegalStateException(&quot;Unsupported node&quot;);&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;select.getFeatures().add(hu.blackbelt.judo.meta.query.util.builder.QueryBuilders.newIdAttributeBuilder()&#xA;&#x9;&#x9;&#x9;&#x9;.withTarget(this)&#xA;&#x9;&#x9;&#x9;&#x9;.withNode(node).build());&#xA;&#x9;&#x9;select.getFeatures().add(hu.blackbelt.judo.meta.query.util.builder.QueryBuilders.newTypeAttributeBuilder()&#xA;&#x9;&#x9;&#x9;&#x9;.withTarget(this)&#xA;&#x9;&#x9;&#x9;&#x9;.withNode(node).build());">
         <genParameters ecoreParameter="query.ecore#//Target/setContainerWithIdFeature/node"/>
@@ -199,7 +196,6 @@
       <genOperations ecoreOperation="query.ecore#//Target/toString" body="return (getType() != null ? getType().getName() : &quot;&quot;) + &quot;@&quot; + getIndex();"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//TypeAttribute">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//TypeAttribute/node"/>
       <genOperations ecoreOperation="query.ecore#//TypeAttribute/toString" body="return &quot;Entity type of &quot; + getNode().getAlias() + (getTarget() != null ? &quot;@&quot; + getTarget().getIndex() : &quot;&quot;);"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//ReferencedTarget">
@@ -207,5 +203,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ReferencedTarget/reference"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//ParameterType"/>
+    <genClasses ecoreClass="query.ecore#//FeatureWithNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FeatureWithNode/node"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
