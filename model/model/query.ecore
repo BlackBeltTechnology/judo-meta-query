@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="query" nsURI="http://blackbelt.hu/judo/meta/query" nsPrefix="query">
-  <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//Feature">
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="1" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceAttribute" lowerBound="1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
   </eClassifiers>
@@ -102,9 +101,8 @@
     <eLiterals name="MAX_DECIMAL" value="50"/>
     <eLiterals name="AVG_DECIMAL" value="51"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//Feature">
+  <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="1" eType="#//Node"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Join" eSuperTypes="#//Node">
     <eOperations name="getAllJoins" upperBound="-1" eType="#//Join"/>
@@ -200,7 +198,7 @@
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subSelect" lowerBound="1"
         eType="#//SubSelect"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subSelectFeature" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
         eType="#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Target">
@@ -214,9 +212,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//Node"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TypeAttribute" eSuperTypes="#//Feature">
+  <eClassifiers xsi:type="ecore:EClass" name="TypeAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="1" eType="#//Node"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ReferencedTarget">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
@@ -225,4 +222,7 @@
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureWithNode" eSuperTypes="#//Feature">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="1" eType="#//Node"/>
+  </eClassifiers>
 </ecore:EPackage>
