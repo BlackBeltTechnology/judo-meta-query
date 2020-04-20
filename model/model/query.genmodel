@@ -109,6 +109,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Feature/targetAttribute"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Feature/target"/>
       <genOperations ecoreOperation="query.ecore#//Feature/getTargetAsString" body="return (getTargetAttribute() != null ? &quot; AS &quot; + getTargetAttribute().getName() + (getTarget() != null ? &quot;@&quot; + getTarget().getIndex() : &quot;&quot;) : &quot;&quot;);"/>
+      <genOperations ecoreOperation="query.ecore#//Feature/getAlias" body="return getTargetAttribute() != null ? getTargetAttribute().getName() : &quot;__f&quot; + ((hu.blackbelt.judo.meta.query.Select) eContainer()).getFeatures().indexOf(this);"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Filter">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Filter/joins"/>
