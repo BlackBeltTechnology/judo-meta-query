@@ -15,10 +15,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true" eSuperTypes="#//ParameterType">
-    <eOperations name="getTargetAsString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eOperations name="getAlias" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Target"/>
+    <eOperations name="getTargetsAsString" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getAliases" lowerBound="1" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetMappings" upperBound="-1"
+        eType="#//FeatureTargetMapping" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Filter">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -225,5 +225,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="ParameterType" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="FeatureWithNode" eSuperTypes="#//Feature">
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="1" eType="#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureTargetMapping">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
   </eClassifiers>
 </ecore:EPackage>
