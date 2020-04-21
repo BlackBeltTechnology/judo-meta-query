@@ -7,7 +7,7 @@
     <semanticResources>platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_xuDTkHplEeqTCYEtupSWEA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0OcMsHplEeqTCYEtupSWEA" name="query class diagram" repPath="#_0MnnwHplEeqTCYEtupSWEA" changeId="c8ee1128-92ad-4ae9-88e4-61346e8df264">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0OcMsHplEeqTCYEtupSWEA" name="query class diagram" repPath="#_0MnnwHplEeqTCYEtupSWEA" changeId="72923288-8d12-435d-8987-5e80ce31a6c1">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="query.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -217,10 +217,6 @@
             <children xmi:type="notation:Node" xmi:id="_6bgcUH4dEeqs48x95NbBFQ" type="3010" element="_6bIo4H4dEeqs48x95NbBFQ">
               <styles xmi:type="notation:FontStyle" xmi:id="_6bgcUX4dEeqs48x95NbBFQ" fontName="Noto Sans" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_6bgcUn4dEeqs48x95NbBFQ"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_pA18QIL_EeqWDIAJ1Bpafg" type="3010" element="_pAO4RoL_EeqWDIAJ1Bpafg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_pA18QYL_EeqWDIAJ1Bpafg" fontName="Noto Sans" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_pA2jUIL_EeqWDIAJ1Bpafg"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_bq1-QnppEeq7nMs6aeaOkQ"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_bq1-Q3ppEeq7nMs6aeaOkQ"/>
@@ -1696,14 +1692,6 @@
         <target xmi:type="ecore:EOperation" href="query.ecore#//Feature/getTargetsAsString"/>
         <semanticElements xmi:type="ecore:EOperation" href="query.ecore#//Feature/getTargetsAsString"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_6bJ3AH4dEeqs48x95NbBFQ" labelAlignment="LEFT">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_pAO4RoL_EeqWDIAJ1Bpafg" name="getAliases() : EString" tooltipText="getAliases() : EString">
-        <target xmi:type="ecore:EOperation" href="query.ecore#//Feature/getAliases"/>
-        <semanticElements xmi:type="ecore:EOperation" href="query.ecore#//Feature/getAliases"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_pAPfUIL_EeqWDIAJ1Bpafg" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
