@@ -18,13 +18,17 @@
     <eOperations name="getTargetsAsString" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetMappings" upperBound="-1"
         eType="#//FeatureTargetMapping" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filters" upperBound="-1"
+        eType="#//Filter" eOpposite="#//Filter/feature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderBys" upperBound="-1"
+        eType="#//OrderBy" eOpposite="#//OrderBy/feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Filter">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joins" upperBound="-1"
         eType="#//Join" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
-        eType="#//Feature"/>
+        eType="#//Feature" eOpposite="#//Feature/filters"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//Feature">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -131,10 +135,10 @@
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="descending" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
-        eType="#//Feature"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="joins" upperBound="-1"
         eType="#//Join" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
+        eType="#//Feature" eOpposite="#//Feature/orderBys"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ParameterName">
     <eLiterals name="LEFT"/>
