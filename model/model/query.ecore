@@ -8,10 +8,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Constant" eSuperTypes="#//Feature">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityTypeName" eSuperTypes="#//ParameterType">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true" eSuperTypes="#//ParameterType">
@@ -22,6 +24,8 @@
         eType="#//Filter" eOpposite="#//Filter/feature"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderBys" upperBound="-1"
         eType="#//OrderBy" eOpposite="#//OrderBy/feature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregations" upperBound="-1"
+        eType="#//SubSelectFeature" eOpposite="#//SubSelectFeature/feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Filter">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -32,6 +36,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//Feature">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="signature" lowerBound="1"
         eType="#//FunctionSignature"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
@@ -49,7 +54,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterName" lowerBound="1"
         eType="#//ParameterName"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValue" lowerBound="1"
-        eType="#//ParameterType"/>
+        eType="#//ParameterType" eOpposite="#//ParameterType/functionParameters"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="FunctionSignature">
     <eLiterals name="NOT"/>
@@ -186,6 +191,7 @@
     <eOperations name="getNavigationJoins" upperBound="-1" eType="#//Join"/>
     <eOperations name="isAggregated" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alias" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transferRelation" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="partner" eType="#//Join"/>
@@ -200,10 +206,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SubSelectFeature" eSuperTypes="#//Feature">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subSelect" lowerBound="1"
         eType="#//SubSelect"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
-        eType="#//Feature"/>
+        eType="#//Feature" eOpposite="#//Feature/aggregations"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Target">
     <eOperations name="setContainerWithIdFeature">
@@ -225,8 +232,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterType" abstract="true">
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionParameters" upperBound="-1"
+        eType="#//FunctionParameter" eOpposite="#//FunctionParameter/parameterValue"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FeatureWithNode" eSuperTypes="#//Feature">
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="1" eType="#//Node"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FeatureTargetMapping">
