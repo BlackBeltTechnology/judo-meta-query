@@ -22,16 +22,6 @@ public class QueryUtils {
     public static final String JOIN_ALIAS_FORMAT = "j{0,number,00}";
     private static final String SUBSELECT_ALIAS_FORMAT = "ss{0,number,00}";
 
-    private static final Collection<FunctionSignature> AGGREGATED_FUNCTIONS = Arrays.asList(
-            FunctionSignature.COUNT,
-            FunctionSignature.SUM_INTEGER, FunctionSignature.MIN_INTEGER, FunctionSignature.MAX_INTEGER,
-            FunctionSignature.SUM_DECIMAL, FunctionSignature.MIN_DECIMAL, FunctionSignature.MAX_DECIMAL, FunctionSignature.AVG_DECIMAL
-    );
-
-    public static boolean isAggregated(final FunctionSignature functionSignature) {
-        return AGGREGATED_FUNCTIONS.contains(functionSignature);
-    }
-
     public static EList<Join> getAllJoinsOfSelect(final Select select) {
         return collectAllJoins(ECollections.newBasicEList(), select.getJoins());
     }
@@ -95,13 +85,13 @@ public class QueryUtils {
                 pad(level) + "  TO=" + select.getTargets() + "\n" +
                 (select.getFilters().isEmpty() ? "" : pad(level) + "  WHERE=" + select.getFilters() + "\n") +
                 (select.getOrderBys().isEmpty() ? "" : pad(level) + "  ORDER BY=" + select.getOrderBys() + "\n") +
-                (select.getSubSelects().isEmpty() ? "" : select.getSubSelects().stream().map(s -> pad(level) + (s.isAggregated() ? "  AGGREGATE " : "  TRAVERSE ") + s +
+                (select.getSubSelects().isEmpty() ? "" : select.getSubSelects().stream().map(s -> pad(level) + (s.getSelect().isAggregated() ? "  AGGREGATE " : "  TRAVERSE ") + s +
                         "\n" + formatSelect(s.getSelect(), level + 1, visited) +
-                        (!s.isAggregated() && !s.getPartner().getOrderBys().isEmpty() ? "    ORDER BY=" + s.getPartner().getOrderBys() + "\n" : "")).collect(Collectors.joining())) +
+                        (!s.getSelect().isAggregated() && !s.getPartner().getOrderBys().isEmpty() ? "    ORDER BY=" + s.getPartner().getOrderBys() + "\n" : "")).collect(Collectors.joining())) +
                 select.getAllJoins().stream().map(join -> join.getSubSelects().stream().map(s ->
-                        pad(level) + (s.isAggregated() ? "  AGGREGATE " : "  TRAVERSE ") + s +
+                        pad(level) + (s.getSelect().isAggregated() ? "  AGGREGATE " : "  TRAVERSE ") + s +
                                 "\n" + formatSelect(s.getSelect(), level + 1, visited) +
-                                (!s.isAggregated() && !s.getPartner().getOrderBys().isEmpty() ? "    ORDER BY=" + s.getPartner().getOrderBys() + "\n" : "")).collect(Collectors.joining()))
+                                (!s.getSelect().isAggregated() && !s.getPartner().getOrderBys().isEmpty() ? "    ORDER BY=" + s.getPartner().getOrderBys() + "\n" : "")).collect(Collectors.joining()))
                         .collect(Collectors.joining());
     }
 

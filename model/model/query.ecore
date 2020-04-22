@@ -178,6 +178,7 @@
     <eOperations name="getJoinedTargets" upperBound="-1" eType="#//Target"/>
     <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="isAggregated" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mainTarget" lowerBound="1"
         eType="#//Target"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
@@ -189,7 +190,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="SubSelect" eSuperTypes="#//ParameterType">
     <eOperations name="getBase" eType="#//Node"/>
     <eOperations name="getNavigationJoins" upperBound="-1" eType="#//Join"/>
-    <eOperations name="isAggregated" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alias" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
