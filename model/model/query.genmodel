@@ -115,9 +115,9 @@
       <genOperations ecoreOperation="query.ecore#//Feature/getTargetsAsString" body="return org.eclipse.emf.common.util.ECollections.asEList(getTargetMappings().stream().map(tm ->  (tm.getTargetAttribute() != null ? tm.getTargetAttribute().getName() : &quot;&quot;) + &quot;@&quot; + tm.getTarget().getIndex()).collect(java.util.stream.Collectors.toList()));"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Filter">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Filter/joins"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Filter/feature"/>
       <genOperations ecoreOperation="query.ecore#//Filter/toString" body="return getFeature().toString() + &quot; [&quot; + getJoins().stream().map(j -> j.toString()).collect(java.util.stream.Collectors.joining(&quot;,&quot;)) + &quot;]&quot;;"/>
+      <genOperations ecoreOperation="query.ecore#//Filter/getType" body="return ((hu.blackbelt.judo.meta.query.Node) eContainer()).getType();"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Function">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Function/signature"/>
@@ -149,8 +149,6 @@
     </genClasses>
     <genClasses image="false" ecoreClass="query.ecore#//Node">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Node/alias"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Node/joins"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Node/subSelects"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Node/filters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Node/orderBys"/>
       <genOperations ecoreOperation="query.ecore#//Node/getType"/>
@@ -164,7 +162,6 @@
     <genClasses ecoreClass="query.ecore#//Select">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference query.ecore#//Select/mainTarget"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Select/from"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Select/features"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Select/targets"/>
       <genOperations ecoreOperation="query.ecore#//Select/getAllJoins" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.getAllJoinsOfSelect(this);"/>
       <genOperations ecoreOperation="query.ecore#//Select/getType" body="return getFrom();"/>
@@ -220,6 +217,13 @@
     <genClasses ecoreClass="query.ecore#//FeatureTargetMapping">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FeatureTargetMapping/target"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FeatureTargetMapping/targetAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//NavigationBase">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//NavigationBase/joins"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//NavigationBase/subSelects"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//FeatureHolder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//FeatureHolder/features"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

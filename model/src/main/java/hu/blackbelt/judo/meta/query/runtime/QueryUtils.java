@@ -31,10 +31,10 @@ public class QueryUtils {
             return found;
         }
 
-        final Collection<Join> newTargets = processing.stream().filter(t -> !found.contains(t)).collect(Collectors.toList());
-        found.addAll(newTargets);
+        final Collection<Join> newJoins = processing.stream().filter(j -> !found.contains(j)).collect(Collectors.toList());
+        found.addAll(newJoins);
 
-        return collectAllJoins(found, newTargets.stream().flatMap(t -> t.getJoins().stream()).collect(Collectors.toCollection(LinkedHashSet::new)));
+        return collectAllJoins(found, newJoins.stream().flatMap(j -> j.getJoins().stream()).collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 
     public static String formatSelect(final Select select) {

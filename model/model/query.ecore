@@ -27,10 +27,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="aggregations" upperBound="-1"
         eType="#//SubSelectFeature" eOpposite="#//SubSelectFeature/feature"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Filter">
+  <eClassifiers xsi:type="ecore:EClass" name="Filter" eSuperTypes="#//Node">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joins" upperBound="-1"
-        eType="#//Join" containment="true"/>
+    <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
         eType="#//Feature" eOpposite="#//Feature/filters"/>
   </eClassifiers>
@@ -124,13 +123,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="partner" lowerBound="1"
         eType="#//Node"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true" eSuperTypes="#//NavigationBase #//FeatureHolder">
     <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="alias" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joins" upperBound="-1"
-        eType="#//Join" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subSelects" upperBound="-1"
-        eType="#//SubSelect" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="filters" upperBound="-1"
         eType="#//Filter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderBys" upperBound="-1"
@@ -181,8 +176,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="mainTarget" lowerBound="1"
         eType="#//Target"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
-        eType="#//Feature" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" lowerBound="1"
         upperBound="-1" eType="#//Target" containment="true"/>
   </eClassifiers>
@@ -214,6 +207,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Target">
     <eOperations name="setContainerWithIdFeature">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Utility that sets node reference and adds IdAttribute and TypeAttribute to the target."/>
+      </eAnnotations>
       <eParameters name="node" eType="#//Node"/>
     </eOperations>
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -233,7 +229,11 @@
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterType" abstract="true">
-    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Get nodes that the given parameter depends on."/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="functionParameters" upperBound="-1"
         eType="#//FunctionParameter" eOpposite="#//FunctionParameter/parameterValue"/>
   </eClassifiers>
@@ -245,5 +245,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//Target"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NavigationBase" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joins" upperBound="-1"
+        eType="#//Join" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subSelects" upperBound="-1"
+        eType="#//SubSelect" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureHolder" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//Feature" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
