@@ -167,7 +167,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Select/features"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Select/targets"/>
       <genOperations ecoreOperation="query.ecore#//Select/getAllJoins" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.getAllJoinsOfSelect(this);"/>
-      <genOperations ecoreOperation="query.ecore#//Select/getJoinedTargets" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.getJoinedTargets(this);"/>
       <genOperations ecoreOperation="query.ecore#//Select/getType" body="return getFrom();"/>
       <genOperations ecoreOperation="query.ecore#//Select/toString" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.formatSelect(this);"/>
       <genOperations ecoreOperation="query.ecore#//Select/isAggregated" body="return getFeatures().stream().anyMatch(f -> !f.getAggregations().isEmpty());"/>

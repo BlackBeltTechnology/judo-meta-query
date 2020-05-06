@@ -1,15 +1,15 @@
 package hu.blackbelt.judo.meta.query.runtime;
 
-import com.google.common.collect.ImmutableList;
-import hu.blackbelt.judo.meta.query.*;
+import hu.blackbelt.judo.meta.query.Join;
+import hu.blackbelt.judo.meta.query.Select;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.EMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.MessageFormat;
-import java.util.*;
+import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -35,35 +35,6 @@ public class QueryUtils {
         found.addAll(newTargets);
 
         return collectAllJoins(found, newTargets.stream().flatMap(t -> t.getJoins().stream()).collect(Collectors.toCollection(LinkedHashSet::new)));
-    }
-
-    public static EList<Target> getJoinedTargets(final Select select) {
-        final Set<Target> targets = select.getTargets().stream()
-                .flatMap(target -> getTargetsByNodes(target, ImmutableList.<Node>builder().add(select).addAll(getAllJoinsOfSelect(select)).build()).values().stream())
-                .collect(Collectors.toSet());
-        return ECollections.asEList(new ArrayList<>(targets));
-    }
-
-    private static EMap<Node, Target> getTargetsByNodes(final Target target, final Collection<Node> nodes) {
-        if (nodes.contains(target.getNode())) {
-            final EMap<Node, Target> targetsBySources = ECollections.asEMap(new HashMap<>());
-            targetsBySources.put(target.getNode(), target);
-            collectTargetsByNodes(target, nodes, targetsBySources);
-
-            return targetsBySources;
-        } else {
-            return ECollections.emptyEMap();
-        }
-    }
-
-    private static void collectTargetsByNodes(final Target target, final Collection<Node> nodes, final EMap<Node, Target> result) {
-        target.getReferencedTargets().forEach(rt -> {
-            final Node node = rt.getTarget().getNode();
-            if (nodes.contains(node) && !result.containsKey(node)) {
-                result.put(node, rt.getTarget());
-                collectTargetsByNodes(rt.getTarget(), nodes, result);
-            }
-        });
     }
 
     public static String formatSelect(final Select select) {

@@ -175,7 +175,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Select" eSuperTypes="#//Node">
     <eOperations name="getAllJoins" upperBound="-1" eType="#//Join"/>
-    <eOperations name="getJoinedTargets" upperBound="-1" eType="#//Target"/>
     <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="isAggregated" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
