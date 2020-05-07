@@ -131,12 +131,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="orderBys" upperBound="-1"
         eType="#//OrderBy" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OrderBy">
+  <eClassifiers xsi:type="ecore:EClass" name="OrderBy" eSuperTypes="#//Node">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="descending" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="joins" upperBound="-1"
-        eType="#//Join" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
         eType="#//Feature" eOpposite="#//Feature/orderBys"/>
   </eClassifiers>

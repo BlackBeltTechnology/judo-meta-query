@@ -155,9 +155,9 @@
     </genClasses>
     <genClasses ecoreClass="query.ecore#//OrderBy">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//OrderBy/descending"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//OrderBy/joins"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//OrderBy/feature"/>
       <genOperations ecoreOperation="query.ecore#//OrderBy/toString" body="return getFeature().toString() + &quot; [&quot; + getJoins().stream().map(j -> j.toString()).collect(java.util.stream.Collectors.joining(&quot;,&quot;)) + &quot;]&quot;;"/>
+      <genOperations ecoreOperation="query.ecore#//OrderBy/getType" body="return ((hu.blackbelt.judo.meta.query.Node) eContainer()).getType();"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Select">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference query.ecore#//Select/mainTarget"/>
