@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static hu.blackbelt.judo.meta.query.runtime.StringUtils.leftPad;
 
@@ -35,6 +36,14 @@ public class QueryUtils {
         found.addAll(newJoins);
 
         return collectAllJoins(found, newJoins.stream().flatMap(j -> j.getJoins().stream()).collect(Collectors.toCollection(LinkedHashSet::new)));
+    }
+
+    public static EList<Join> getAllJoinsOfJoin(final Join join) {
+        return ECollections.asEList(Stream
+                .concat(
+                        join.getJoins().stream(),
+                        join.getJoins().stream().flatMap(j -> getAllJoinsOfJoin(j).stream()))
+                .collect(java.util.stream.Collectors.toList()));
     }
 
     public static String formatSelect(final Select select) {
