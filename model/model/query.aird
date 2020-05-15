@@ -7,7 +7,7 @@
     <semanticResources>platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_xuDTkHplEeqTCYEtupSWEA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0OcMsHplEeqTCYEtupSWEA" name="query class diagram" repPath="#_0MnnwHplEeqTCYEtupSWEA" changeId="cbcdebf2-b77a-4f9b-ac6f-169856ac2a35">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0OcMsHplEeqTCYEtupSWEA" name="query class diagram" repPath="#_0MnnwHplEeqTCYEtupSWEA" changeId="e7914e57-68d1-45fe-82a9-d39f8f6ed1d3">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="query.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -173,10 +173,6 @@
             <children xmi:type="notation:Node" xmi:id="_QPACMH48Eeqs48x95NbBFQ" type="3010" element="_QOqD8X48Eeqs48x95NbBFQ">
               <styles xmi:type="notation:FontStyle" xmi:id="_QPACMX48Eeqs48x95NbBFQ" fontName="Noto Sans" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_QPACMn48Eeqs48x95NbBFQ"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_eo9KUH48Eeqs48x95NbBFQ" type="3010" element="_eot5wH48Eeqs48x95NbBFQ">
-              <styles xmi:type="notation:FontStyle" xmi:id="_eo9KUX48Eeqs48x95NbBFQ" fontName="Noto Sans" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_eo9KUn48Eeqs48x95NbBFQ"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_ansiYHptEeq7nMs6aeaOkQ" type="3010" element="_ankmknptEeq7nMs6aeaOkQ">
               <styles xmi:type="notation:FontStyle" xmi:id="_ansiYXptEeq7nMs6aeaOkQ" fontName="Noto Sans" fontHeight="8"/>
@@ -1670,14 +1666,6 @@
         <target xmi:type="ecore:EOperation" href="query.ecore#//Join/getAllJoins"/>
         <semanticElements xmi:type="ecore:EOperation" href="query.ecore#//Join/getAllJoins"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_QOqD8n48Eeqs48x95NbBFQ" labelAlignment="LEFT">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_eot5wH48Eeqs48x95NbBFQ" name="getPath() : EReference" tooltipText="getPath() : EReference">
-        <target xmi:type="ecore:EOperation" href="query.ecore#//Join/getPath"/>
-        <semanticElements xmi:type="ecore:EOperation" href="query.ecore#//Join/getPath"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_eoug0H48Eeqs48x95NbBFQ" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
