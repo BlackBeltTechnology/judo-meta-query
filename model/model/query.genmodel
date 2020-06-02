@@ -139,11 +139,8 @@
       <genOperations ecoreOperation="query.ecore#//IdAttribute/toString" body="return &quot;ID of &quot; + getNode().getAlias();"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Join">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Join/reference"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Join/partner"/>
       <genOperations ecoreOperation="query.ecore#//Join/getAllJoins" body="&#x9;&#x9;final org.eclipse.emf.common.util.EList&lt;Join> joins = org.eclipse.emf.common.util.ECollections.newBasicEList();&#xA;&#x9;&#x9;joins.add(this);&#xA;&#x9;&#x9;joins.addAll(hu.blackbelt.judo.meta.query.runtime.QueryUtils.getAllJoinsOfJoin(this));&#xA;&#x9;&#x9;return joins;&#xA;"/>
-      <genOperations ecoreOperation="query.ecore#//Join/getType" body="return getReference().getEReferenceType();"/>
-      <genOperations ecoreOperation="query.ecore#//Join/toString" body="return getPartner() != null ? getPartner().getAlias() + &quot;.&quot; + getReference().getName() + &quot;&lt;&quot; + getReference().getEReferenceType().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
       <genOperations ecoreOperation="query.ecore#//Join/getBase" body="&#x9;&#x9;hu.blackbelt.judo.meta.query.Node parent = getPartner();&#xA;&#x9;&#x9;while (parent != null) {&#xA;&#x9;&#x9;&#x9;if (parent instanceof hu.blackbelt.judo.meta.query.Join) {&#xA;&#x9;&#x9;&#x9;&#x9;parent = ((hu.blackbelt.judo.meta.query.Join) parent).getPartner();&#xA;&#x9;&#x9;&#x9;} else {&#xA;&#x9;&#x9;&#x9;&#x9;return parent;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;throw new IllegalStateException(&quot;Unknown parent&quot;);&#xA;"/>
     </genClasses>
     <genClasses image="false" ecoreClass="query.ecore#//Node">
@@ -224,6 +221,16 @@
     </genClasses>
     <genClasses ecoreClass="query.ecore#//FeatureHolder">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//FeatureHolder/features"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//ReferencedJoin">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ReferencedJoin/reference"/>
+      <genOperations ecoreOperation="query.ecore#//ReferencedJoin/getType" body="return getReference().getEReferenceType();"/>
+      <genOperations ecoreOperation="query.ecore#//ReferencedJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot;.&quot; + getReference().getName() + &quot;&lt;&quot; + getReference().getEReferenceType().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//SubSelectJoin">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SubSelectJoin/subSelect"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelectJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot;.(&quot; + getSubSelect().toString() + &quot;)&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelectJoin/getType" body="return getSubSelect().getType();"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
