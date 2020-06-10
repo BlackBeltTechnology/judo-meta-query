@@ -67,11 +67,13 @@ public class QueryUtils {
                 (select.getOrderBys().isEmpty() ? "" : pad(level) + "  ORDER BY=" + select.getOrderBys() + "\n") +
                 (select.getSubSelects().isEmpty() ? "" : select.getSubSelects().stream().map(s -> pad(level) + (s.getSelect().isAggregated() ? "  AGGREGATE " : "  TRAVERSE ") + s +
                         "\n" + formatSelect(s.getSelect(), level + 1, visited) +
-                        (!s.getSelect().isAggregated() && s.getPartner() != null && !s.getPartner().getOrderBys().isEmpty() ? "    ORDER BY=" + s.getPartner().getOrderBys() + "\n" : "")).collect(Collectors.joining())) +
+                        (!s.getSelect().isAggregated() && s.getPartner() != null && !s.getPartner().getOrderBys().isEmpty() ? "    ORDER BY=" + s.getPartner().getOrderBys() + "\n" : "") +
+                        (s.getLimit() != null && s.getLimit() > 0 ? "    LIMIT " + s.getLimit() + (s.getOffset() != null && s.getOffset() > 0 ? " OFFSET " + s.getOffset() : "") : "")).collect(Collectors.joining())) +
                 select.getAllJoins().stream().map(join -> join.getSubSelects().stream().map(s ->
                         pad(level) + (s.getSelect().isAggregated() ? "  AGGREGATE " : "  TRAVERSE ") + s +
                                 "\n" + formatSelect(s.getSelect(), level + 1, visited) +
-                                (!s.getSelect().isAggregated() && s.getPartner() != null && !s.getPartner().getOrderBys().isEmpty() ? "    ORDER BY=" + s.getPartner().getOrderBys() + "\n" : "")).collect(Collectors.joining()))
+                                (!s.getSelect().isAggregated() && s.getPartner() != null && !s.getPartner().getOrderBys().isEmpty() ? "    ORDER BY=" + s.getPartner().getOrderBys() + "\n" : "") +
+                                (s.getLimit() != null && s.getLimit() > 0 ? "    LIMIT " + s.getLimit() + (s.getOffset() != null && s.getOffset() > 0 ? " OFFSET " + s.getOffset() : "") : "")).collect(Collectors.joining()))
                         .collect(Collectors.joining());
     }
 
