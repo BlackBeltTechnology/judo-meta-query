@@ -64,6 +64,14 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MIN_DECIMAL"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MAX_DECIMAL"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/AVG_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MIN_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MAX_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MIN_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MAX_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/AVG_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MIN_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MAX_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/AVG_TIMESTAMP"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ParameterName">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LEFT"/>

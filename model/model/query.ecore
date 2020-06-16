@@ -108,6 +108,14 @@
     <eLiterals name="MIN_DECIMAL" value="49"/>
     <eLiterals name="MAX_DECIMAL" value="50"/>
     <eLiterals name="AVG_DECIMAL" value="51"/>
+    <eLiterals name="MIN_STRING" value="52" literal="MIN_STRING"/>
+    <eLiterals name="MAX_STRING" value="53"/>
+    <eLiterals name="MIN_DATE" value="54"/>
+    <eLiterals name="MAX_DATE" value="55"/>
+    <eLiterals name="AVG_DATE" value="56"/>
+    <eLiterals name="MIN_TIMESTAMP" value="57"/>
+    <eLiterals name="MAX_TIMESTAMP" value="58"/>
+    <eLiterals name="AVG_TIMESTAMP" value="59"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
