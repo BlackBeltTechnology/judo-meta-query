@@ -241,5 +241,10 @@
       <genOperations ecoreOperation="query.ecore#//SubSelectJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot;.(&quot; + getSubSelect().toString() + &quot;)&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
       <genOperations ecoreOperation="query.ecore#//SubSelectJoin/getType" body="return getSubSelect().getType();"/>
     </genClasses>
+    <genClasses ecoreClass="query.ecore#//ContainerJoin">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ContainerJoin/references"/>
+      <genOperations ecoreOperation="query.ecore#//ContainerJoin/getType" body="return getReferences().get(0).getEContainingClass();"/>
+      <genOperations ecoreOperation="query.ecore#//ContainerJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot;.CONTAINER&quot; + &quot;&lt;&quot; + getReferences().get(0).getEContainingClass().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
