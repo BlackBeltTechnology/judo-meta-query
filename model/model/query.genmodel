@@ -246,5 +246,9 @@
       <genOperations ecoreOperation="query.ecore#//ContainerJoin/getType" body="return getReferences().get(0).getEContainingClass();"/>
       <genOperations ecoreOperation="query.ecore#//ContainerJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot;.CONTAINER&quot; + &quot;&lt;&quot; + getReferences().get(0).getEContainingClass().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
     </genClasses>
+    <genClasses ecoreClass="query.ecore#//CastJoin">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//CastJoin/type"/>
+      <genOperations ecoreOperation="query.ecore#//CastJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot; AS &quot; + &quot;&lt;&quot; + getType().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
