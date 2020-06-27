@@ -62,7 +62,7 @@
 
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<tycho-version>1.4.0</tycho-version>
+		<tycho-version>1.7.0</tycho-version>
 		<eclipse-p2-base>http://download.eclipse.org/releases/2019-03</eclipse-p2-base>
 
 		<emf-genmodel-generator-version>1.0.0</emf-genmodel-generator-version>
@@ -100,7 +100,7 @@
 		<apache-commons-karaf-features-version>1.0.5</apache-commons-karaf-features-version>
 		<apache-poi-karaf-features-version>1.0.2</apache-poi-karaf-features-version>
 		<apache-httpclient-karaf-features-version>1.0.0</apache-httpclient-karaf-features-version>
-		<pax-exam-version>4.13.1</pax-exam-version>
+		<pax-exam-version>4.13.3</pax-exam-version>
 		<log4j.configuration>log4j.properties</log4j.configuration>
 	</properties>
 
@@ -196,7 +196,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
-					<version>1.6.0</version>
+					<version>3.0.0</version>
 					<dependencies>
 						<dependency>
 							<groupId>org.eclipse.platform</groupId>
@@ -559,7 +559,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.0.0-M3</version>
+					<version>3.0.0-M5</version>
 					<configuration>
 						<argLine>-Dfile.encoding=UTF-8</argLine>
 						<trimStackTrace>false</trimStackTrace>
