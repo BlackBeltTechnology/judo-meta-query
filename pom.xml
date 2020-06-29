@@ -63,7 +63,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<tycho-version>1.7.0</tycho-version>
-		<eclipse-p2-base>http://download.eclipse.org/releases/2019-03</eclipse-p2-base>
+		<eclipse-p2-base>https://download.eclipse.org/releases/2019-03</eclipse-p2-base>
 
 		<emf-genmodel-generator-version>1.0.0</emf-genmodel-generator-version>
 		<judo-genmodel-generator-version>1.0.0</judo-genmodel-generator-version>
@@ -89,10 +89,10 @@
 
 		<!-- Pax exam dependencies -->
 		<karaf-version>4.2.6</karaf-version>
-		<osgi-utils-version>1.0.9</osgi-utils-version>
+		<osgi-utils-version>1.0.10</osgi-utils-version>
 		<bouncycastle-karaf-features-version>1.61.2</bouncycastle-karaf-features-version>
 		<tinybundles-karaf-features-version>1.0.0</tinybundles-karaf-features-version>
-		<google-karaf-features-version>1.0.5</google-karaf-features-version>
+		<google-karaf-features-version>1.0.6</google-karaf-features-version>
 		<eclipse-emf-karaf-features-version>1.0.1</eclipse-emf-karaf-features-version>
 		<eclipse-epsilon-karaf-features-version>1.0.3</eclipse-epsilon-karaf-features-version>
 		<eclipse-xtext-karaf-features-version>1.0.2</eclipse-xtext-karaf-features-version>
@@ -585,7 +585,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>20.0</version>
+			<version>27.1-jre</version>
 		</dependency>
 
 		<dependency>
@@ -624,13 +624,13 @@
 		<dependency>
 			<groupId>hu.blackbelt.osgi.utils</groupId>
 			<artifactId>osgi-api</artifactId>
-			<version>1.0.6</version>
+			<version>${osgi-utils-version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.4</version>
+			<version>1.18.12</version>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
