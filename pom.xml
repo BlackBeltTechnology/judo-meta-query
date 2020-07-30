@@ -65,7 +65,7 @@
 		<tycho-version>1.7.0</tycho-version>
 		<eclipse-p2-base>https://download.eclipse.org/releases/2019-03</eclipse-p2-base>
 
-		<emf-genmodel-generator-version>1.0.0</emf-genmodel-generator-version>
+		<emf-genmodel-generator-version>1.0.1</emf-genmodel-generator-version>
 		<judo-genmodel-generator-version>1.0.0</judo-genmodel-generator-version>
 
 		<!-- Xtend / Xcore -->
