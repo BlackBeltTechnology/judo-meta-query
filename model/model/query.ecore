@@ -11,7 +11,7 @@
     <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EntityTypeName" eSuperTypes="#//ParameterType">
+  <eClassifiers xsi:type="ecore:EClass" name="EntityTypeName" eSuperTypes="#//ParameterType #//Feature">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
