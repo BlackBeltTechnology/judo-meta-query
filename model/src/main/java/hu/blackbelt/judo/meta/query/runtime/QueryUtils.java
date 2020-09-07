@@ -52,7 +52,7 @@ public class QueryUtils {
 
     private static String formatSelect(final Select select, final int level, final EList<Select> selects) {
         if (selects.contains(select)) {
-            return pad(level) + "... (SELECT FROM " + select.getFrom().getName() + " TO " + select.getMainTarget().getIndex() + ")\n";
+            return pad(level) + "... (SELECT FROM " + (select.getFrom() != null ? select.getFrom().getName() : "-") + " TO " + select.getMainTarget().getIndex() + ")\n";
         }
 
         final EList<Select> visited = ECollections.newBasicEList(selects);
@@ -60,7 +60,7 @@ public class QueryUtils {
 
         return pad(level) + "SELECT\n" +
                 pad(level) + "  FEATURES=" + select.getFeatures() + "\n" +
-                pad(level) + "  FROM=" + select.getFrom().getName() + " AS " + select.getAlias() + "\n" +
+                pad(level) + "  FROM=" + (select.getFrom() != null ? select.getFrom().getName() + " AS " + select.getAlias() : "") + "\n" +
                 pad(level) + "  JOINING=" + select.getAllJoins() + "\n" +
                 pad(level) + "  TO=" + select.getTargets() + "\n" +
                 (select.getFilters().isEmpty() ? "" : pad(level) + "  WHERE=" + select.getFilters() + "\n") +
