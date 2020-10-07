@@ -167,6 +167,7 @@
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference query.ecore#//Select/mainTarget"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Select/from"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Select/targets"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Select/allOf"/>
       <genOperations ecoreOperation="query.ecore#//Select/getAllJoins" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.getAllJoinsOfSelect(this);"/>
       <genOperations ecoreOperation="query.ecore#//Select/getType" body="return getFrom();"/>
       <genOperations ecoreOperation="query.ecore#//Select/toString" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.formatSelect(this);"/>
