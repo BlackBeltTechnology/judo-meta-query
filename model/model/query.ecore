@@ -29,7 +29,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Filter" eSuperTypes="#//Node">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eOperations name="getType" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
         eType="#//Feature" eOpposite="#//Feature/filters"/>
   </eClassifiers>
