@@ -125,7 +125,7 @@
     <genClasses ecoreClass="query.ecore#//Filter">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Filter/feature"/>
       <genOperations ecoreOperation="query.ecore#//Filter/toString" body="return getFeature().toString() + &quot; [&quot; + getJoins().stream().map(j -> j.toString()).collect(java.util.stream.Collectors.joining(&quot;,&quot;)) + &quot;]&quot;;"/>
-      <genOperations ecoreOperation="query.ecore#//Filter/getType" body="return ((hu.blackbelt.judo.meta.query.Node) eContainer()).getType();"/>
+      <genOperations ecoreOperation="query.ecore#//Filter/getType" body="if (eContainer() instanceof hu.blackbelt.judo.meta.query.SubSelect) {&#xA;    return ((hu.blackbelt.judo.meta.query.SubSelect) eContainer()).getBase() != null ? ((hu.blackbelt.judo.meta.query.SubSelect) eContainer()).getBase().getType() : null;&#xA;} else {&#xA;    return ((hu.blackbelt.judo.meta.query.Node) eContainer()).getType();&#xA;}&#xA;"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//Function">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Function/signature"/>
@@ -167,7 +167,6 @@
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference query.ecore#//Select/mainTarget"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Select/from"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Select/targets"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Select/allOf"/>
       <genOperations ecoreOperation="query.ecore#//Select/getAllJoins" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.getAllJoinsOfSelect(this);"/>
       <genOperations ecoreOperation="query.ecore#//Select/getType" body="return getFrom();"/>
       <genOperations ecoreOperation="query.ecore#//Select/toString" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.formatSelect(this);"/>
