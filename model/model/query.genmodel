@@ -250,5 +250,13 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//CastJoin/type"/>
       <genOperations ecoreOperation="query.ecore#//CastJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot; AS &quot; + &quot;&lt;&quot; + getType().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
     </genClasses>
+    <genClasses ecoreClass="query.ecore#//CustomJoin">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//CustomJoin/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//CustomJoin/transferRelation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//CustomJoin/navigationSql"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//CustomJoin/sourceIdSetParameter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//CustomJoin/sourceIdParameter"/>
+      <genOperations ecoreOperation="query.ecore#//CustomJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot;.#&quot; + getTransferRelation().getName() + &quot;# &lt;&quot; + getType().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() : &quot;N/A&quot;;"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
