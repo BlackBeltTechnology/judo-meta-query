@@ -116,6 +116,8 @@
     <eLiterals name="MIN_TIMESTAMP" value="57"/>
     <eLiterals name="MAX_TIMESTAMP" value="58"/>
     <eLiterals name="AVG_TIMESTAMP" value="59"/>
+    <eLiterals name="CASE_WHEN" value="60"/>
+    <eLiterals name="UNDEFINED" value="61"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -164,6 +166,7 @@
     <eLiterals name="LENGTH" value="18"/>
     <eLiterals name="ATTRIBUTE" value="19"/>
     <eLiterals name="RELATION" value="20"/>
+    <eLiterals name="CONDITION" value="21"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResultConstraint">
     <eLiterals name="PRECISION"/>

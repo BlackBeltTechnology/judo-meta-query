@@ -72,6 +72,8 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MIN_TIMESTAMP"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MAX_TIMESTAMP"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/AVG_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CASE_WHEN"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/UNDEFINED"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ParameterName">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LEFT"/>
@@ -95,6 +97,7 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LENGTH"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/ATTRIBUTE"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/RELATION"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/CONDITION"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ResultConstraint">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ResultConstraint/PRECISION"/>

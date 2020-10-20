@@ -7,7 +7,7 @@
     <semanticResources>platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_xuDTkHplEeqTCYEtupSWEA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0OcMsHplEeqTCYEtupSWEA" name="query class diagram" repPath="#_0MnnwHplEeqTCYEtupSWEA" changeId="94b61dfe-f6ed-47a4-8e57-5c4bf90e8676">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_0OcMsHplEeqTCYEtupSWEA" name="query class diagram" repPath="#_0MnnwHplEeqTCYEtupSWEA" changeId="9f44b9d4-2f86-4c07-8ac0-b66d6f0fa1b8">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="query.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -530,6 +530,10 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_0EONUX4hEeqs48x95NbBFQ" fontName="Noto Sans" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_0EONUn4hEeqs48x95NbBFQ"/>
             </children>
+            <children xmi:type="notation:Node" xmi:id="_31UH4BLjEeuXLZrHdipIQQ" type="3010" element="_30Zh4BLjEeuXLZrHdipIQQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_31UH4RLjEeuXLZrHdipIQQ" fontName="Noto Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_31UH4hLjEeuXLZrHdipIQQ"/>
+            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_id-H0np9Eeq7nMs6aeaOkQ"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_id-H03p9Eeq7nMs6aeaOkQ"/>
           </children>
@@ -854,6 +858,14 @@
             <children xmi:type="notation:Node" xmi:id="_EGB3QK-qEeqTCoV0VuwOKQ" type="3010" element="_EFazQK-qEeqTCoV0VuwOKQ">
               <styles xmi:type="notation:FontStyle" xmi:id="_EGB3Qa-qEeqTCoV0VuwOKQ" fontName="Noto Sans" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_EGB3Qq-qEeqTCoV0VuwOKQ"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_I3wxsBLjEeuXLZrHdipIQQ" type="3010" element="_I2ltABLjEeuXLZrHdipIQQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_I3wxsRLjEeuXLZrHdipIQQ" fontName="Noto Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_I3wxshLjEeuXLZrHdipIQQ"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_eryMwBLlEeuXLZrHdipIQQ" type="3010" element="_erM98BLlEeuXLZrHdipIQQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_eryMwRLlEeuXLZrHdipIQQ" fontName="Noto Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_eryMwhLlEeuXLZrHdipIQQ"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_2lWQVXp-Eeq7nMs6aeaOkQ"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_2lWQVnp-Eeq7nMs6aeaOkQ"/>
@@ -2723,6 +2735,14 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
       </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_30Zh4BLjEeuXLZrHdipIQQ" name="CONDITION" tooltipText="">
+        <target xmi:type="ecore:EEnumLiteral" href="query.ecore#//ParameterName/CONDITION"/>
+        <semanticElements xmi:type="ecore:EEnumLiteral" href="query.ecore#//ParameterName/CONDITION"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_30clMBLjEeuXLZrHdipIQQ" labelAlignment="LEFT">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
+      </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_jheMMHp9Eeq7nMs6aeaOkQ" name="ResultConstraint" tooltipText="" width="12" height="10">
       <target xmi:type="ecore:EEnum" href="query.ecore#//ResultConstraint"/>
@@ -3375,6 +3395,22 @@
         <target xmi:type="ecore:EEnumLiteral" href="query.ecore#//FunctionSignature/AVG_TIMESTAMP"/>
         <semanticElements xmi:type="ecore:EEnumLiteral" href="query.ecore#//FunctionSignature/AVG_TIMESTAMP"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_EFbaUK-qEeqTCoV0VuwOKQ" labelAlignment="LEFT">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_I2ltABLjEeuXLZrHdipIQQ" name="CASE_WHEN" tooltipText="">
+        <target xmi:type="ecore:EEnumLiteral" href="query.ecore#//FunctionSignature/CASE_WHEN"/>
+        <semanticElements xmi:type="ecore:EEnumLiteral" href="query.ecore#//FunctionSignature/CASE_WHEN"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_I2owUBLjEeuXLZrHdipIQQ" labelAlignment="LEFT">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_erM98BLlEeuXLZrHdipIQQ" name="UNDEFINED" tooltipText="">
+        <target xmi:type="ecore:EEnumLiteral" href="query.ecore#//FunctionSignature/UNDEFINED"/>
+        <semanticElements xmi:type="ecore:EEnumLiteral" href="query.ecore#//FunctionSignature/UNDEFINED"/>
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_erNlABLlEeuXLZrHdipIQQ" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
