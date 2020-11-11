@@ -261,5 +261,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//CustomJoin/sourceIdParameter"/>
       <genOperations ecoreOperation="query.ecore#//CustomJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot;.#&quot; + getTransferRelation().getName() + &quot;# &lt;&quot; + getType().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() : &quot;N/A&quot;;"/>
     </genClasses>
+    <genClasses ecoreClass="query.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Variable/category"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Variable/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Variable/type"/>
+      <genOperations ecoreOperation="query.ecore#//Variable/getNodes" body="return org.eclipse.emf.common.util.ECollections.emptyEList();"/>
+      <genOperations ecoreOperation="query.ecore#//Variable/toString" body="return &quot;${&quot; + getCategory() + &quot;:&quot; + getName() + &quot;}&quot; + &quot; AS &quot; + getTargetsAsString();"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>
