@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
-<target includeMode="feature" name="hu.blackbelt.judo.meta.query.target" sequenceNumber="1604677553905">
+<target includeMode="feature" name="hu.blackbelt.judo.meta.query.target" sequenceNumber="1605885227909">
   <locations>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <repository location="https://download.eclipse.org/releases/2019-03"/>
@@ -44,7 +44,7 @@
 		  <unit id="hu.blackbelt.judo.eclipse.emf.genmodel.generator.feature.feature.group" version="0.0.0"/>
 	  </location>
 	  <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-		  <repository location="https://nexus.judo.technology/repository/p2/epsilon-runtime-eclipse/1.2.5.20201106_173641_01b36ce_develop"/>
+		  <repository location="https://nexus.judo.technology/repository/p2/epsilon-runtime-eclipse/1.2.5.20201120_160649_c9b3620_develop"/>
 		  <unit id="hu.blackbelt.epsilon.runtime.feature.feature.group" version="0.0.0"/>
 	  </location>
   </locations>
