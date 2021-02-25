@@ -74,6 +74,8 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/AVG_TIMESTAMP"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CASE_WHEN"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/UNDEFINED"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LIKE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ILIKE"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ParameterName">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LEFT"/>

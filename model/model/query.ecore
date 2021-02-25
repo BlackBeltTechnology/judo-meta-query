@@ -118,6 +118,8 @@
     <eLiterals name="AVG_TIMESTAMP" value="59"/>
     <eLiterals name="CASE_WHEN" value="60"/>
     <eLiterals name="UNDEFINED" value="61"/>
+    <eLiterals name="LIKE" value="62" literal="LIKE"/>
+    <eLiterals name="ILIKE" value="63" literal="ILIKE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
