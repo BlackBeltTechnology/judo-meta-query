@@ -120,6 +120,13 @@
     <eLiterals name="UNDEFINED" value="61"/>
     <eLiterals name="LIKE" value="62" literal="LIKE"/>
     <eLiterals name="ILIKE" value="63" literal="ILIKE"/>
+    <eLiterals name="INTEGER_TO_STRING" value="64"/>
+    <eLiterals name="DECIMAL_TO_STRING" value="65"/>
+    <eLiterals name="DATE_TO_STRING" value="66"/>
+    <eLiterals name="TIMESTAMP_TO_STRING" value="67"/>
+    <eLiterals name="LOGICAL_TO_STRING" value="68"/>
+    <eLiterals name="ENUM_TO_STRING" value="69"/>
+    <eLiterals name="CUSTOM_TO_STRING" value="70"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -169,6 +176,7 @@
     <eLiterals name="ATTRIBUTE" value="19"/>
     <eLiterals name="RELATION" value="20"/>
     <eLiterals name="CONDITION" value="21"/>
+    <eLiterals name="PRIMITIVE" value="22"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResultConstraint">
     <eLiterals name="PRECISION"/>
