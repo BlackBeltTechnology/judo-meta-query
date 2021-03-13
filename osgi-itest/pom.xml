@@ -226,15 +226,6 @@
 
         <dependency>
             <groupId>hu.blackbelt.karaf.features</groupId>
-            <artifactId>eclipse-xtext-features</artifactId>
-            <version>${eclipse-xtext-karaf-features-version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>hu.blackbelt.karaf.features</groupId>
             <artifactId>tinybundles-features</artifactId>
             <version>${tinybundles-karaf-features-version}</version>
             <classifier>features</classifier>

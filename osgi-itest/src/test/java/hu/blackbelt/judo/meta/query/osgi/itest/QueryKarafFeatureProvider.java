@@ -296,10 +296,6 @@ public class QueryKarafFeatureProvider {
         return maven().groupId("hu.blackbelt.karaf.features").artifactId("eclipse-epsilon-features").versionAsInProject().classifier("features").type("xml");
     }
 
-    public static MavenArtifactUrlReference blackbeltEclipseXtext() {
-        return maven().groupId("hu.blackbelt.karaf.features").artifactId("eclipse-xtext-features").versionAsInProject().classifier("features").type("xml");
-    }
-
     public static MavenArtifactUrlReference blackbeltTinybundles() {
         return maven().groupId("hu.blackbelt.karaf.features").artifactId("tinybundles-features").versionAsInProject().classifier("features").type("xml");
     }
@@ -338,8 +334,6 @@ public class QueryKarafFeatureProvider {
                 features(blackbeltEclipseEpsilon()),
 
                 features(blackbeltEpsilonRuntime(), "epsilon-runtime"),
-
-                features(blackbeltEclipseXtext()),
 
                 features(apacheCxf(), FEATURE_SWAGGER_CORE, FEATURE_CXF_JACKSON, FEATURE_CXF_JAXRS),
 
