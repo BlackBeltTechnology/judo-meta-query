@@ -21,21 +21,6 @@
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.eclipse.epsilon</groupId>
-			<artifactId>epsilon-core</artifactId>
-			<version>${epsilon-version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.eclipse.epsilon</groupId>
-			<artifactId>epsilon-emf</artifactId>
-			<version>${epsilon-version}</version>
-			<scope>test</scope>
-		</dependency>
-
 	</dependencies>
 
 </project>
