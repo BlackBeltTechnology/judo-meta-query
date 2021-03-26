@@ -25,6 +25,6 @@
    <!-- The tycho plugin 1.5.0 will fix it -->
    <!--
    <repository-reference location="https://download.eclipse.org/epsilon/updates/1.5/" enabled="true" />
-   <repository-reference location="https://nexus.judo.technology/repository/p2/epsilon-runtime-eclipse/1.3.0.20210315_223212_a0c434d_develop" enabled="true" />
+   <repository-reference location="https://nexus.judo.technology/repository/p2/epsilon-runtime-eclipse/1.3.0.20210326_234111_f7d3fe3_develop" enabled="true" />
    -->
 </site>
