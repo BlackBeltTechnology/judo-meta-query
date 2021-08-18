@@ -127,6 +127,18 @@
     <eLiterals name="LOGICAL_TO_STRING" value="68"/>
     <eLiterals name="ENUM_TO_STRING" value="69"/>
     <eLiterals name="CUSTOM_TO_STRING" value="70"/>
+    <eLiterals name="YEARS_OF_DATE" value="71" literal="YEARS_OF_DATE"/>
+    <eLiterals name="MONTHS_OF_DATE" value="72" literal="MONTHS_OF_DATE"/>
+    <eLiterals name="DAYS_OF_DATE" value="73" literal="DAYS_OF_DATE"/>
+    <eLiterals name="YEARS_OF_TIMESTAMP" value="74" literal="YEARS_OF_TIMESTAMP"/>
+    <eLiterals name="MONTHS_OF_TIMESTAMP" value="75" literal="MONTHS_OF_TIMESTAMP"/>
+    <eLiterals name="DAYS_OF_TIMESTAMP" value="76" literal="DAYS_OF_TIMESTAMP"/>
+    <eLiterals name="HOURS_OF_TIMESTAMP" value="77" literal="HOURS_OF_TIMESTAMP"/>
+    <eLiterals name="MINUTES_OF_TIMESTAMP" value="78" literal="MINUTES_OF_TIMESTAMP"/>
+    <eLiterals name="SECONDS_OF_TIMESTAMP" value="79" literal="SECONDS_OF_TIMESTAMP"/>
+    <eLiterals name="MILLISECONDS_OF_TIMESTAMP" value="80" literal="MILLISECONDS_OF_TIMESTAMP"/>
+    <eLiterals name="TO_DATE" value="81" literal="TO_DATE"/>
+    <eLiterals name="TO_TIMESTAMP" value="82" literal="TO_TIMESTAMP"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -177,6 +189,12 @@
     <eLiterals name="RELATION" value="20"/>
     <eLiterals name="CONDITION" value="21"/>
     <eLiterals name="PRIMITIVE" value="22"/>
+    <eLiterals name="YEAR" value="23" literal="YEAR"/>
+    <eLiterals name="MONTH" value="24" literal="MONTH"/>
+    <eLiterals name="DAY" value="25" literal="DAY"/>
+    <eLiterals name="HOUR" value="26" literal="HOUR"/>
+    <eLiterals name="MINUTE" value="27" literal="MINUTE"/>
+    <eLiterals name="SECOND" value="28" literal="SECOND"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResultConstraint">
     <eLiterals name="PRECISION"/>
