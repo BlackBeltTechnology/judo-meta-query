@@ -87,7 +87,7 @@
 		<slf4j-version>1.6.6</slf4j-version>
 
 		<!-- Pax exam dependencies -->
-		<karaf-version>4.2.6</karaf-version>
+		<karaf-version>4.2.9</karaf-version>
 		<osgi-utils-version>1.0.11</osgi-utils-version>
 		<bouncycastle-karaf-features-version>1.61.2</bouncycastle-karaf-features-version>
 		<tinybundles-karaf-features-version>1.0.0</tinybundles-karaf-features-version>
