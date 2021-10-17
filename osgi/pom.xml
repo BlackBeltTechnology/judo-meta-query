@@ -6,8 +6,7 @@
 	<parent>
 		<groupId>hu.blackbelt.judo.meta</groupId>
 		<artifactId>hu.blackbelt.judo.meta.query</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../</relativePath>
+		<version>${revision}</version>
 	</parent>
 	<artifactId>hu.blackbelt.judo.meta.query.osgi</artifactId>
 	<packaging>bundle</packaging>
@@ -20,7 +19,7 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-				<version>3.3.0</version>
+				<version>5.1.2</version>
 				<extensions>true</extensions>
 				<configuration>
 					<obrRepository>NONE</obrRepository>
@@ -47,15 +46,17 @@
 		<dependency>
 			<groupId>hu.blackbelt.epsilon</groupId>
 			<artifactId>epsilon-runtime-osgi</artifactId>
-			<version>${epsilon-runtime-version}</version>
 			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>hu.blackbelt.epsilon</groupId>
 			<artifactId>epsilon-runtime-execution</artifactId>
-			<version>${epsilon-runtime-version}</version>
 			<scope>compile</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>hu.blackbelt.osgi.utils</groupId>
+            <artifactId>osgi-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

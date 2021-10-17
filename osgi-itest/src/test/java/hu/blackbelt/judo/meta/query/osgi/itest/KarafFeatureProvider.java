@@ -4,14 +4,12 @@ import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.TimeoutException;
 import org.ops4j.pax.exam.karaf.options.LogLevelOption;
 import org.ops4j.pax.exam.options.MavenArtifactUrlReference;
+import org.ops4j.pax.exam.options.RawUrlReference;
 import org.osgi.framework.*;
 import org.osgi.util.tracker.ServiceTracker;
 
 import java.io.*;
-import java.net.ConnectException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -23,22 +21,15 @@ import static org.ops4j.pax.exam.OptionUtils.combine;
 import static org.ops4j.pax.exam.cm.ConfigurationAdminOptions.newConfiguration;
 import static org.ops4j.pax.exam.karaf.options.KarafDistributionOption.*;
 
-public class QueryKarafFeatureProvider {
+public class KarafFeatureProvider {
     public static final String KARAF_GROUPID = "org.apache.karaf";
     public static final String APACHE_KARAF = "apache-karaf";
-    public static final String KARAF_FEATURES_GROUPID = "org.apache.karaf.features";
-    public static final String STANDARD = "standard";
-    public static final String FEATURES = "features";
-    public static final String XML = "xml";
     public static final String ZIP = "zip";
     public static final String SERVICEMIX_BUNDLES_GROUPID = "org.apache.servicemix.bundles";
     public static final String HAMCREST = "org.apache.servicemix.bundles.hamcrest";
 
     public static final Integer SERVICE_TIMEOUT = 30000;
-
-    public static final String FEATURE_CXF_JAXRS = "cxf-jaxrs";
-    public static final String FEATURE_CXF_JACKSON = "cxf-jackson";
-    public static final String FEATURE_SWAGGER_CORE = "cxf-rs-description-swagger2";
+    public static final String KARAF_VERSION = "4.3.3";
 
     public static MavenArtifactUrlReference  karafUrl() {
         return maven()
@@ -48,19 +39,29 @@ public class QueryKarafFeatureProvider {
                 .type(ZIP);
     }
 
-    public static MavenArtifactUrlReference  karafStandardRepo() {
-        return maven()
-                .groupId(KARAF_FEATURES_GROUPID)
-                .artifactId(STANDARD)
-                .versionAsInProject()
-                .classifier(FEATURES)
-                .type(XML);
+    public static int getFreePort() {
+        try (ServerSocket serverSocket = new ServerSocket(0)) {
+            if (serverSocket.getLocalPort() < 0) {
+                throw new RuntimeException("Could not allocate port");
+            }
+            System.out.println("Local port: " + serverSocket.getLocalPort());
+            return serverSocket.getLocalPort();
+        } catch (IOException e) {
+            throw new RuntimeException("Could not allocate port");
+        }
     }
 
-    public static Option[] karafConfig(Class clazz) throws FileNotFoundException {
+    public static int getKarafPort() {
+        String karafPort =  System.getProperty("karafPort");
+        if (karafPort == null) {
+            return getFreePort();
+        }
+        return Integer.parseInt(karafPort);
+    }
 
-        return new Option[] {
-                // KarafDistributionOption.debugConfiguration("5005", true),
+    public static Option[] karafConfig(Class<?> clazz) throws MalformedURLException {
+        String startPort = Integer.toString(getKarafPort());
+        return combine(configureVmOptions(), // KarafDistributionOption.debugConfiguration("5005", true),
                 karafDistributionConfiguration()
                         .frameworkUrl(karafUrl())
                         .unpackDirectory(new File("target", "exam"))
@@ -70,11 +71,12 @@ public class QueryKarafFeatureProvider {
                 logLevel(LogLevelOption.LogLevel.INFO),
                 // Debug
                 when(Boolean.getBoolean( "isDebugEnabled" ) ).useOptions(
+                        vmOption("-DkarafPort=" + startPort),
                         vmOption("-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005")
                 ),
                 //systemTimeout(30000),
                 //debugConfiguration("5005", true),
-                vmOption("-Dfile.encoding=UTF-8"),
+                //vmOption("-Dfile.encoding=UTF-8"),
                 //systemProperty("pax.exam.service.timeout").value("30000"),
                 replaceConfigurationFile("etc/org.ops4j.pax.logging.cfg",
                         getConfigFile(clazz, "/etc/org.ops4j.pax.logging.cfg")),
@@ -86,22 +88,64 @@ public class QueryKarafFeatureProvider {
 
                 configureConsole().ignoreLocalConsole(),
 
+                features(new RawUrlReference(new File("target/test-classes/test-features.xml").toURI().toURL().toString()), "test"),
+
+                newConfiguration("hu.blackbelt.jaxrs.providers.JacksonProvider")
+                        .put("JacksonProvider.SerializationFeature.INDENT_OUTPUT", "true").asOption(),
+
+                editConfigurationFilePut("etc/org.ops4j.pax.web.cfg",
+                        "org.osgi.service.http.port", startPort),
+
                 provision(
-                        /*
-                        mavenBundle()
-                                .groupId("org.ops4j.pax.swissbox")
-                                .artifactId("pax-swissbox-tracker")
-                                .version("1.8.4_timeoutfix").start(),
-                        */
                         mavenBundle()
                                 .groupId(SERVICEMIX_BUNDLES_GROUPID)
                                 .artifactId(HAMCREST)
                                 .versionAsInProject().start()
-                )
-        };
+                ));
     }
 
-    public static File getConfigFile(Class clazz, String path) {
+    public static Option[] configureVmOptions() {
+        return options(
+                systemProperty("pax.exam.osgi.`unresolved.fail").value("true"),
+                vmOption("--add-reads=java.xml=java.logging"),
+                vmOption("--add-exports=java.base/org.apache.karaf.specs.locator=java.xml,ALL-UNNAMED"),
+                vmOption("--patch-module"),
+                vmOption(
+                        "java.base=lib/endorsed/org.apache.karaf.specs.locator-"
+                                + System.getProperty("karafVersion", KARAF_VERSION)
+                                + ".jar"),
+                vmOption("--patch-module"),
+                vmOption(
+                        "java.xml=lib/endorsed/org.apache.karaf.specs.java.xml-"
+                                + System.getProperty("karafVersion", KARAF_VERSION)
+                                + ".jar"),
+                vmOption("--add-opens"),
+                vmOption("java.base/java.security=ALL-UNNAMED"),
+                vmOption("--add-opens"),
+                vmOption("java.base/java.net=ALL-UNNAMED"),
+                vmOption("--add-opens"),
+                vmOption("java.base/java.lang=ALL-UNNAMED"),
+                vmOption("--add-opens"),
+                vmOption("java.base/java.util=ALL-UNNAMED"),
+                vmOption("--add-opens"),
+                vmOption("java.base/jdk.internal.reflect=ALL-UNNAMED"),
+                vmOption("--add-opens"),
+                vmOption("java.naming/javax.naming.spi=ALL-UNNAMED"),
+                vmOption("--add-opens"),
+                vmOption("java.rmi/sun.rmi.transport.tcp=ALL-UNNAMED"),
+                vmOption("--add-exports=java.base/sun.net.www.protocol.http=ALL-UNNAMED"),
+                vmOption("--add-exports=java.base/sun.net.www.protocol.https=ALL-UNNAMED"),
+                vmOption("--add-exports=java.base/sun.net.www.protocol.jar=ALL-UNNAMED"),
+                vmOption("--add-exports=jdk.naming.rmi/com.sun.jndi.url.rmi=ALL-UNNAMED"),
+                vmOption("-classpath"),
+                vmOption("lib/jdk9plus/*" + File.pathSeparator + "lib/boot/*"),
+                vmOption("-Xmx2048M"),
+                // avoid integration tests stealing focus on OS X
+                vmOption("-Djava.awt.headless=true"),
+                vmOption("-Dfile.encoding=UTF8"));
+    }
+
+    public static File getConfigFile(Class<?> clazz, String path) {
         URL res = clazz.getResource(path);
         if (res == null) {
             throw new RuntimeException("Config resource " + path + " not found");
@@ -112,9 +156,9 @@ public class QueryKarafFeatureProvider {
     /**
      * Explodes the dictionary into a ,-delimited list of key=value pairs
      */
-    public static String explode(Dictionary dictionary) {
-        Enumeration keys = dictionary.keys();
-        StringBuffer result = new StringBuffer();
+    public static String explode(Dictionary<String, String> dictionary) {
+        Enumeration<String> keys = dictionary.keys();
+        StringBuilder result = new StringBuilder();
         while (keys.hasMoreElements()) {
             Object key = keys.nextElement();
             result.append(String.format("%s=%s", key, dictionary.get(key)));
@@ -129,8 +173,9 @@ public class QueryKarafFeatureProvider {
      * Provides an iterable collection of references, even if the original array
      * is null
      */
+    @SuppressWarnings("rawtypes")
     public static Collection<ServiceReference> asCollection(ServiceReference[] references) {
-        return references != null ? Arrays.asList(references) : Collections.<ServiceReference> emptyList();
+        return references != null ? Arrays.asList(references) : Collections.emptyList();
     }
 
 
@@ -142,8 +187,9 @@ public class QueryKarafFeatureProvider {
         return getOsgiService(bundleContext, type, null, SERVICE_TIMEOUT);
     }
 
+    @SuppressWarnings("unchecked")
     public static  <T> T getOsgiService(BundleContext bundleContext, Class<T> type, String filter, long timeout) {
-        ServiceTracker tracker = null;
+        ServiceTracker<T, T> tracker;
         try {
             String flt;
             if (filter != null) {
@@ -162,14 +208,14 @@ public class QueryKarafFeatureProvider {
             // This is buggy, as the service reference may change i think
             Object svc = type.cast(tracker.waitForService(timeout));
             if (svc == null) {
-                Dictionary dic = bundleContext.getBundle().getHeaders();
+                Dictionary<String, String> dic = bundleContext.getBundle().getHeaders();
                 System.err.println("Test bundle headers: " + explode(dic));
 
-                for (ServiceReference ref : asCollection(bundleContext.getAllServiceReferences(null, null))) {
+                for (ServiceReference<T> ref : asCollection(bundleContext.getAllServiceReferences(null, null))) {
                     System.err.println("ServiceReference: " + ref);
                 }
 
-                for (ServiceReference ref : asCollection(bundleContext.getAllServiceReferences(null, flt))) {
+                for (ServiceReference<T> ref : asCollection(bundleContext.getAllServiceReferences(null, flt))) {
                     System.err.println("Filtered ServiceReference: " + ref);
                 }
 
@@ -184,7 +230,7 @@ public class QueryKarafFeatureProvider {
     }
 
 
-    public static File testTargetDir(Class clazz){
+    public static File testTargetDir(Class<?> clazz){
         String relPath = clazz.getProtectionDomain().getCodeSource().getLocation().getFile();
         File targetDir = new File(relPath);
         if(!targetDir.exists()) {
@@ -259,89 +305,4 @@ public class QueryKarafFeatureProvider {
         long interval = Math.min(remaining, 1000);
         Thread.sleep(interval);
     }
-
-    public static MavenArtifactUrlReference apacheCxf() {
-        return maven().groupId("org.apache.cxf.karaf").artifactId("apache-cxf").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static MavenArtifactUrlReference blackbeltOsgiUtils() {
-        return maven().groupId("hu.blackbelt.osgi.utils").artifactId("features").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static MavenArtifactUrlReference blackbeltGoogle() {
-        return maven().groupId("hu.blackbelt.karaf.features").artifactId("google-features").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static MavenArtifactUrlReference blackbeltBouncCastle() {
-        return maven().groupId("hu.blackbelt.karaf.features").artifactId("bouncycastle-features").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static MavenArtifactUrlReference blackbeltApacheCommons() {
-        return maven().groupId("hu.blackbelt.karaf.features").artifactId("apache-commons-features").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static MavenArtifactUrlReference blackbeltApacheHttpClient() {
-        return maven().groupId("hu.blackbelt.karaf.features").artifactId("apache-httpclient-features").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static MavenArtifactUrlReference blackbeltApachePoi() {
-        return maven().groupId("hu.blackbelt.karaf.features").artifactId("apache-poi-features").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static MavenArtifactUrlReference blackbeltEclipseEmf() {
-        return maven().groupId("hu.blackbelt.karaf.features").artifactId("eclipse-emf-features").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static MavenArtifactUrlReference blackbeltEclipseEpsilon() {
-        return maven().groupId("hu.blackbelt.karaf.features").artifactId("eclipse-epsilon-features").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static MavenArtifactUrlReference blackbeltTinybundles() {
-        return maven().groupId("hu.blackbelt.karaf.features").artifactId("tinybundles-features").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static MavenArtifactUrlReference blackbeltAntlr() {
-        return maven().groupId("hu.blackbelt.karaf.features").artifactId("antlr-features").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static MavenArtifactUrlReference blackbeltEpsilonRuntime() {
-        return maven().groupId("hu.blackbelt.epsilon").artifactId("features").versionAsInProject().classifier("features").type("xml");
-    }
-
-    public static Option[] getRuntimeFeaturesForMetamodel(Class clazz) throws FileNotFoundException {
-        return combine(karafConfig(clazz),
-
-                features(karafStandardRepo(), "(wrap)"),
-
-                features(blackbeltBouncCastle()),
-
-                features(blackbeltApacheCommons()),
-
-                features(blackbeltApacheHttpClient()),
-
-                features(blackbeltApachePoi()),
-
-                features(blackbeltOsgiUtils(), "osgi-utils"),
-
-                features(blackbeltGoogle()),
-
-                features(blackbeltTinybundles(), "tinybundles"),
-
-                features(blackbeltEclipseEmf()),
-
-                features(blackbeltAntlr()),
-
-                features(blackbeltEclipseEpsilon()),
-
-                features(blackbeltEpsilonRuntime(), "epsilon-runtime"),
-
-                features(apacheCxf(), FEATURE_SWAGGER_CORE, FEATURE_CXF_JACKSON, FEATURE_CXF_JAXRS),
-
-                newConfiguration("hu.blackbelt.jaxrs.providers.JacksonProvider")
-                        .put("JacksonProvider.SerializationFeature.INDENT_OUTPUT", "true").asOption(),
-
-                editConfigurationFilePut("etc/org.ops4j.pax.web.cfg",
-                        "org.osgi.service.http.port", "8181"));
-    }
-
 }
