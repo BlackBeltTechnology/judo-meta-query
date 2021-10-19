@@ -18,8 +18,9 @@ import org.osgi.service.log.LogService;
 
 import javax.inject.Inject;
 import java.io.*;
+import java.net.MalformedURLException;
 
-import static hu.blackbelt.judo.meta.query.osgi.itest.QueryKarafFeatureProvider.*;
+import static hu.blackbelt.judo.meta.query.osgi.itest.KarafFeatureProvider.*;
 import static org.junit.Assert.assertFalse;
 import static org.ops4j.pax.exam.CoreOptions.*;
 import static org.ops4j.pax.exam.OptionUtils.combine;
@@ -46,9 +47,9 @@ public class QueryModelLoadITest {
     QueryModel queryModel;
 
     @Configuration
-    public Option[] config() throws FileNotFoundException {
+    public Option[] config() throws FileNotFoundException, MalformedURLException {
 
-        return combine(getRuntimeFeaturesForMetamodel(this.getClass()),
+        return combine(karafConfig(this.getClass()),
                 mavenBundle(maven()
                         .groupId("hu.blackbelt.judo.meta")
                         .artifactId("hu.blackbelt.judo.meta.query.osgi")

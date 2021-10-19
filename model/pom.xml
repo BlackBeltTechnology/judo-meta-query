@@ -7,8 +7,7 @@
     <parent>
         <groupId>hu.blackbelt.judo.meta</groupId>
         <artifactId>hu.blackbelt.judo.meta.query</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
+        <version>${revision}</version>
     </parent>
     <artifactId>hu.blackbelt.judo.meta.query.model</artifactId>
     <packaging>eclipse-plugin</packaging>
@@ -16,19 +15,13 @@
     <name>Judo :: Query :: Model :: Eclipse plugin</name>
     <description>Judo Query model eclipse plugin</description>
 
-
-    <properties>
-        <src.dir>src/main/java</src.dir>
-    </properties>
-
     <build>
-        <sourceDirectory>${src.dir}</sourceDirectory>
-
         <plugins>
-             <!-- Generates the Ecore model via MWE2 -->
+            <!-- Generates the Ecore model via MWE2 -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
                 <executions>
 
                     <execution>
@@ -40,7 +33,7 @@
                         <configuration>
                             <mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
                             <arguments>
-                                <argument>${project.basedir}/src/workflow/generateModel.mwe2</argument>
+                                <argument>/${project.basedir}/src/workflow/generateModel.mwe2</argument>
                                 <argument>-p</argument>
                                 <argument>rootPath=${project.basedir}</argument>
                             </arguments>
@@ -50,12 +43,44 @@
                         </configuration>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.eclipse.emf</groupId>
+                        <artifactId>org.eclipse.emf.mwe2.launch</artifactId>
+                        <version>${emf-mwe2-launch-version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
-
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <version>1.5.3</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <ignoreMissingFile>false</ignoreMissingFile>
+                    <basedir>${basedir}/src-gen</basedir>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                    <replacements>
+                        <replacement>
+                            <token>\$VERSION_PLACEHOLDER\$</token>
+                            <value>${project.version}</value>
+                        </replacement>
+                    </replacements>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.2.0</version>
                 <executions>
                     <!-- Adds the generated sources to the compiler input -->
                     <execution>
@@ -76,4 +101,77 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.eclipse.xtext</groupId>
+                <artifactId>xtext-dev-bom</artifactId>
+                <version>${xtext-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+
+        <dependency>
+            <groupId>org.eclipse.platform</groupId>
+            <artifactId>org.eclipse.ui.workbench</artifactId>
+            <version>3.122.200</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.jna</groupId>
+                    <artifactId>com.sun.jna</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.jna</groupId>
+                    <artifactId>com.sun.jna.platform</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.annotation</groupId>
+                    <artifactId>javax.annotation-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.platform</groupId>
+                    <artifactId>org.eclipse.swt</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.birt.runtime</groupId>
+                    <artifactId>org.w3c.css.sac</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.xmlgraphics</groupId>
+                    <artifactId>batik-css</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>org.apache.felix.scr</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf</groupId>
+                    <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.eclipse.emf</groupId>
+                    <artifactId>org.eclipse.emf.ecore</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-jxpath</groupId>
+                    <artifactId>commons-jxpath</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>hu.blackbelt.epsilon</groupId>
+            <artifactId>epsilon-runtime-execution</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>
