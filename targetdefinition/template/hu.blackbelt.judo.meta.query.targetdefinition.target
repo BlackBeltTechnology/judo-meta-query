@@ -7,11 +7,8 @@
       <unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.xtend.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.pde.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.equinox.core.sdk.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.e4.core.tools.feature.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
