@@ -139,6 +139,17 @@
     <eLiterals name="MILLISECONDS_OF_TIMESTAMP" value="80" literal="MILLISECONDS_OF_TIMESTAMP"/>
     <eLiterals name="TO_DATE" value="81" literal="TO_DATE"/>
     <eLiterals name="TO_TIMESTAMP" value="82" literal="TO_TIMESTAMP"/>
+    <eLiterals name="ADD_TIME" value="83"/>
+    <eLiterals name="DIFFERENCE_TIME" value="84"/>
+    <eLiterals name="MIN_TIME" value="85"/>
+    <eLiterals name="MAX_TIME" value="86"/>
+    <eLiterals name="AVG_TIME" value="87"/>
+    <eLiterals name="TIME_TO_STRING" value="88"/>
+    <eLiterals name="HOURS_OF_TIME" value="89" literal="HOURS_OF_TIME"/>
+    <eLiterals name="MINUTES_OF_TIME" value="90" literal="MINUTES_OF_TIME"/>
+    <eLiterals name="SECONDS_OF_TIME" value="91" literal="SECONDS_OF_TIME"/>
+    <eLiterals name="MILLISECONDS_OF_TIME" value="92" literal="MILLISECONDS_OF_TIME"/>
+    <eLiterals name="TO_TIME" value="93" literal="TO_TIME"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -195,6 +206,8 @@
     <eLiterals name="HOUR" value="26" literal="HOUR"/>
     <eLiterals name="MINUTE" value="27" literal="MINUTE"/>
     <eLiterals name="SECOND" value="28" literal="SECOND"/>
+    <eLiterals name="TIME" value="29"/>
+
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResultConstraint">
     <eLiterals name="PRECISION"/>
