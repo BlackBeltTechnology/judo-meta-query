@@ -67,9 +67,9 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<tycho-version>2.5.0</tycho-version>
 
-		<emf-genmodel-generator-version>1.0.2.20211021_110357_261394e2_develop</emf-genmodel-generator-version>
-		<judo-genmodel-generator-version>1.0.1.20211024_233306_21dd275f_develop</judo-genmodel-generator-version>
-		<judo-epp-common-version>4.19.0.20210706_170220_0c21c18_develop</judo-epp-common-version>
+		<emf-genmodel-generator-version>1.0.2.20220206_143501_85483b33_feature_JNG_3516_UpdateEclipse</emf-genmodel-generator-version>
+		<judo-genmodel-generator-version>1.0.1.20220206_145011_74bc3442_feature_JNG_3516_UpdateEclipse</judo-genmodel-generator-version>
+		<judo-epp-common-version>4.22.0.20220204_230123_41dcda45_feature_JNG_3516_UpdateEclipse</judo-epp-common-version>
 
 		<xtext-version>2.22.0</xtext-version>
 		<emf-mwe2-launch-version>2.12.1</emf-mwe2-launch-version>
