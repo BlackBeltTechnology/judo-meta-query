@@ -22,5 +22,5 @@
    </category-def>
 
    <repository-reference location="https://nexus.judo.technology/repository/p2/epsilon-runtime-eclipse/1.4.0.20211025_235843_5805ea16_develop" enabled="true" />
-   <repository-reference location="https://nexus.judo.technology/repository/p2/judo-epp-common/4.19.0.20210706_170220_0c21c18_develop" enabled="true" />
+   <repository-reference location="https://nexus.judo.technology/repository/p2/judo-epp-common/4.22.0.20220204_230123_41dcda45_feature_JNG_3516_UpdateEclipse" enabled="true" />
 </site>
