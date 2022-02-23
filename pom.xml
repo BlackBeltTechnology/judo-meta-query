@@ -65,7 +65,7 @@
 
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
-		<tycho-version>2.5.0</tycho-version>
+		<tycho-version>2.6.0</tycho-version>
 
 		<emf-genmodel-generator-version>1.0.2.20220212_195247_075b50e5_develop</emf-genmodel-generator-version>
 		<judo-genmodel-generator-version>1.0.1.20220222_205326_ef241ecc_develop</judo-genmodel-generator-version>
