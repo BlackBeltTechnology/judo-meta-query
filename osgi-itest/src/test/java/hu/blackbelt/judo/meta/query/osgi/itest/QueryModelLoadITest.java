@@ -1,9 +1,10 @@
 package hu.blackbelt.judo.meta.query.osgi.itest;
 
-import hu.blackbelt.epsilon.runtime.execution.impl.StringBuilderLogger;
-import hu.blackbelt.judo.meta.query.runtime.QueryEpsilonValidator;
+import hu.blackbelt.epsilon.runtime.execution.api.Log;
+import hu.blackbelt.epsilon.runtime.execution.impl.BufferedSlf4jLogger;
 import hu.blackbelt.judo.meta.query.runtime.QueryModel;
 import hu.blackbelt.osgi.utils.osgi.api.BundleTrackerManager;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,14 +15,15 @@ import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
-import org.osgi.service.log.LogService;
 
 import javax.inject.Inject;
 import java.io.*;
 import java.net.MalformedURLException;
 
-import static hu.blackbelt.judo.meta.query.osgi.itest.KarafFeatureProvider.*;
-import static org.junit.Assert.assertFalse;
+import static hu.blackbelt.judo.meta.query.osgi.itest.KarafFeatureProvider.karafConfig;
+import static hu.blackbelt.judo.meta.query.osgi.itest.KarafFeatureProvider.testTargetDir;
+import static hu.blackbelt.judo.meta.query.runtime.QueryEpsilonValidator.calculateQueryValidationScriptURI;
+import static hu.blackbelt.judo.meta.query.runtime.QueryEpsilonValidator.validateQuery;
 import static org.ops4j.pax.exam.CoreOptions.*;
 import static org.ops4j.pax.exam.OptionUtils.combine;
 import static org.ops4j.pax.tinybundles.core.TinyBundles.bundle;
@@ -30,12 +32,10 @@ import static org.ops4j.pax.tinybundles.core.TinyBundles.withBnd;
 @Ignore
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
+@Slf4j
 public class QueryModelLoadITest {
 
     private static final String DEMO = "northwind-query";
-
-    @Inject
-    LogService log;
 
     @Inject
     protected BundleTrackerManager bundleTrackerManager;
@@ -75,16 +75,9 @@ public class QueryModelLoadITest {
     }
 
     @Test
-    public void testModelValidation() {
-        StringBuilderLogger logger = new StringBuilderLogger(StringBuilderLogger.LogLevel.DEBUG);
-        try {
-            QueryEpsilonValidator.validateQuery(logger,
-                    queryModel,
-                    QueryEpsilonValidator.calculateQueryValidationScriptURI());
-
-        } catch (Exception e) {
-            log.log(LogService.LOG_ERROR, logger.getBuffer());
-            assertFalse(true);
+    public void testModelValidation() throws Exception {
+        try (Log bufferedLog = new BufferedSlf4jLogger(log)) {
+            validateQuery(bufferedLog, queryModel, calculateQueryValidationScriptURI());
         }
     }
 }
