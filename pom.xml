@@ -527,6 +527,17 @@
 				</plugin>
 
 				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<!-- required to have valid consumable Maven artifacts
+						https://github.com/eclipse/tycho/issues/781 -->
+						<skipPomGeneration>true</skipPomGeneration>
+					</configuration>
+				</plugin>
+
+				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
 					<version>1.6.8</version>
