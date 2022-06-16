@@ -13,47 +13,4 @@
     <packaging>eclipse-repository</packaging>
     <name>Judo :: Query :: Model :: Eclipse update site</name>
     <description>Judo Query model Update Site</description>
-
-    <profiles>
-        <profile>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <id>update-category-versions</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.google.code.maven-replacer-plugin</groupId>
-                        <artifactId>replacer</artifactId>
-                        <version>1.5.3</version>
-                        <executions>
-                            <execution>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>replace</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <file>${project.basedir}/category.xml</file>
-                            <replacements>
-                                <!-- EPP Common -->
-                                <replacement>
-                                    <token>(repository-reference\ location\=\")(.*?)(judo-epp-common\/)(.*?)(\")</token>
-                                    <value>repository-reference location="$2$3${judo-epp-common-version}"</value>
-                                </replacement>
-
-                                <!-- Epsilon Runtime -->
-                                <replacement>
-                                    <token>(repository-reference\ location\=\")(.*?)(epsilon-runtime-eclipse\/)(.*?)(\")</token>
-                                    <value>repository-reference location="$2$3${epsilon-runtime-eclipse-version}"</value>
-                                </replacement>
-                            </replacements>
-                            <regex>true</regex>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
