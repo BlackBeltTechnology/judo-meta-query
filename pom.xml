@@ -69,7 +69,7 @@
 
 		<emf-genmodel-generator-version>1.0.2.20220618_225039_158d46f1_develop</emf-genmodel-generator-version>
 		<judo-genmodel-generator-version>1.0.1.20220618_225527_386d550e_develop</judo-genmodel-generator-version>
-		<judo-epp-common-version>4.22.0.20220204_230123_41dcda45_feature_JNG_3516_UpdateEclipse</judo-epp-common-version>
+		<judo-epp-common-version>4.23.0.20220617_120427_1e370db3_develop</judo-epp-common-version>
 
 		<xtext-version>2.22.0</xtext-version>
 		<emf-mwe2-launch-version>2.12.1</emf-mwe2-launch-version>
@@ -584,6 +584,12 @@
 				<version>4.18</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>27.1-jre</version>
 			</dependency>
 
 			<dependency>
