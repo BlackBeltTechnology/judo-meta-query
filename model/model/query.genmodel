@@ -106,6 +106,9 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/SECONDS_OF_TIME"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MILLISECONDS_OF_TIME"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TO_TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CAPITALIZE_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LEFT_TRIM_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/RIGHT_TRIM_STRING"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ParameterName">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LEFT"/>
