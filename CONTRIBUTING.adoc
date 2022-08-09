@@ -9,21 +9,98 @@ project's https://github.com/BlackBeltTechnology/judo-community/blob/develop/CON
 
 This project follows a standard Java project structure, governed by Maven, with potential Maven submodules.
 
-Eclipse-related submodules:
+**Eclipse-related submodules:**
 
-* `/feature`: Eclipse feature project
-* `/site`: Eclipse site definition
-* `/targetdefinition`: Eclipse target definition
+* `/feature`: Eclipse feature repository - allows us to use this as a feature for eclipse installation
+* `/site`: Eclipse Update Site - all built versions are compiled as an update site.
+* `/targetdefinition`: Eclipse target definition defines the P2 repositories for all the required MANIFEST features.
 
-Model modules:
+The Judo update sites are based on versions, therefore all versions have their own update sites. This results in versions
+being coded in the URL. The category definition in tycho is loaded as an extension, because there is no way to replace
+the version numbers before tycho is activated.
 
-* `/model`: Module containing the actual model
+For this reason, a profile is created which can replace the versions with the dependency versions defined in the parent.
+
+The following command can be used to update the versions:
+
+`mvn clean install -P update-category-versions -f site/pom.xml`
+
+**Model modules:**
+
+* `/model`: Eclipse plugin. It contains the model and ecore generated java classes. Builder and Helpers added with MWE2 workflow.
 * `/model-test`: Module containing model tests
 
-OSGI wrapper:
+**OSGI wrapper:**
 
-* `/osgi`: OSGi wrapper module
+* `/osgi`: OSGi bundle. It repackages the model and adds extra information / services for consumers to be able to use
+it in transformation pipelines in other platforms.
 * `/osgi-itest`: Wrapper module tests
+
+## Working with Eclipse
+
+### Plugin requirements
+
+- m2e
+- epsilon
+- modeling tools
+
+### Installation
+
+In Eclipse, we can install the plugin via P2 sites.
+
+Go to "Install new software" and add the URL of the site listed on github or the uncompressed ZIP folder. The plugin
+contains the metamodel and UI provided for the default editor.
+
+=== Code generation in Eclipse
+
+Required features to be installed:
+
+* XTend
+* XText
+* MWE
+* MWE2
+
+There are predefined launchers which can be used to regenerate the language model and corresponding model helpers.
+
+Execute the following command in Eclipse
+
+    Generate JSL.launch
+
+Alternatively, run as MWE2 Workflow: `hu.blackbelt.judo.meta.query.model project src/workflow/generateModel.mwe22`
+
+
+## Troubleshooting
+
+### Running JUnit tests in Eclipse
+There is a problem with Eclipse and Tycho. The classpath does not contain JUnit.
+
+```
+<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+```
+
+Now a `Required-Bundle` has been added to the OSGi Manifest which is not the Tycho recommended way.
+
+https://bugs.eclipse.org/bugs/show_bug.cgi?id=534587
+
+### Problems with Lombok
+
+Tycho does not support Lombok generation directly as mentioned in https://github.com/rzwitserloot/lombok/issues/285.
+This will be fixed in a later version. No lombok is used in the eclipse projects, every source code file is generated.
+
+### Problems with Tycho
+
+Tycho 1.4.0 and below does not handle repository references inside site definitions, so all the referenced plugin
+sites have to be added manually. https://bugs.eclipse.org/bugs/show_bug.cgi?id=453708
+
+## Version Policy
+
+Two worlds collide in this project. Maven and Eclipse have a different view about versions. While Maven is using `SNAPSHOT`
+versions, Eclipse is using `.quialifier` in the qualifier part of semantic version.
+
+Which means that: `1.0.0.qualifier` is the equivalent of Maven's `1.0.0-SNAPSHOT` notation.
+
+To address this, the Tycho Versions Plugin is used to replace the qualifier and Maven versions for a technical version
+number in every build.
 
 ## Submission Guidelines
 
