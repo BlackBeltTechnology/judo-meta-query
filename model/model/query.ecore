@@ -150,6 +150,12 @@
     <eLiterals name="SECONDS_OF_TIME" value="91" literal="SECONDS_OF_TIME"/>
     <eLiterals name="MILLISECONDS_OF_TIME" value="92" literal="MILLISECONDS_OF_TIME"/>
     <eLiterals name="TO_TIME" value="93" literal="TO_TIME"/>
+    <eLiterals name="CAPITALIZE_STRING" value="94" literal="CAPITALIZE_STRING"/>
+    <eLiterals name="LEFT_TRIM_STRING" value="95"/>
+    <eLiterals name="RIGHT_TRIM_STRING" value="96"/>
+    <eLiterals name="ABSOLUTE_NUMERIC" value="97"/>
+    <eLiterals name="CEIL_NUMERIC" value="98"/>
+    <eLiterals name="FLOOR_NUMERIC" value="99"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -207,7 +213,6 @@
     <eLiterals name="MINUTE" value="27" literal="MINUTE"/>
     <eLiterals name="SECOND" value="28" literal="SECOND"/>
     <eLiterals name="TIME" value="29"/>
-
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResultConstraint">
     <eLiterals name="PRECISION"/>
