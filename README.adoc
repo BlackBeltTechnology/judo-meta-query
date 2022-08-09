@@ -11,6 +11,11 @@ It acts as an eclipse plugin with features and sites, can be used standalone and
 This is not an SQL model, but a model representing transformation logic for Expression-based queries. The output of this
 is used later for RDBMS query generation.
 
+== Context
+
+This project is a building block of the https://github.com/BlackBeltTechnology/judo-community[judo-community] aggregator
+project. In order to better understand how this module fits into our ecosystem, please check the corresponding documentation!
+
 == Contributing to the project
 
 Everyone is welcome to contribute to JUDO! As a starter, please read the corresponding link:CONTRIBUTING.adoc[CONTRIBUTING] guide for details!
