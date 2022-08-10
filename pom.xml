@@ -883,5 +883,54 @@
                 </plugins>
             </build>
         </profile>
+
+		<profile>
+			<id>update-source-code-license</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<version>2.0.0</version>
+						<configuration>
+							<verbose>true</verbose>
+							<addSvnKeyWords>false</addSvnKeyWords>
+							<organizationName>BlackBelt Technology</organizationName>
+							<inceptionYear>2018</inceptionYear>
+						</configuration>
+						<executions>
+							<execution>
+								<id>first</id>
+								<goals>
+									<goal>update-file-header</goal>
+								</goals>
+								<phase>process-sources</phase>
+								<configuration>
+									<licenseName>epl_v2</licenseName>
+									<roots>
+										<root>model/src/main/java</root>
+										<root>model-test/src/test/java</root>
+										<root>osgi/src/main/java</root>
+										<root>osgi-itest/src/test/java</root>
+										<root>runtime/src/main/java</root>
+										<root>runtime/src/test/java</root>
+									</roots>
+								</configuration>
+							</execution>
+							<execution>
+								<id>second</id>
+								<goals>
+									<goal>update-project-license</goal>
+								</goals>
+								<phase>process-sources</phase>
+								<configuration>
+									<licenseName>epl_v2</licenseName>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
