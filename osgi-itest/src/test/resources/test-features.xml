@@ -7,17 +7,17 @@
     <repository>mvn:org.apache.cxf.karaf/apache-cxf/${cxf-version}/xml/features</repository>
     <repository>mvn:hu.blackbelt.epsilon/features/${epsilon-runtime-version}/xml/features</repository>
     <repository>mvn:hu.blackbelt.osgi.utils/features/${osgi-utils-version}/xml/features</repository>
-    <repository>mvn:hu.blackbelt.karaf.features/google-features/${google-karaf-features-version}/xml/features</repository>
-    <repository>mvn:hu.blackbelt.karaf.features/bouncycastle-features/${bouncycastle-karaf-features-version}/xml/features</repository>
-    <repository>mvn:hu.blackbelt.karaf.features/apache-commons-features/${apache-commons-karaf-features-version}/xml/features</repository>
-    <repository>mvn:hu.blackbelt.karaf.features/apache-httpclient-features/${apache-httpclient-karaf-features-version}/xml/features</repository>
-    <repository>mvn:hu.blackbelt.karaf.features/apache-poi-features/${apache-poi-karaf-features-version}/xml/features</repository>
-    <repository>mvn:hu.blackbelt.karaf.features/eclipse-emf-features/${eclipse-emf-karaf-features-version}/xml/features</repository>
-    <repository>mvn:hu.blackbelt.karaf.features/eclipse-epsilon-features/${eclipse-epsilon-karaf-features-version}/xml/features</repository>
+    <repository>mvn:hu.blackbelt.karaf.features/google-features/${karaf-features-version}/xml/features</repository>
+    <repository>mvn:hu.blackbelt.karaf.features/bouncycastle-features/${karaf-features-version}/xml/features</repository>
+    <repository>mvn:hu.blackbelt.karaf.features/apache-commons-features/${karaf-features-version}/xml/features</repository>
+    <repository>mvn:hu.blackbelt.karaf.features/apache-httpclient-features/${karaf-features-version}/xml/features</repository>
+    <repository>mvn:hu.blackbelt.karaf.features/apache-poi-features/${karaf-features-version}/xml/features</repository>
+    <repository>mvn:hu.blackbelt.karaf.features/eclipse-emf-features/${karaf-features-version}/xml/features</repository>
+    <repository>mvn:hu.blackbelt.karaf.features/eclipse-epsilon-features/${karaf-features-version}/xml/features</repository>
     <repository>mvn:hu.blackbelt.epsilon/features/${epsilon-runtime-version}/xml/features</repository>
 
-    <repository>mvn:hu.blackbelt.karaf.features/tinybundles-features/${tinybundles-karaf-features-version}/xml/features</repository>
-    <repository>mvn:hu.blackbelt.karaf.features/antlr-features/${antlr-karaf-features-version}/xml/features</repository>
+    <repository>mvn:hu.blackbelt.karaf.features/tinybundles-features/${karaf-features-version}/xml/features</repository>
+    <repository>mvn:hu.blackbelt.karaf.features/antlr-features/${karaf-features-version}/xml/features</repository>
 
 
     <feature name="test"  version="1" description="Base test features" install="true">
