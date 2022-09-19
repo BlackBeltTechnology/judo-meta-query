@@ -156,6 +156,7 @@
     <eLiterals name="ABSOLUTE_NUMERIC" value="97"/>
     <eLiterals name="CEIL_NUMERIC" value="98"/>
     <eLiterals name="FLOOR_NUMERIC" value="99"/>
+    <eLiterals name="TIMESTAMP_AS_MILLISECONDS" value="100"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

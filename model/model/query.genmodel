@@ -112,6 +112,7 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ABSOLUTE_NUMERIC"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CEIL_NUMERIC"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/FLOOR_NUMERIC"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_AS_MILLISECONDS"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ParameterName">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LEFT"/>
