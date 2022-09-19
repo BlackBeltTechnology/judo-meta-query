@@ -118,7 +118,7 @@
         <dependency>
             <groupId>org.eclipse.platform</groupId>
             <artifactId>org.eclipse.ui.workbench</artifactId>
-            <version>3.122.200</version>
+            <version>3.126.0</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
