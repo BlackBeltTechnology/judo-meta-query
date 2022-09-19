@@ -26,7 +26,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>properties-maven-plugin</artifactId>
-                        <version>1.0.0</version>
+                        <version>1.1.0</version>
                         <executions>
                             <execution>
                                 <phase>validate</phase>
@@ -59,7 +59,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>properties-maven-plugin</artifactId>
-                        <version>1.0.0</version>
+                        <version>1.1.0</version>
                         <executions>
                             <execution>
                                 <phase>validate</phase>
@@ -88,7 +88,7 @@
                     <plugin>
                         <groupId>de.smartics.maven.plugin</groupId>
                         <artifactId>buildmetadata-maven-plugin</artifactId>
-                        <version>1.6.1</version>
+                        <version>1.7.0</version>
                         <executions>
                             <execution>
                                 <phase>validate</phase>
