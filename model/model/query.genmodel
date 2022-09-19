@@ -145,6 +145,7 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/MINUTE"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/SECOND"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/UNIT"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ResultConstraint">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ResultConstraint/PRECISION"/>

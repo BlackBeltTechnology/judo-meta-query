@@ -214,6 +214,7 @@
     <eLiterals name="MINUTE" value="27" literal="MINUTE"/>
     <eLiterals name="SECOND" value="28" literal="SECOND"/>
     <eLiterals name="TIME" value="29"/>
+    <eLiterals name="UNIT" value="30"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResultConstraint">
     <eLiterals name="PRECISION"/>
