@@ -79,7 +79,7 @@
 		<judo-epp-common-version>4.23.0.20220919_071730</judo-epp-common-version>
 
 		<xtext-version>2.28.0</xtext-version>
-		<emf-mwe2-launch-version>2.12.1</emf-mwe2-launch-version>
+		<emf-mwe2-launch-version>2.13.0</emf-mwe2-launch-version>
 		<slf4j-version>1.7.36</slf4j-version>
 		<surefire-version>3.0.0-M7</surefire-version>
 		<logback-test-config>${maven.multiModuleProjectDirectory}/logback-test.xml</logback-test-config>
