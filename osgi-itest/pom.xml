@@ -165,7 +165,7 @@
                 <configuration>
                     <forkedProcessExitTimeoutInSeconds>1</forkedProcessExitTimeoutInSeconds>
                     <systemPropertyVariables>
-                        <pax.exam.karaf.version>${karaf-version}</pax.exam.karaf.version>
+                        <karafVersion>${karaf-version}</karafVersion>
                     </systemPropertyVariables>
                 </configuration>
                 <dependencies>

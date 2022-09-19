@@ -85,13 +85,27 @@
 		<logback-test-config>${maven.multiModuleProjectDirectory}/logback-test.xml</logback-test-config>
 
 		<!-- Pax exam dependencies -->
-		<karaf-version>4.3.3</karaf-version>
+		<karaf-version>4.4.1</karaf-version>
 		<cxf-version>3.4.4</cxf-version>
 
 		<osgi-utils-version>1.1.0</osgi-utils-version>
 		<karaf-features-version>2.0.0</karaf-features-version>
 		<pax-exam-version>4.13.3</pax-exam-version>
-		<log4j.configuration>log4j.properties</log4j.configuration>
+
+		<!-- Define overridable properties for tycho-surefire-plugin -->
+		<platformSystemProperties />
+		<moduleProperties />
+		<systemProperties />
+		<additionalTestArguments />
+
+		<!-- Code Quality-->
+		<sonar-maven-plugin-version>3.9.1.2184</sonar-maven-plugin-version>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.language>java</sonar.language>
+		<sonar.java.source>${java.version}</sonar.java.source>
+		<jacoco.version>0.8.8</jacoco.version>
+
 	</properties>
 
 	<build>
@@ -146,9 +160,29 @@
 			</plugin>
 
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>3.0.1</version>
+			</plugin>
+
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>flatten-maven-plugin</artifactId>
-				<version>1.1.0</version>
+				<version>1.3.0</version>
 				<configuration>
 					<updatePomFile>true</updatePomFile>
 					<flattenMode>resolveCiFriendliesOnly</flattenMode>
@@ -170,6 +204,30 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<configuration>
+					<propertyName>jacoco.agent</propertyName>
+				</configuration>
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 
 		<pluginManagement>
@@ -177,13 +235,13 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.2.0</version>
+					<version>3.3.0</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.1</version>
+					<version>3.10.1</version>
 					<configuration>
 						<source>11</source>
 						<target>11</target>
@@ -471,12 +529,6 @@
 				</plugin>
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-surefire-plugin</artifactId>
-					<version>${tycho-version}</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-source-plugin</artifactId>
 					<version>${tycho-version}</version>
 
@@ -529,33 +581,63 @@
 				</plugin>
 
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>2.2.1</version>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco.version}</version>
 				</plugin>
 
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.6</version>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${sonar-maven-plugin-version}</version>
 				</plugin>
+
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
+					<!--
+						Can be removed after first generator execution
+						https://bugs.eclipse.org/bugs/show_bug.cgi?id=480097
+					-->
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<compilerArgument>-err:-forbidden</compilerArgument>
+						<useProjectSettings>false</useProjectSettings>
+					</configuration>
+				</plugin>
+				<!-- to skip running (and compiling) tests use commandline flag: -Dmaven.test.skip
+					To skip tests, but still compile them, use: -DskipTests
+					To allow all tests in a pom to pass/fail, use commandline flag: -fae (fail
+					at end) -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-surefire-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<!-- THE FOLLOWING LINE MUST NOT BE BROKEN BY AUTOFORMATTING -->
+						<argLine>${jacoco.agent} ${platformSystemProperties} ${systemProperties} ${moduleProperties} ${additionalTestArguments}</argLine>
+						<failIfNoTests>false</failIfNoTests>
+						<useUIHarness>false</useUIHarness>
+						<providerHint>junit5</providerHint>
+					</configuration>
+				</plugin>
+
+				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${surefire-version}</version>
 					<configuration>
-						<argLine>-Dfile.encoding=UTF-8</argLine>
 						<trimStackTrace>false</trimStackTrace>
 						<systemPropertyVariables>
 							<logback.configurationFile>${logback-test-config}</logback.configurationFile>
 						</systemPropertyVariables>
+						<!--suppress UnresolvedMavenProperty -->
 						<argLine>
+							${jacoco.agent}
 							-Dfile.encoding=UTF-8
 							--add-opens java.base/java.lang=ALL-UNNAMED
 							--add-opens java.base/java.util=ALL-UNNAMED
 							--add-opens java.base/java.time=ALL-UNNAMED
 						</argLine>
-						<trimStackTrace>false</trimStackTrace>
 					</configuration>
 				</plugin>
 			</plugins>
@@ -617,7 +699,7 @@
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
-				<version>1.2.11</version>
+				<version>1.4.1</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -637,45 +719,40 @@
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>6.0.0</version>
+			<artifactId>osgi.core</artifactId>
+			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi.cmpn</artifactId>
-			<version>6.0.0</version>
+			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.annotation</artifactId>
-			<version>6.0.0</version>
+			<artifactId>osgi.annotation</artifactId>
+			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.22</version>
+			<version>1.18.24</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.3.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.3.2</version>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.9.0</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.jcabi</groupId>
 			<artifactId>jcabi-log</artifactId>
-			<version>0.18</version>
+			<version>0.22.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -705,23 +782,14 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
+						<groupId>org.simplify4u.plugins</groupId>
+						<artifactId>sign-maven-plugin</artifactId>
+						<version>1.0.1</version>
 						<executions>
 							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
 								<goals>
 									<goal>sign</goal>
 								</goals>
-								<configuration>
-									<!-- This is necessary for gpg to not try to use the pinentry programs -->
-									<gpgArguments>
-										<arg>--pinentry-mode</arg>
-										<arg>loopback</arg>
-									</gpgArguments>
-								</configuration>
 							</execution>
 						</executions>
 					</plugin>
@@ -772,19 +840,6 @@
 							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 							<autoReleaseAfterClose>true</autoReleaseAfterClose>
 						</configuration>
-					</plugin>
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
 					</plugin>
 				</plugins>
 			</build>
