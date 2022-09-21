@@ -1,0 +1,48 @@
+module QueryModelBuilder
+
+import org.eclipse.emf.mwe.utils.*
+import org.eclipse.emf.mwe2.ecore.*
+
+var rootPath = "."
+
+var modelDir = "model"
+var javaGenPath = "src-gen"
+var platformUri = "platform:/resource/hu.blackbelt.judo.meta.query.model"
+
+
+Workflow {
+
+	bean = StandaloneSetup {
+		platformUri = "${rootPath}"
+	}
+
+	// Clean generated sources
+	component = DirectoryCleaner {
+		directory = "${rootPath}/${javaGenPath}"
+	}
+
+	// Generate standard EMF sources from GenModel
+	component = EcoreGenerator {
+		generateCustomClasses = false
+		genModel = "${platformUri}/${modelDir}/query.genmodel"
+		srcPath = "${platformUri}/src/main/java"   
+	}
+
+	// Helper for model
+	component = hu.blackbelt.eclipse.emf.genmodel.generator.helper.HelperGeneratorWorkflow {
+		modelDir = "${rootPath}/${modelDir}"
+		javaGenPath = "${rootPath}/${javaGenPath}"
+	}
+
+	// Builder for model
+	component = hu.blackbelt.eclipse.emf.genmodel.generator.builder.BuilderGeneratorWorkflow {
+		modelDir = "${rootPath}/${modelDir}"
+		javaGenPath = "${rootPath}/${javaGenPath}"
+	}	
+
+	// Judo RuntimeModel for model
+	component = hu.blackbelt.judo.eclipse.emf.genmodel.generator.runtimemodel.RuntimeModelGeneratorWorkflow {
+		modelDir = "${rootPath}/${modelDir}"
+		javaGenPath = "${rootPath}/${javaGenPath}"
+	}
+}

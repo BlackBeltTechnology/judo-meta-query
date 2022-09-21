@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/hu.blackbelt.judo.meta.query.model/src-gen" modelPluginID="hu.blackbelt.judo.meta.query.model"
+    modelName="Query" editPluginClass="hu.blackbelt.judo.meta.query.provider.QueryEditPlugin"
+    editorPluginClass="hu.blackbelt.judo.meta.query.presentation.QueryEditorPlugin"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    testsDirectory="" testSuiteClass="hu.blackbelt.judo.meta.query.tests.QueryAllTests"
+    importerID="org.eclipse.emf.importer.ecore" featureDelegation="Dynamic" complianceLevel="11.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true" oSGiCompatible="true">
+  <foreignModel>query.ecore</foreignModel>
+  <genPackages prefix="Query" basePackage="hu.blackbelt.judo.meta" resource="XMI"
+      disposableProviderFactory="true" dataTypeConverters="true" extensibleProviderFactory="true"
+      childCreationExtenders="true" ecorePackage="query.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//FunctionSignature">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/NOT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/XOR"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/IMPLIES"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/NOT_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LESS_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LESS_OR_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/GREATER_OR_EQUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/GREATER_THAN"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ADD_INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/SUBTRACT_INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MULTIPLE_INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DIVIDE_INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MODULO_INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/OPPOSITE_INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ADD_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/SUBTRACT_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MULTIPLE_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DIVIDE_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/OPPOSITE_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ROUND_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LENGTH_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LOWER_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TRIM_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/UPPER_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CONCATENATE_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MATCHES_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/POSITION_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/REPLACE_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/SUBSTRING_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ADD_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DIFFERENCE_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ADD_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DIFFERENCE_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/INSTANCE_OF"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TYPE_OF"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/IS_UNDEFINED_ATTRIBUTE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/IS_UNDEFINED_OBJECT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MEMBER_OF"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CONTAINS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/EXISTS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/NOT_EXISTS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/COUNT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/SUM_INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MIN_INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MAX_INTEGER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/SUM_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MIN_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MAX_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/AVG_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MIN_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MAX_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MIN_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MAX_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/AVG_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MIN_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MAX_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/AVG_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CASE_WHEN"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/UNDEFINED"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LIKE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ILIKE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/INTEGER_TO_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DECIMAL_TO_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DATE_TO_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_TO_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LOGICAL_TO_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ENUM_TO_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CUSTOM_TO_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/YEARS_OF_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MONTHS_OF_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DAYS_OF_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/YEARS_OF_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MONTHS_OF_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DAYS_OF_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/HOURS_OF_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MINUTES_OF_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/SECONDS_OF_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MILLISECONDS_OF_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TO_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TO_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ADD_TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DIFFERENCE_TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MIN_TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MAX_TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/AVG_TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIME_TO_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/HOURS_OF_TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MINUTES_OF_TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/SECONDS_OF_TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MILLISECONDS_OF_TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TO_TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CAPITALIZE_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LEFT_TRIM_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/RIGHT_TRIM_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ABSOLUTE_NUMERIC"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CEIL_NUMERIC"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/FLOOR_NUMERIC"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ParameterName">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LEFT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/RIGHT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/ITEM"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/COLLECTION"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/NUMBER"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/ADDITION"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/START"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/END"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/INSTANCE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/TYPE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/PATTERN"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/CONTAINMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/POSITION"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/REPLACEMENT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LENGTH"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/ATTRIBUTE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/RELATION"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/CONDITION"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/PRIMITIVE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/YEAR"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/MONTH"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/DAY"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/HOUR"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/MINUTE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/SECOND"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/TIME"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ResultConstraint">
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ResultConstraint/PRECISION"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ResultConstraint/SCALE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ResultConstraint/MAX_LENGTH"/>
+    </genEnums>
+    <genClasses ecoreClass="query.ecore#//Attribute">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Attribute/sourceAttribute"/>
+      <genOperations ecoreOperation="query.ecore#//Attribute/toString" body="return getNode().getAlias() + &quot;.&quot; + getSourceAttribute().getName() + &quot; AS &quot; + getTargetsAsString();"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Constant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Constant/value"/>
+      <genOperations ecoreOperation="query.ecore#//Constant/toString" body="return getValue() + &quot; AS &quot; + getTargetsAsString();"/>
+      <genOperations ecoreOperation="query.ecore#//Constant/getNodes" body="return org.eclipse.emf.common.util.ECollections.emptyEList();"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//EntityTypeName">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//EntityTypeName/type"/>
+      <genOperations ecoreOperation="query.ecore#//EntityTypeName/toString" body="return getType().getName();"/>
+      <genOperations ecoreOperation="query.ecore#//EntityTypeName/getNodes"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Feature">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Feature/targetMappings"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Feature/filters"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Feature/orderBys"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Feature/aggregations"/>
+      <genOperations ecoreOperation="query.ecore#//Feature/getTargetsAsString" body="return org.eclipse.emf.common.util.ECollections.asEList(getTargetMappings().stream().map(tm ->  (tm.getTargetAttribute() != null ? tm.getTargetAttribute().getName() : &quot;&quot;) + &quot;@&quot; + tm.getTarget().getIndex()).collect(java.util.stream.Collectors.toList()));"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Filter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Filter/feature"/>
+      <genOperations ecoreOperation="query.ecore#//Filter/toString" body="return getFeature().toString() + &quot; [&quot; + getJoins().stream().map(j -> j.toString()).collect(java.util.stream.Collectors.joining(&quot;,&quot;)) + &quot;]&quot;;"/>
+      <genOperations ecoreOperation="query.ecore#//Filter/getType" body="if (eContainer() instanceof hu.blackbelt.judo.meta.query.SubSelect) {&#xA;    return ((hu.blackbelt.judo.meta.query.SubSelect) eContainer()).getBase() != null ? ((hu.blackbelt.judo.meta.query.SubSelect) eContainer()).getBase().getType() : null;&#xA;} else {&#xA;    return ((hu.blackbelt.judo.meta.query.Node) eContainer()).getType();&#xA;}&#xA;"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Function">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Function/signature"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Function/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Function/constraints"/>
+      <genOperations ecoreOperation="query.ecore#//Function/toString" body="return getSignature() +&#xA;    &quot;(&quot; + getParameters().stream().map(p -> &quot;[&quot; + p.getParameterName() + &quot;:] &quot; + p.getParameterValue()).collect(java.util.stream.Collectors.joining(&quot;, &quot;)) + &quot;)&quot; +&#xA;    &quot; AS &quot; + getTargetsAsString();"/>
+      <genOperations ecoreOperation="query.ecore#//Function/getNodes" body="final org.eclipse.emf.common.util.EList&lt;hu.blackbelt.judo.meta.query.Node> nodes = new org.eclipse.emf.common.util.UniqueEList&lt;>();&#xA;nodes.addAll(getParameters().stream().flatMap(p -> p.getParameterValue().getNodes().stream()).collect(java.util.stream.Collectors.toSet()));&#xA;return nodes;"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//FunctionConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FunctionConstraint/resultConstraint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FunctionConstraint/value"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//FunctionParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//FunctionParameter/parameterName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FunctionParameter/parameterValue"/>
+      <genOperations ecoreOperation="query.ecore#//FunctionParameter/toString" body="return getParameterName() + &quot;: &quot; + getParameterValue();"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//IdAttribute">
+      <genOperations ecoreOperation="query.ecore#//IdAttribute/toString" body="return &quot;ID of &quot; + getNode().getAlias();"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Join">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Join/partner"/>
+      <genOperations ecoreOperation="query.ecore#//Join/getAllJoins" body="&#x9;&#x9;final org.eclipse.emf.common.util.EList&lt;Join> joins = org.eclipse.emf.common.util.ECollections.newBasicEList();&#xA;&#x9;&#x9;joins.add(this);&#xA;&#x9;&#x9;joins.addAll(hu.blackbelt.judo.meta.query.runtime.QueryUtils.getAllJoinsOfJoin(this));&#xA;&#x9;&#x9;return joins;&#xA;"/>
+      <genOperations ecoreOperation="query.ecore#//Join/getBase" body="&#x9;&#x9;hu.blackbelt.judo.meta.query.Node parent = getPartner();&#xA;&#x9;&#x9;while (parent != null) {&#xA;&#x9;&#x9;&#x9;if (parent instanceof hu.blackbelt.judo.meta.query.Join) {&#xA;&#x9;&#x9;&#x9;&#x9;parent = ((hu.blackbelt.judo.meta.query.Join) parent).getPartner();&#xA;&#x9;&#x9;&#x9;} else {&#xA;&#x9;&#x9;&#x9;&#x9;return parent;&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;throw new IllegalStateException(&quot;Unknown parent&quot;);&#xA;"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="query.ecore#//Node">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Node/alias"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Node/filters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Node/orderBys"/>
+      <genOperations ecoreOperation="query.ecore#//Node/getType"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//OrderBy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//OrderBy/descending"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//OrderBy/feature"/>
+      <genOperations ecoreOperation="query.ecore#//OrderBy/toString" body="return getFeature().toString() + &quot; [&quot; + getJoins().stream().map(j -> j.toString()).collect(java.util.stream.Collectors.joining(&quot;,&quot;)) + &quot;]&quot;;"/>
+      <genOperations ecoreOperation="query.ecore#//OrderBy/getType" body="return ((hu.blackbelt.judo.meta.query.Node) eContainer()).getType();"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Select">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference query.ecore#//Select/mainTarget"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Select/from"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Select/targets"/>
+      <genOperations ecoreOperation="query.ecore#//Select/getAllJoins" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.getAllJoinsOfSelect(this);"/>
+      <genOperations ecoreOperation="query.ecore#//Select/getType" body="return getFrom();"/>
+      <genOperations ecoreOperation="query.ecore#//Select/toString" body="return hu.blackbelt.judo.meta.query.runtime.QueryUtils.formatSelect(this);"/>
+      <genOperations ecoreOperation="query.ecore#//Select/isAggregated" body="return getFeatures().stream().anyMatch(f -> !f.getAggregations().isEmpty());"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//SubSelect">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelect/transferRelation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelect/partner"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelect/select"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//SubSelect/excluding"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SubSelect/embeddedSelect"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelect/base"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//SubSelect/limit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//SubSelect/offset"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelect/getContainer" body="return (hu.blackbelt.judo.meta.query.Node) eContainer();"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelect/getNavigationJoins" body="return org.eclipse.emf.common.util.ECollections.unmodifiableEList(org.eclipse.emf.common.util.ECollections.asEList(getJoins().stream()&#xA;    .flatMap(j -> j.getAllJoins().stream())&#xA;    .collect(java.util.stream.Collectors.toList())));"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelect/toString" body="return &quot;(&quot; + (getContainer() != null ? getContainer().getAlias() : &quot;N/A&quot;) + &quot;.&quot; + (getTransferRelation() != null ? getTransferRelation().getName() : &quot;&quot;) + &quot; => [&quot; + getNavigationJoins().stream().map(j -> j.toString()).collect(java.util.stream.Collectors.joining(&quot;,&quot;)) + &quot;]) AS &quot; + getAlias();"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelect/getNodes" body="return getPartner() != null ? org.eclipse.emf.common.util.ECollections.singletonEList(getPartner()) : org.eclipse.emf.common.util.ECollections.emptyEList();"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelect/getType" body="return getSelect().getType();"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//SubSelectFeature">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelectFeature/subSelect"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//SubSelectFeature/feature"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelectFeature/toString" body="return getSubSelect().getAlias();"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelectFeature/getNodes" body="return getFeature().getNodes();"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Target">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Target/index"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//Target/referencedTargets"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Target/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Target/node"/>
+      <genOperations ecoreOperation="query.ecore#//Target/setContainerWithIdFeature"
+          body="&#x9;&#x9;setNode(node);&#xA;&#x9;&#x9;final hu.blackbelt.judo.meta.query.Select select;&#xA;&#x9;&#x9;if (node instanceof hu.blackbelt.judo.meta.query.Select) {&#xA;&#x9;&#x9;&#x9;select = (hu.blackbelt.judo.meta.query.Select) node;&#xA;&#x9;&#x9;} else if (node instanceof hu.blackbelt.judo.meta.query.Join) {&#xA;&#x9;&#x9;&#x9;select = (hu.blackbelt.judo.meta.query.Select) ((hu.blackbelt.judo.meta.query.Join) node).getBase();&#xA;&#x9;&#x9;} else {&#xA;&#x9;&#x9;&#x9;throw new IllegalStateException(&quot;Unsupported node&quot;);&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;select.getFeatures().add(hu.blackbelt.judo.meta.query.util.builder.QueryBuilders.newIdAttributeBuilder()&#xA;&#x9;&#x9;&#x9;&#x9;.withTargetMappings(hu.blackbelt.judo.meta.query.util.builder.QueryBuilders.newFeatureTargetMappingBuilder().withTarget(this).build())&#xA;&#x9;&#x9;&#x9;&#x9;.withNode(node).build());&#xA;if (addType) {&#xA;&#x9;&#x9;select.getFeatures().add(hu.blackbelt.judo.meta.query.util.builder.QueryBuilders.newTypeAttributeBuilder()&#xA;&#x9;&#x9;&#x9;&#x9;.withTargetMappings(hu.blackbelt.judo.meta.query.util.builder.QueryBuilders.newFeatureTargetMappingBuilder().withTarget(this).build())&#xA;&#x9;&#x9;&#x9;&#x9;.withNode(node).build());&#xA;}">
+        <genParameters ecoreParameter="query.ecore#//Target/setContainerWithIdFeature/node"/>
+        <genParameters ecoreParameter="query.ecore#//Target/setContainerWithIdFeature/addType"/>
+      </genOperations>
+      <genOperations ecoreOperation="query.ecore#//Target/toString" body="return (getType() != null ? getType().getName() : &quot;&quot;) + &quot;@&quot; + getIndex();"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//TypeAttribute">
+      <genOperations ecoreOperation="query.ecore#//TypeAttribute/toString" body="return &quot;Entity type of &quot; + getNode().getAlias();"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//ReferencedTarget">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ReferencedTarget/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ReferencedTarget/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//ParameterType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ParameterType/functionParameters"/>
+      <genOperations ecoreOperation="query.ecore#//ParameterType/getNodes"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//FeatureWithNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FeatureWithNode/node"/>
+      <genOperations ecoreOperation="query.ecore#//FeatureWithNode/getNodes" body="return org.eclipse.emf.common.util.ECollections.singletonEList(getNode());"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//FeatureTargetMapping">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FeatureTargetMapping/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FeatureTargetMapping/targetAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//NavigationBase">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//NavigationBase/joins"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//NavigationBase/subSelects"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//FeatureHolder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//FeatureHolder/features"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//ReferencedJoin">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ReferencedJoin/reference"/>
+      <genOperations ecoreOperation="query.ecore#//ReferencedJoin/getType" body="return getReference().getEReferenceType();"/>
+      <genOperations ecoreOperation="query.ecore#//ReferencedJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot;.&quot; + getReference().getName() + &quot;&lt;&quot; + getReference().getEReferenceType().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//SubSelectJoin">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//SubSelectJoin/subSelect"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelectJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot;.(&quot; + getSubSelect().toString() + &quot;)&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
+      <genOperations ecoreOperation="query.ecore#//SubSelectJoin/getType" body="return getSubSelect().getType();"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//ContainerJoin">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ContainerJoin/references"/>
+      <genOperations ecoreOperation="query.ecore#//ContainerJoin/getType" body="return getReferences().get(0).getEContainingClass();"/>
+      <genOperations ecoreOperation="query.ecore#//ContainerJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot;.CONTAINER&quot; + &quot;&lt;&quot; + getReferences().get(0).getEContainingClass().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//CastJoin">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//CastJoin/type"/>
+      <genOperations ecoreOperation="query.ecore#//CastJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot; AS &quot; + &quot;&lt;&quot; + getType().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() + (getFilters().isEmpty() ? &quot;&quot; : &quot; ON &quot; + getFilters()) : &quot;N/A&quot;;"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//CustomJoin">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//CustomJoin/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//CustomJoin/transferRelation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//CustomJoin/navigationSql"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//CustomJoin/sourceIdSetParameter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//CustomJoin/sourceIdParameter"/>
+      <genOperations ecoreOperation="query.ecore#//CustomJoin/toString" body="return getPartner() != null ? getPartner().getAlias() +&quot;.#&quot; + getTransferRelation().getName() + &quot;# &lt;&quot; + getType().getName() + &quot;>&quot; + &quot; AS &quot; + getAlias() : &quot;N/A&quot;;"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//Variable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Variable/category"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//Variable/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//Variable/type"/>
+      <genOperations ecoreOperation="query.ecore#//Variable/getNodes" body="return org.eclipse.emf.common.util.ECollections.emptyEList();"/>
+      <genOperations ecoreOperation="query.ecore#//Variable/toString" body="return &quot;${&quot; + getCategory() + &quot;:&quot; + getName() + &quot;}&quot; + &quot; AS &quot; + getTargetsAsString();"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

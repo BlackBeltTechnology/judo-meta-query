@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description>
+      To install these features, point Eclipse at this site.
+   </description>
+   <feature id="hu.blackbelt.judo.meta.query.feature">
+      <category name="query"/>
+   </feature>
+   <category-def name="query" label="Judo Query Model">
+      <description>
+         Judo Query Model Update Site: contains all features in this build.
+      </description>
+   </category-def>
+
+   <feature id="hu.blackbelt.judo.meta.query.feature.source">
+      <category name="query_source"/>
+   </feature>
+   <category-def name="query_source" label="Judo Query Model Source">
+      <description>
+         Judo Query Model source code.
+      </description>
+   </category-def>
+
+	<!--
+   <repository-reference location="https://nexus.judo.technology/repository/p2/epsilon-runtime-eclipse/1.4.0.20220629_124147_7f70e44e_develop" enabled="true" />
+   <repository-reference location="https://nexus.judo.technology/repository/p2/judo-epp-common/4.23.0.20220617_120427_1e370db3_develop" enabled="true" />
+   -->
+</site>
