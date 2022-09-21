@@ -1,0 +1,25 @@
+= judo-meta-query
+
+image::https://github.com/BlackBeltTechnology/judo-meta-query/actions/workflows/build.yml/badge.svg?branch=develop[link="https://github.com/BlackBeltTechnology/judo-meta-query/actions/workflows/build.yml" float="center"]
+
+== Introduction
+
+This repository contains the Query meta model.
+
+It acts as an eclipse plugin with features and sites, can be used standalone and in standard OSGi (without eclipse).
+
+This is not an SQL model, but a model representing transformation logic for Expression-based queries. The output of this
+is used later for RDBMS query generation.
+
+== Context
+
+This project is a building block of the https://github.com/BlackBeltTechnology/judo-community[judo-community] aggregator
+project. In order to better understand how this module fits into our ecosystem, please check the corresponding documentation!
+
+== Contributing to the project
+
+Everyone is welcome to contribute to JUDO! As a starter, please read the corresponding link:CONTRIBUTING.adoc[CONTRIBUTING] guide for details!
+
+== License
+
+This project is licensed under the https://www.eclipse.org/legal/epl-2.0/[Eclipse Public License - v 2.0].

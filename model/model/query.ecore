@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="query" nsURI="http://blackbelt.hu/judo/meta/query" nsPrefix="query">
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute" eSuperTypes="#//FeatureWithNode">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceAttribute" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Constant" eSuperTypes="#//Feature">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityTypeName" eSuperTypes="#//ParameterType #//Feature">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" abstract="true" eSuperTypes="#//ParameterType">
+    <eOperations name="getTargetsAsString" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetMappings" upperBound="-1"
+        eType="#//FeatureTargetMapping" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filters" upperBound="-1"
+        eType="#//Filter" eOpposite="#//Filter/feature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderBys" upperBound="-1"
+        eType="#//OrderBy" eOpposite="#//OrderBy/feature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aggregations" upperBound="-1"
+        eType="#//SubSelectFeature" eOpposite="#//SubSelectFeature/feature"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Filter" eSuperTypes="#//Node">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getType" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
+        eType="#//Feature" eOpposite="#//Feature/filters"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//Feature">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="signature" lowerBound="1"
+        eType="#//FunctionSignature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//FunctionParameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
+        eType="#//FunctionConstraint" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionConstraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resultConstraint" lowerBound="1"
+        eType="#//ResultConstraint"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionParameter">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterName" lowerBound="1"
+        eType="#//ParameterName"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValue" lowerBound="1"
+        eType="#//ParameterType" eOpposite="#//ParameterType/functionParameters"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FunctionSignature">
+    <eLiterals name="NOT"/>
+    <eLiterals name="AND" value="1"/>
+    <eLiterals name="OR" value="2"/>
+    <eLiterals name="XOR" value="3"/>
+    <eLiterals name="IMPLIES" value="4"/>
+    <eLiterals name="EQUALS" value="5"/>
+    <eLiterals name="NOT_EQUALS" value="6"/>
+    <eLiterals name="LESS_THAN" value="7"/>
+    <eLiterals name="LESS_OR_EQUAL" value="8"/>
+    <eLiterals name="GREATER_OR_EQUAL" value="9"/>
+    <eLiterals name="GREATER_THAN" value="10"/>
+    <eLiterals name="ADD_INTEGER" value="11"/>
+    <eLiterals name="SUBTRACT_INTEGER" value="12"/>
+    <eLiterals name="MULTIPLE_INTEGER" value="13"/>
+    <eLiterals name="DIVIDE_INTEGER" value="14"/>
+    <eLiterals name="MODULO_INTEGER" value="15"/>
+    <eLiterals name="OPPOSITE_INTEGER" value="16"/>
+    <eLiterals name="ADD_DECIMAL" value="17"/>
+    <eLiterals name="SUBTRACT_DECIMAL" value="18"/>
+    <eLiterals name="MULTIPLE_DECIMAL" value="19"/>
+    <eLiterals name="DIVIDE_DECIMAL" value="20"/>
+    <eLiterals name="OPPOSITE_DECIMAL" value="21"/>
+    <eLiterals name="ROUND_DECIMAL" value="22"/>
+    <eLiterals name="LENGTH_STRING" value="23"/>
+    <eLiterals name="LOWER_STRING" value="24"/>
+    <eLiterals name="TRIM_STRING" value="25"/>
+    <eLiterals name="UPPER_STRING" value="26"/>
+    <eLiterals name="CONCATENATE_STRING" value="27"/>
+    <eLiterals name="MATCHES_STRING" value="28"/>
+    <eLiterals name="POSITION_STRING" value="29"/>
+    <eLiterals name="REPLACE_STRING" value="30"/>
+    <eLiterals name="SUBSTRING_STRING" value="31"/>
+    <eLiterals name="ADD_DATE" value="32"/>
+    <eLiterals name="DIFFERENCE_DATE" value="33"/>
+    <eLiterals name="ADD_TIMESTAMP" value="34"/>
+    <eLiterals name="DIFFERENCE_TIMESTAMP" value="35"/>
+    <eLiterals name="INSTANCE_OF" value="36"/>
+    <eLiterals name="TYPE_OF" value="37"/>
+    <eLiterals name="IS_UNDEFINED_ATTRIBUTE" value="38"/>
+    <eLiterals name="IS_UNDEFINED_OBJECT" value="39"/>
+    <eLiterals name="MEMBER_OF" value="40"/>
+    <eLiterals name="CONTAINS" value="41"/>
+    <eLiterals name="EXISTS" value="42"/>
+    <eLiterals name="NOT_EXISTS" value="43"/>
+    <eLiterals name="COUNT" value="44"/>
+    <eLiterals name="SUM_INTEGER" value="45"/>
+    <eLiterals name="MIN_INTEGER" value="46"/>
+    <eLiterals name="MAX_INTEGER" value="47"/>
+    <eLiterals name="SUM_DECIMAL" value="48"/>
+    <eLiterals name="MIN_DECIMAL" value="49"/>
+    <eLiterals name="MAX_DECIMAL" value="50"/>
+    <eLiterals name="AVG_DECIMAL" value="51"/>
+    <eLiterals name="MIN_STRING" value="52" literal="MIN_STRING"/>
+    <eLiterals name="MAX_STRING" value="53"/>
+    <eLiterals name="MIN_DATE" value="54"/>
+    <eLiterals name="MAX_DATE" value="55"/>
+    <eLiterals name="AVG_DATE" value="56"/>
+    <eLiterals name="MIN_TIMESTAMP" value="57"/>
+    <eLiterals name="MAX_TIMESTAMP" value="58"/>
+    <eLiterals name="AVG_TIMESTAMP" value="59"/>
+    <eLiterals name="CASE_WHEN" value="60"/>
+    <eLiterals name="UNDEFINED" value="61"/>
+    <eLiterals name="LIKE" value="62" literal="LIKE"/>
+    <eLiterals name="ILIKE" value="63" literal="ILIKE"/>
+    <eLiterals name="INTEGER_TO_STRING" value="64"/>
+    <eLiterals name="DECIMAL_TO_STRING" value="65"/>
+    <eLiterals name="DATE_TO_STRING" value="66"/>
+    <eLiterals name="TIMESTAMP_TO_STRING" value="67"/>
+    <eLiterals name="LOGICAL_TO_STRING" value="68"/>
+    <eLiterals name="ENUM_TO_STRING" value="69"/>
+    <eLiterals name="CUSTOM_TO_STRING" value="70"/>
+    <eLiterals name="YEARS_OF_DATE" value="71" literal="YEARS_OF_DATE"/>
+    <eLiterals name="MONTHS_OF_DATE" value="72" literal="MONTHS_OF_DATE"/>
+    <eLiterals name="DAYS_OF_DATE" value="73" literal="DAYS_OF_DATE"/>
+    <eLiterals name="YEARS_OF_TIMESTAMP" value="74" literal="YEARS_OF_TIMESTAMP"/>
+    <eLiterals name="MONTHS_OF_TIMESTAMP" value="75" literal="MONTHS_OF_TIMESTAMP"/>
+    <eLiterals name="DAYS_OF_TIMESTAMP" value="76" literal="DAYS_OF_TIMESTAMP"/>
+    <eLiterals name="HOURS_OF_TIMESTAMP" value="77" literal="HOURS_OF_TIMESTAMP"/>
+    <eLiterals name="MINUTES_OF_TIMESTAMP" value="78" literal="MINUTES_OF_TIMESTAMP"/>
+    <eLiterals name="SECONDS_OF_TIMESTAMP" value="79" literal="SECONDS_OF_TIMESTAMP"/>
+    <eLiterals name="MILLISECONDS_OF_TIMESTAMP" value="80" literal="MILLISECONDS_OF_TIMESTAMP"/>
+    <eLiterals name="TO_DATE" value="81" literal="TO_DATE"/>
+    <eLiterals name="TO_TIMESTAMP" value="82" literal="TO_TIMESTAMP"/>
+    <eLiterals name="ADD_TIME" value="83"/>
+    <eLiterals name="DIFFERENCE_TIME" value="84"/>
+    <eLiterals name="MIN_TIME" value="85"/>
+    <eLiterals name="MAX_TIME" value="86"/>
+    <eLiterals name="AVG_TIME" value="87"/>
+    <eLiterals name="TIME_TO_STRING" value="88"/>
+    <eLiterals name="HOURS_OF_TIME" value="89" literal="HOURS_OF_TIME"/>
+    <eLiterals name="MINUTES_OF_TIME" value="90" literal="MINUTES_OF_TIME"/>
+    <eLiterals name="SECONDS_OF_TIME" value="91" literal="SECONDS_OF_TIME"/>
+    <eLiterals name="MILLISECONDS_OF_TIME" value="92" literal="MILLISECONDS_OF_TIME"/>
+    <eLiterals name="TO_TIME" value="93" literal="TO_TIME"/>
+    <eLiterals name="CAPITALIZE_STRING" value="94" literal="CAPITALIZE_STRING"/>
+    <eLiterals name="LEFT_TRIM_STRING" value="95"/>
+    <eLiterals name="RIGHT_TRIM_STRING" value="96"/>
+    <eLiterals name="ABSOLUTE_NUMERIC" value="97"/>
+    <eLiterals name="CEIL_NUMERIC" value="98"/>
+    <eLiterals name="FLOOR_NUMERIC" value="99"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Join" abstract="true" eSuperTypes="#//Node">
+    <eOperations name="getAllJoins" upperBound="-1" eType="#//Join"/>
+    <eOperations name="getBase" lowerBound="1" eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partner" lowerBound="1"
+        eType="#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Node" abstract="true" eSuperTypes="#//NavigationBase #//FeatureHolder">
+    <eOperations name="getType" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alias" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filters" upperBound="-1"
+        eType="#//Filter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderBys" upperBound="-1"
+        eType="#//OrderBy" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrderBy" eSuperTypes="#//Node">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="descending" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
+        eType="#//Feature" eOpposite="#//Feature/orderBys"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ParameterName">
+    <eLiterals name="LEFT"/>
+    <eLiterals name="RIGHT" value="1"/>
+    <eLiterals name="ITEM" value="2"/>
+    <eLiterals name="COLLECTION" value="3"/>
+    <eLiterals name="NUMBER" value="4"/>
+    <eLiterals name="STRING" value="5"/>
+    <eLiterals name="BOOLEAN" value="6"/>
+    <eLiterals name="DATE" value="7"/>
+    <eLiterals name="TIMESTAMP" value="8"/>
+    <eLiterals name="ADDITION" value="9"/>
+    <eLiterals name="START" value="10"/>
+    <eLiterals name="END" value="11"/>
+    <eLiterals name="INSTANCE" value="12"/>
+    <eLiterals name="TYPE" value="13"/>
+    <eLiterals name="PATTERN" value="14"/>
+    <eLiterals name="CONTAINMENT" value="15"/>
+    <eLiterals name="POSITION" value="16"/>
+    <eLiterals name="REPLACEMENT" value="17"/>
+    <eLiterals name="LENGTH" value="18"/>
+    <eLiterals name="ATTRIBUTE" value="19"/>
+    <eLiterals name="RELATION" value="20"/>
+    <eLiterals name="CONDITION" value="21"/>
+    <eLiterals name="PRIMITIVE" value="22"/>
+    <eLiterals name="YEAR" value="23" literal="YEAR"/>
+    <eLiterals name="MONTH" value="24" literal="MONTH"/>
+    <eLiterals name="DAY" value="25" literal="DAY"/>
+    <eLiterals name="HOUR" value="26" literal="HOUR"/>
+    <eLiterals name="MINUTE" value="27" literal="MINUTE"/>
+    <eLiterals name="SECOND" value="28" literal="SECOND"/>
+    <eLiterals name="TIME" value="29"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ResultConstraint">
+    <eLiterals name="PRECISION"/>
+    <eLiterals name="SCALE" value="1"/>
+    <eLiterals name="MAX_LENGTH" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Select" eSuperTypes="#//Node">
+    <eOperations name="getAllJoins" upperBound="-1" eType="#//Join"/>
+    <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="isAggregated" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mainTarget" lowerBound="1"
+        eType="#//Target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" lowerBound="1"
+        upperBound="-1" eType="#//Target" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubSelect" eSuperTypes="#//ParameterType #//Node">
+    <eOperations name="getContainer" eType="#//Node"/>
+    <eOperations name="getNavigationJoins" upperBound="-1" eType="#//Join"/>
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
+    <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transferRelation" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="partner" eType="#//Join"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="select" lowerBound="1"
+        eType="#//Select"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="excluding" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="embeddedSelect" eType="#//Select"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base" eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="limit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubSelectFeature" eSuperTypes="#//Feature">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subSelect" lowerBound="1"
+        eType="#//SubSelect"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
+        eType="#//Feature" eOpposite="#//Feature/aggregations"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Target">
+    <eOperations name="setContainerWithIdFeature">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Utility that sets node reference and adds IdAttribute and TypeAttribute to the target."/>
+      </eAnnotations>
+      <eParameters name="node" eType="#//Node"/>
+      <eParameters name="addType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eOperations>
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referencedTargets" upperBound="-1"
+        eType="#//ReferencedTarget" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeAttribute" eSuperTypes="#//FeatureWithNode">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferencedTarget">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterType" abstract="true">
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Get nodes that the given parameter depends on."/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionParameters" upperBound="-1"
+        eType="#//FunctionParameter" eOpposite="#//FunctionParameter/parameterValue"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureWithNode" eSuperTypes="#//Feature">
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="1" eType="#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureTargetMapping">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetAttribute" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NavigationBase" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joins" upperBound="-1"
+        eType="#//Join" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subSelects" upperBound="-1"
+        eType="#//SubSelect" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureHolder" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//Feature" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferencedJoin" eSuperTypes="#//Join">
+    <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SubSelectJoin" eSuperTypes="#//Join">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subSelect" lowerBound="1"
+        eType="#//SubSelect" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContainerJoin" eSuperTypes="#//Join">
+    <eOperations name="getType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="references" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CastJoin" eSuperTypes="#//Join">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomJoin" eSuperTypes="#//Join">
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transferRelation" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="navigationSql" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceIdSetParameter" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceIdParameter" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//Feature">
+    <eOperations name="getNodes" upperBound="-1" eType="#//Node"/>
+    <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
+  </eClassifiers>
+</ecore:EPackage>
