@@ -158,6 +158,8 @@
     <eLiterals name="FLOOR_NUMERIC" value="99"/>
     <eLiterals name="TIMESTAMP_AS_MILLISECONDS" value="100"/>
     <eLiterals name="TIMESTAMP_FROM_MILLISECONDS" value="101"/>
+    <eLiterals name="DATE_OF_TIMESTAMP" value="102"/>
+    <eLiterals name="TIME_OF_TIMESTAMP" value="103"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
