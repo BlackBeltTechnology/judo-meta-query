@@ -53,7 +53,7 @@
 
 	<properties>
 		<maven>3.8.3</maven>
-		<revision>1.0.0-SNAPSHOT</revision>
+		<revision>1.0.1-SNAPSHOT</revision>
 		<project-shortname>judo-meta-query</project-shortname>
 		<project-repositoryId>BlackBeltTechnology/judo-meta-query</project-repositoryId>
 		<osgi-default-import>
