@@ -34,7 +34,7 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MULTIPLE_DECIMAL"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DIVIDE_DECIMAL"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/OPPOSITE_DECIMAL"/>
-      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ROUND_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ROUND"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LENGTH_STRING"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LOWER_STRING"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TRIM_STRING"/>

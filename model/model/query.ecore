@@ -78,7 +78,7 @@
     <eLiterals name="MULTIPLE_DECIMAL" value="19"/>
     <eLiterals name="DIVIDE_DECIMAL" value="20"/>
     <eLiterals name="OPPOSITE_DECIMAL" value="21"/>
-    <eLiterals name="ROUND_DECIMAL" value="22"/>
+    <eLiterals name="ROUND" value="22"/>
     <eLiterals name="LENGTH_STRING" value="23"/>
     <eLiterals name="LOWER_STRING" value="24"/>
     <eLiterals name="TRIM_STRING" value="25"/>
