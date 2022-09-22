@@ -25,6 +25,13 @@
 		<url>http://github.com/${project-repositoryId}</url>
 	</scm>
 
+	<licenses>
+		<license>
+			<name>Eclipse Public License 2.0</name>
+			<url>https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt</url>
+		</license>
+	</licenses>
+
 	<developers>
 		<developer>
 			<id>borcsokj</id>
@@ -46,7 +53,7 @@
 
 	<properties>
 		<maven>3.8.3</maven>
-		<revision>1.0.0-SNAPSHOT</revision>
+		<revision>1.0.1-SNAPSHOT</revision>
 		<project-shortname>judo-meta-query</project-shortname>
 		<project-repositoryId>BlackBeltTechnology/judo-meta-query</project-repositoryId>
 		<osgi-default-import>
@@ -58,41 +65,48 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>1.4.0.20220629_123622_4279f257_develop</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.4.0.20220629_124147_7f70e44e_develop</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>1.5.0</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>1.5.1</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
-		<tycho-version>2.7.3</tycho-version>
+		<tycho-version>2.7.5</tycho-version>
 
-		<emf-genmodel-generator-version>1.0.2.20220618_225039_158d46f1_develop</emf-genmodel-generator-version>
-		<judo-genmodel-generator-version>1.0.1.20220618_225527_386d550e_develop</judo-genmodel-generator-version>
-		<judo-epp-common-version>4.23.0.20220617_120427_1e370db3_develop</judo-epp-common-version>
+		<emf-genmodel-generator-version>1.1.0</emf-genmodel-generator-version>
+		<judo-genmodel-generator-version>1.1.1</judo-genmodel-generator-version>
+		<judo-epp-common-version>4.23.1</judo-epp-common-version>
 
-		<xtext-version>2.22.0</xtext-version>
-		<emf-mwe2-launch-version>2.12.1</emf-mwe2-launch-version>
+		<xtext-version>2.28.0</xtext-version>
+		<emf-mwe2-launch-version>2.13.0</emf-mwe2-launch-version>
 		<slf4j-version>1.7.36</slf4j-version>
-		<surefire-version>3.0.0-M5</surefire-version>
+		<surefire-version>3.0.0-M7</surefire-version>
+		<!--suppress UnresolvedMavenProperty -->
 		<logback-test-config>${maven.multiModuleProjectDirectory}/logback-test.xml</logback-test-config>
 
 		<!-- Pax exam dependencies -->
-		<karaf-version>4.3.3</karaf-version>
+		<karaf-version>4.4.1</karaf-version>
 		<cxf-version>3.4.4</cxf-version>
 
-		<osgi-utils-version>1.0.12.20220628_205152_6d1b9262_develop</osgi-utils-version>
-		<bouncycastle-karaf-features-version>1.61.2</bouncycastle-karaf-features-version>
-		<tinybundles-karaf-features-version>1.0.0</tinybundles-karaf-features-version>
-		<google-karaf-features-version>1.0.7</google-karaf-features-version>
-		<eclipse-emf-karaf-features-version>1.0.1</eclipse-emf-karaf-features-version>
-		<eclipse-epsilon-karaf-features-version>1.0.6</eclipse-epsilon-karaf-features-version>
-		<antlr-karaf-features-version>1.0.1</antlr-karaf-features-version>
-		<apache-commons-karaf-features-version>1.0.6</apache-commons-karaf-features-version>
-		<apache-poi-karaf-features-version>1.0.4</apache-poi-karaf-features-version>
-		<apache-httpclient-karaf-features-version>1.0.0</apache-httpclient-karaf-features-version>
+		<osgi-utils-version>1.1.0</osgi-utils-version>
+		<karaf-features-version>2.0.0</karaf-features-version>
 		<pax-exam-version>4.13.3</pax-exam-version>
-		<log4j.configuration>log4j.properties</log4j.configuration>
+
+		<!-- Define overridable properties for tycho-surefire-plugin -->
+		<platformSystemProperties />
+		<moduleProperties />
+		<systemProperties />
+		<additionalTestArguments />
+
+		<!-- Code Quality-->
+		<sonar-maven-plugin-version>3.9.1.2184</sonar-maven-plugin-version>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.language>java</sonar.language>
+		<sonar.java.source>${java.version}</sonar.java.source>
+		<jacoco.version>0.8.8</jacoco.version>
+
 	</properties>
 
 	<build>
@@ -142,19 +156,34 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.eclipse.tycho.extras</groupId>
-				<artifactId>tycho-source-feature-plugin</artifactId>
-			</plugin>
-
-			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-source-plugin</artifactId>
 			</plugin>
 
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>3.0.1</version>
+			</plugin>
+
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>flatten-maven-plugin</artifactId>
-				<version>1.1.0</version>
+				<version>1.3.0</version>
 				<configuration>
 					<updatePomFile>true</updatePomFile>
 					<flattenMode>resolveCiFriendliesOnly</flattenMode>
@@ -176,6 +205,70 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<configuration>
+					<propertyName>jacoco.agent</propertyName>
+				</configuration>
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.4.1</version>
+				<configuration>
+					<source>8</source>
+					<detectJavaApiLink>false</detectJavaApiLink>
+					<tags>
+						<tag>
+							<name>model</name>
+							<placement>a</placement>
+							<head>EMF Model</head>
+						</tag>
+						<tag>
+							<name>generated</name>
+							<placement>a</placement>
+							<head>EMF Generated</head>
+						</tag>
+						<tag>
+							<name>ordered</name>
+							<placement>a</placement>
+							<head>EMF Ordered</head>
+						</tag>
+						<tag>
+							<name>param</name>
+							<placement>a</placement>
+							<head>EMF Param</head>
+						</tag>
+
+					</tags>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 
 		<pluginManagement>
@@ -183,13 +276,13 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.2.0</version>
+					<version>3.3.0</version>
 				</plugin>
 
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.1</version>
+					<version>3.10.1</version>
 					<configuration>
 						<source>11</source>
 						<target>11</target>
@@ -199,7 +292,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.2</version>
+					<version>3.0.0</version>
 					<!-- https://stackoverflow.com/questions/36328154/maven-deploy-plugin-deployatend-not-working -->
 					<!-- <configuration> <deployAtEnd>true</deployAtEnd> </configuration> -->
 				</plugin>
@@ -477,12 +570,6 @@
 				</plugin>
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-surefire-plugin</artifactId>
-					<version>${tycho-version}</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-source-plugin</artifactId>
 					<version>${tycho-version}</version>
 
@@ -493,19 +580,10 @@
 								<goal>plugin-source</goal>
 							</goals>
 						</execution>
-					</executions>
-				</plugin>
-
-				<plugin>
-					<groupId>org.eclipse.tycho.extras</groupId>
-					<artifactId>tycho-source-feature-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<executions>
 						<execution>
-							<id>source-feature</id>
-							<phase>package</phase>
+							<id>feature-source</id>
 							<goals>
-								<goal>source-feature</goal>
+								<goal>feature-source</goal>
 							</goals>
 						</execution>
 					</executions>
@@ -540,37 +618,67 @@
 				<plugin>
 					<groupId>org.sonatype.plugins</groupId>
 					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>1.6.8</version>
+					<version>1.6.13</version>
 				</plugin>
 
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>2.2.1</version>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco.version}</version>
 				</plugin>
 
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.6</version>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${sonar-maven-plugin-version}</version>
 				</plugin>
+
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
+					<!--
+						Can be removed after first generator execution
+						https://bugs.eclipse.org/bugs/show_bug.cgi?id=480097
+					-->
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<compilerArgument>-err:-forbidden</compilerArgument>
+						<useProjectSettings>false</useProjectSettings>
+					</configuration>
+				</plugin>
+				<!-- to skip running (and compiling) tests use commandline flag: -Dmaven.test.skip
+					To skip tests, but still compile them, use: -DskipTests
+					To allow all tests in a pom to pass/fail, use commandline flag: -fae (fail
+					at end) -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-surefire-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<!-- THE FOLLOWING LINE MUST NOT BE BROKEN BY AUTOFORMATTING -->
+						<argLine>${jacoco.agent} ${platformSystemProperties} ${systemProperties} ${moduleProperties} ${additionalTestArguments}</argLine>
+						<failIfNoTests>false</failIfNoTests>
+						<useUIHarness>false</useUIHarness>
+						<providerHint>junit5</providerHint>
+					</configuration>
+				</plugin>
+
+				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${surefire-version}</version>
 					<configuration>
-						<argLine>-Dfile.encoding=UTF-8</argLine>
 						<trimStackTrace>false</trimStackTrace>
 						<systemPropertyVariables>
 							<logback.configurationFile>${logback-test-config}</logback.configurationFile>
 						</systemPropertyVariables>
+						<!--suppress UnresolvedMavenProperty -->
 						<argLine>
+							${jacoco.agent}
 							-Dfile.encoding=UTF-8
 							--add-opens java.base/java.lang=ALL-UNNAMED
 							--add-opens java.base/java.util=ALL-UNNAMED
 							--add-opens java.base/java.time=ALL-UNNAMED
 						</argLine>
-						<trimStackTrace>false</trimStackTrace>
 					</configuration>
 				</plugin>
 			</plugins>
@@ -621,7 +729,6 @@
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j-version}</version>
-				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
@@ -632,7 +739,7 @@
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
-				<version>1.2.11</version>
+				<version>1.4.1</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -652,45 +759,40 @@
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>6.0.0</version>
+			<artifactId>osgi.core</artifactId>
+			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi.cmpn</artifactId>
-			<version>6.0.0</version>
+			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.annotation</artifactId>
-			<version>6.0.0</version>
+			<artifactId>osgi.annotation</artifactId>
+			<version>7.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.22</version>
+			<version>1.18.24</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>5.3.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.3.2</version>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.9.1</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.jcabi</groupId>
 			<artifactId>jcabi-log</artifactId>
-			<version>0.18</version>
+			<version>0.22.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -720,23 +822,14 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
+						<groupId>org.simplify4u.plugins</groupId>
+						<artifactId>sign-maven-plugin</artifactId>
+						<version>1.0.1</version>
 						<executions>
 							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
 								<goals>
 									<goal>sign</goal>
 								</goals>
-								<configuration>
-									<!-- This is necessary for gpg to not try to use the pinentry programs -->
-									<gpgArguments>
-										<arg>--pinentry-mode</arg>
-										<arg>loopback</arg>
-									</gpgArguments>
-								</configuration>
 							</execution>
 						</executions>
 					</plugin>
@@ -786,20 +879,8 @@
 							<serverId>ossrh</serverId>
 							<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+							<stagingProgressTimeoutMinutes>15</stagingProgressTimeoutMinutes>
 						</configuration>
-					</plugin>
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>attach-sources</id>
-								<goals>
-									<goal>jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
 					</plugin>
 				</plugins>
 			</build>
@@ -822,7 +903,7 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>wagon-maven-plugin</artifactId>
-						<version>2.0.0</version>
+						<version>2.0.2</version>
 						<executions>
 							<execution>
 								<id>upload-repository</id>
@@ -885,6 +966,116 @@
         </profile>
 
 		<profile>
+			<id>generate-github-asciidoc-diagrams</id>
+
+			<properties>
+				<asciidoctor.maven.plugin.version>2.2.2</asciidoctor.maven.plugin.version>
+				<asciidoctorj.version>2.5.6</asciidoctorj.version>
+				<asciidoctorj.diagram.version>2.2.3</asciidoctorj.diagram.version>
+				<jruby.version>9.3.4.0</jruby.version>
+			</properties>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.asciidoctor</groupId>
+						<artifactId>asciidoctor-maven-plugin</artifactId>
+						<version>${asciidoctor.maven.plugin.version}</version>
+						<dependencies>
+							<!-- Comment this section to use the default jruby artifact provided by the plugin -->
+							<dependency>
+								<groupId>org.jruby</groupId>
+								<artifactId>jruby-complete</artifactId>
+								<version>${jruby.version}</version>
+							</dependency>
+							<!-- Comment this section to use the default AsciidoctorJ artifact provided by the plugin -->
+							<dependency>
+								<groupId>org.asciidoctor</groupId>
+								<artifactId>asciidoctorj</artifactId>
+								<version>${asciidoctorj.version}</version>
+							</dependency>
+							<dependency>
+								<groupId>org.asciidoctor</groupId>
+								<artifactId>asciidoctorj-diagram</artifactId>
+								<version>${asciidoctorj.diagram.version}</version>
+							</dependency>
+							<!-- Since asciidoctorj-diagram v2.2.0, uncomment to use specific version of plantuml or ditaa -->
+							<dependency>
+								<groupId>org.asciidoctor</groupId>
+								<artifactId>asciidoctorj-diagram-plantuml</artifactId>
+								<version>1.2022.5</version>
+							</dependency>
+							<dependency>
+								<groupId>org.asciidoctor</groupId>
+								<artifactId>asciidoctorj-diagram-ditaamini</artifactId>
+								<version>1.0.3</version>
+							</dependency>
+						</dependencies>
+						<configuration>
+							<sourceDirectory>./.github</sourceDirectory>
+							<requires>
+								<require>asciidoctor-diagram</require>
+							</requires>
+							<attributes>
+								<!-- Example below shows how to specify in this pom instead of System's PATH, the location of dot command of Graphviz, required by PlantUML libraries -->
+								<!-- Windows:
+                                    <graphvizdot>C:\Program Files (x86)\Graphviz2.38\bin\dot.exe</graphvizdot>
+                                -->
+								<!-- *nix :
+                                    <graphvizdot>/usr/local/bin/dot</graphvizdot>
+                                -->
+							</attributes>
+						</configuration>
+						<executions>
+							<execution>
+								<id>generate-html-doc</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>process-asciidoc</goal>
+								</goals>
+								<configuration>
+									<backend>html5</backend>
+									<attributes>
+										<imagesdir>./images</imagesdir>
+										<toc>left</toc>
+										<icons>font</icons>
+										<sectanchors>true</sectanchors>
+										<idprefix/>
+										<idseparator>-</idseparator>
+									</attributes>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-generated-gitflow-diagrams</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+
+								<configuration>
+									<outputDirectory>${basedir}/.github</outputDirectory>
+									<resources>
+										<resource>
+											<directory>${basedir}/target/generated-docs/images/</directory>
+											<includes>
+												<include>*.png</include>
+											</includes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
 			<id>update-source-code-license</id>
 			<build>
 				<plugins>
@@ -907,14 +1098,6 @@
 								<phase>process-sources</phase>
 								<configuration>
 									<licenseName>epl_v2</licenseName>
-									<roots>
-										<root>model/src/main/java</root>
-										<root>model-test/src/test/java</root>
-										<root>osgi/src/main/java</root>
-										<root>osgi-itest/src/test/java</root>
-										<root>runtime/src/main/java</root>
-										<root>runtime/src/test/java</root>
-									</roots>
 								</configuration>
 							</execution>
 							<execution>
@@ -932,5 +1115,6 @@
 				</plugins>
 			</build>
 		</profile>
+
 	</profiles>
 </project>
