@@ -78,7 +78,7 @@
     <eLiterals name="MULTIPLE_DECIMAL" value="19"/>
     <eLiterals name="DIVIDE_DECIMAL" value="20"/>
     <eLiterals name="OPPOSITE_DECIMAL" value="21"/>
-    <eLiterals name="ROUND_DECIMAL" value="22"/>
+    <eLiterals name="ROUND" value="22"/>
     <eLiterals name="LENGTH_STRING" value="23"/>
     <eLiterals name="LOWER_STRING" value="24"/>
     <eLiterals name="TRIM_STRING" value="25"/>
@@ -156,6 +156,17 @@
     <eLiterals name="ABSOLUTE_NUMERIC" value="97"/>
     <eLiterals name="CEIL_NUMERIC" value="98"/>
     <eLiterals name="FLOOR_NUMERIC" value="99"/>
+    <eLiterals name="TIMESTAMP_AS_MILLISECONDS" value="100"/>
+    <eLiterals name="TIMESTAMP_FROM_MILLISECONDS" value="101"/>
+    <eLiterals name="DATE_OF_TIMESTAMP" value="102"/>
+    <eLiterals name="TIME_OF_TIMESTAMP" value="103"/>
+    <eLiterals name="TIMESTAMP_PLUS_YEARS" value="104"/>
+    <eLiterals name="TIMESTAMP_PLUS_MONTHS" value="105"/>
+    <eLiterals name="TIMESTAMP_PLUS_DAYS" value="106"/>
+    <eLiterals name="TIMESTAMP_PLUS_HOURS" value="107"/>
+    <eLiterals name="TIMESTAMP_PLUS_MINUTES" value="108"/>
+    <eLiterals name="TIMESTAMP_PLUS_SECONDS" value="109"/>
+    <eLiterals name="TIMESTAMP_PLUS_MILLISECONDS" value="110"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -213,6 +224,7 @@
     <eLiterals name="MINUTE" value="27" literal="MINUTE"/>
     <eLiterals name="SECOND" value="28" literal="SECOND"/>
     <eLiterals name="TIME" value="29"/>
+    <eLiterals name="UNIT" value="30"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ResultConstraint">
     <eLiterals name="PRECISION"/>
