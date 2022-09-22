@@ -116,6 +116,13 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_FROM_MILLISECONDS"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DATE_OF_TIMESTAMP"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIME_OF_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_YEARS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_MONTHS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_DAYS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_HOURS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_MINUTES"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_SECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_MILLISECONDS"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ParameterName">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LEFT"/>
