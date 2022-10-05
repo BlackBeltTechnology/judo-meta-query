@@ -65,8 +65,8 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>1.5.0</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.1</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>1.5.1.20221005_230707_b5e4278d_develop</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>1.5.1.20221005_231518_678a5c17_develop</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
@@ -74,9 +74,9 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<tycho-version>2.7.5</tycho-version>
 
-		<emf-genmodel-generator-version>1.1.0</emf-genmodel-generator-version>
-		<judo-genmodel-generator-version>1.1.1</judo-genmodel-generator-version>
-		<judo-epp-common-version>4.23.1</judo-epp-common-version>
+		<emf-genmodel-generator-version>1.1.1.20220930_100337_62864061_develop</emf-genmodel-generator-version>
+		<judo-genmodel-generator-version>1.1.2.20221005_230703_6a1653f3_develop</judo-genmodel-generator-version>
+		<judo-epp-common-version>4.23.2.20220923_134801_d39d5940_develop</judo-epp-common-version>
 
 		<xtext-version>2.28.0</xtext-version>
 		<emf-mwe2-launch-version>2.13.0</emf-mwe2-launch-version>
@@ -89,7 +89,7 @@
 		<karaf-version>4.4.1</karaf-version>
 		<cxf-version>3.4.4</cxf-version>
 
-		<osgi-utils-version>1.1.0</osgi-utils-version>
+		<osgi-utils-version>1.1.1.20220926_225906_2390bae2_develop</osgi-utils-version>
 		<karaf-features-version>2.0.0</karaf-features-version>
 		<pax-exam-version>4.13.3</pax-exam-version>
 
@@ -1040,7 +1040,7 @@
 										<toc>left</toc>
 										<icons>font</icons>
 										<sectanchors>true</sectanchors>
-										<idprefix/>
+										<idprefix />
 										<idseparator>-</idseparator>
 									</attributes>
 								</configuration>

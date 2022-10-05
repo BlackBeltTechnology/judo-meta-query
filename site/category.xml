@@ -22,7 +22,7 @@
    </category-def>
 
 	<!--
-   <repository-reference location="https://nexus.judo.technology/repository/p2/epsilon-runtime-eclipse/1.4.0.20220629_124147_7f70e44e_develop" enabled="true" />
-   <repository-reference location="https://nexus.judo.technology/repository/p2/judo-epp-common/4.23.0.20220617_120427_1e370db3_develop" enabled="true" />
+   <repository-reference location="https://nexus.judo.technology/repository/p2/epsilon-runtime-eclipse/1.5.1.20221005_231518_678a5c17_develop" enabled="true" />
+   <repository-reference location="https://nexus.judo.technology/repository/p2/judo-epp-common/4.23.2.20220923_134801_d39d5940_develop" enabled="true" />
    -->
 </site>
