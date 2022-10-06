@@ -90,7 +90,7 @@
 		<cxf-version>3.4.4</cxf-version>
 
 		<osgi-utils-version>1.1.1.20220926_225906_2390bae2_develop</osgi-utils-version>
-		<karaf-features-version>2.0.1.20220926_213446_a786c6cc_develop</karaf-features-version>
+		<karaf-features-version>2.0.0</karaf-features-version>
 		<pax-exam-version>4.13.3</pax-exam-version>
 
 		<!-- Define overridable properties for tycho-surefire-plugin -->

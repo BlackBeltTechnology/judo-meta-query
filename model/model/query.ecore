@@ -167,6 +167,7 @@
     <eLiterals name="TIMESTAMP_PLUS_MINUTES" value="108"/>
     <eLiterals name="TIMESTAMP_PLUS_SECONDS" value="109"/>
     <eLiterals name="TIMESTAMP_PLUS_MILLISECONDS" value="110"/>
+    <eLiterals name="MODULO_DECIMAL" value="111"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
