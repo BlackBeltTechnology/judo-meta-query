@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
-<target includeMode="feature" name="hu.blackbelt.judo.meta.query.target" sequenceNumber="1664743387562">
+<target includeMode="feature" name="hu.blackbelt.judo.meta.query.target" sequenceNumber="1663799654642">
   <locations>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <repository location="https://nexus.judo.technology/repository/p2/emf-genmodel-generator/1.1.1.20220930_100337_62864061_develop"/>
@@ -11,7 +11,7 @@
       <unit id="hu.blackbelt.judo.eclipse.emf.genmodel.generator.feature.feature.group" version="0.0.0"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <repository location="https://nexus.judo.technology/repository/p2/epsilon-runtime-eclipse/1.5.1.20221005_231518_678a5c17_develop"/>
+      <repository location="https://nexus.judo.technology/repository/p2/epsilon-runtime-eclipse/1.5.1.20221006_154059_5880e34f_develop"/>
       <unit id="hu.blackbelt.epsilon.runtime.feature.feature.group" version="0.0.0"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
