@@ -123,6 +123,7 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_MINUTES"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_SECONDS"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_MILLISECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MODULO_DECIMAL"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ParameterName">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LEFT"/>
