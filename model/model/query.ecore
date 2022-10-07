@@ -78,7 +78,7 @@
     <eLiterals name="MULTIPLE_DECIMAL" value="19"/>
     <eLiterals name="DIVIDE_DECIMAL" value="20"/>
     <eLiterals name="OPPOSITE_DECIMAL" value="21"/>
-    <eLiterals name="ROUND" value="22"/>
+    <eLiterals name="INTEGER_ROUND" value="22"/>
     <eLiterals name="LENGTH_STRING" value="23"/>
     <eLiterals name="LOWER_STRING" value="24"/>
     <eLiterals name="TRIM_STRING" value="25"/>
@@ -174,6 +174,7 @@
     <eLiterals name="TIME_AS_SECONDS" value="115"/>
     <eLiterals name="DAY_OF_WEEK_OF_DATE" value="116"/>
     <eLiterals name="DAY_OF_YEAR_DATE" value="117"/>
+    <eLiterals name="DECIMAL_ROUND" value="118"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
