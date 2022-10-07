@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
-<target includeMode="feature" name="hu.blackbelt.judo.meta.query.target" sequenceNumber="1665066327058">
+<target includeMode="feature" name="hu.blackbelt.judo.meta.query.target" sequenceNumber="1665147619796">
   <locations>
     <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
       <repository location="https://nexus.judo.technology/repository/p2/emf-genmodel-generator/1.1.1.20220930_100337_62864061_develop"/>
