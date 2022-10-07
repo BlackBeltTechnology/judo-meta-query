@@ -34,7 +34,7 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MULTIPLE_DECIMAL"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DIVIDE_DECIMAL"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/OPPOSITE_DECIMAL"/>
-      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ROUND"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/INTEGER_ROUND"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LENGTH_STRING"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LOWER_STRING"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TRIM_STRING"/>
@@ -123,6 +123,14 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_MINUTES"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_SECONDS"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_MILLISECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MODULO_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LEFT_PAD"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/RIGHT_PAD"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIME_FROM_SECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIME_AS_SECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DAY_OF_WEEK_OF_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DAY_OF_YEAR_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DECIMAL_ROUND"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ParameterName">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LEFT"/>
