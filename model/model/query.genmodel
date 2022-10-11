@@ -50,8 +50,7 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DIFFERENCE_TIMESTAMP"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/INSTANCE_OF"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TYPE_OF"/>
-      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/IS_UNDEFINED_ATTRIBUTE"/>
-      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/IS_UNDEFINED_OBJECT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/IS_UNDEFINED"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MEMBER_OF"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CONTAINS"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/EXISTS"/>
