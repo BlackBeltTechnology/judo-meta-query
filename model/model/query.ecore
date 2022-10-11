@@ -94,8 +94,7 @@
     <eLiterals name="DIFFERENCE_TIMESTAMP" value="35"/>
     <eLiterals name="INSTANCE_OF" value="36"/>
     <eLiterals name="TYPE_OF" value="37"/>
-    <eLiterals name="IS_UNDEFINED_ATTRIBUTE" value="38"/>
-    <eLiterals name="IS_UNDEFINED_OBJECT" value="39"/>
+    <eLiterals name="IS_UNDEFINED" value="38"/>
     <eLiterals name="MEMBER_OF" value="40"/>
     <eLiterals name="CONTAINS" value="41"/>
     <eLiterals name="EXISTS" value="42"/>
