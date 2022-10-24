@@ -86,7 +86,7 @@
 		<logback-test-config>${maven.multiModuleProjectDirectory}/logback-test.xml</logback-test-config>
 
 		<!-- Pax exam dependencies -->
-		<karaf-version>4.4.1</karaf-version>
+		<karaf-version>4.4.2</karaf-version>
 		<cxf-version>3.4.4</cxf-version>
 
 		<osgi-utils-version>1.1.1.20220926_225906_2390bae2_develop</osgi-utils-version>
