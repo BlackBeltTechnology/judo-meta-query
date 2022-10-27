@@ -78,7 +78,7 @@
     <eLiterals name="MULTIPLE_DECIMAL" value="19"/>
     <eLiterals name="DIVIDE_DECIMAL" value="20"/>
     <eLiterals name="OPPOSITE_DECIMAL" value="21"/>
-    <eLiterals name="ROUND_DECIMAL" value="22"/>
+    <eLiterals name="INTEGER_ROUND" value="22"/>
     <eLiterals name="LENGTH_STRING" value="23"/>
     <eLiterals name="LOWER_STRING" value="24"/>
     <eLiterals name="TRIM_STRING" value="25"/>
@@ -94,8 +94,7 @@
     <eLiterals name="DIFFERENCE_TIMESTAMP" value="35"/>
     <eLiterals name="INSTANCE_OF" value="36"/>
     <eLiterals name="TYPE_OF" value="37"/>
-    <eLiterals name="IS_UNDEFINED_ATTRIBUTE" value="38"/>
-    <eLiterals name="IS_UNDEFINED_OBJECT" value="39"/>
+    <eLiterals name="IS_UNDEFINED" value="38"/>
     <eLiterals name="MEMBER_OF" value="40"/>
     <eLiterals name="CONTAINS" value="41"/>
     <eLiterals name="EXISTS" value="42"/>
@@ -156,6 +155,25 @@
     <eLiterals name="ABSOLUTE_NUMERIC" value="97"/>
     <eLiterals name="CEIL_NUMERIC" value="98"/>
     <eLiterals name="FLOOR_NUMERIC" value="99"/>
+    <eLiterals name="TIMESTAMP_AS_MILLISECONDS" value="100"/>
+    <eLiterals name="TIMESTAMP_FROM_MILLISECONDS" value="101"/>
+    <eLiterals name="DATE_OF_TIMESTAMP" value="102"/>
+    <eLiterals name="TIME_OF_TIMESTAMP" value="103"/>
+    <eLiterals name="TIMESTAMP_PLUS_YEARS" value="104"/>
+    <eLiterals name="TIMESTAMP_PLUS_MONTHS" value="105"/>
+    <eLiterals name="TIMESTAMP_PLUS_DAYS" value="106"/>
+    <eLiterals name="TIMESTAMP_PLUS_HOURS" value="107"/>
+    <eLiterals name="TIMESTAMP_PLUS_MINUTES" value="108"/>
+    <eLiterals name="TIMESTAMP_PLUS_SECONDS" value="109"/>
+    <eLiterals name="TIMESTAMP_PLUS_MILLISECONDS" value="110"/>
+    <eLiterals name="MODULO_DECIMAL" value="111"/>
+    <eLiterals name="LEFT_PAD" value="112"/>
+    <eLiterals name="RIGHT_PAD" value="113"/>
+    <eLiterals name="TIME_FROM_SECONDS" value="114"/>
+    <eLiterals name="TIME_AS_SECONDS" value="115"/>
+    <eLiterals name="DAY_OF_WEEK_OF_DATE" value="116"/>
+    <eLiterals name="DAY_OF_YEAR_DATE" value="117"/>
+    <eLiterals name="DECIMAL_ROUND" value="118"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdAttribute" eSuperTypes="#//FeatureWithNode">
     <eOperations name="toString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

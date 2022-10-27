@@ -34,7 +34,7 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MULTIPLE_DECIMAL"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DIVIDE_DECIMAL"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/OPPOSITE_DECIMAL"/>
-      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ROUND_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/INTEGER_ROUND"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LENGTH_STRING"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LOWER_STRING"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TRIM_STRING"/>
@@ -50,8 +50,7 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DIFFERENCE_TIMESTAMP"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/INSTANCE_OF"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TYPE_OF"/>
-      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/IS_UNDEFINED_ATTRIBUTE"/>
-      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/IS_UNDEFINED_OBJECT"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/IS_UNDEFINED"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MEMBER_OF"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CONTAINS"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/EXISTS"/>
@@ -112,6 +111,25 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/ABSOLUTE_NUMERIC"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/CEIL_NUMERIC"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/FLOOR_NUMERIC"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_AS_MILLISECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_FROM_MILLISECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DATE_OF_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIME_OF_TIMESTAMP"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_YEARS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_MONTHS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_DAYS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_HOURS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_MINUTES"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_SECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIMESTAMP_PLUS_MILLISECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MODULO_DECIMAL"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LEFT_PAD"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/RIGHT_PAD"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIME_FROM_SECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIME_AS_SECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DAY_OF_WEEK_OF_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DAY_OF_YEAR_DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DECIMAL_ROUND"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ParameterName">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/LEFT"/>

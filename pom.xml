@@ -53,7 +53,7 @@
 
 	<properties>
 		<maven>3.8.3</maven>
-		<revision>1.0.0</revision>
+		<revision>1.0.1</revision>
 		<project-shortname>judo-meta-query</project-shortname>
 		<project-repositoryId>BlackBeltTechnology/judo-meta-query</project-repositoryId>
 		<osgi-default-import>
@@ -66,7 +66,7 @@
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
 		<epsilon-runtime-version>1.5.0</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.1</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-eclipse-version>1.5.3</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
@@ -90,7 +90,7 @@
 		<cxf-version>3.4.4</cxf-version>
 
 		<osgi-utils-version>1.1.0</osgi-utils-version>
-		<karaf-features-version>2.0.0</karaf-features-version>
+		<karaf-features-version>2.0.1</karaf-features-version>
 		<pax-exam-version>4.13.3</pax-exam-version>
 
 		<!-- Define overridable properties for tycho-surefire-plugin -->
@@ -1040,7 +1040,7 @@
 										<toc>left</toc>
 										<icons>font</icons>
 										<sectanchors>true</sectanchors>
-										<idprefix/>
+										<idprefix />
 										<idseparator>-</idseparator>
 									</attributes>
 								</configuration>

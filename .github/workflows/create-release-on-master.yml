@@ -54,7 +54,7 @@ jobs:
                     "id": "judong-nexus-mirror",
                     "mirrorOf": "*",
                     "url": "https://nexus.judo.technology/repository/maven-judong/"
-                 }
+                }
             ]
 
       - name: 🔢 Calculate version number
