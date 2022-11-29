@@ -8,7 +8,9 @@ on:
         type: string
         required: false
         default: "Auto"
-
+  push:
+    tags:
+      - 'perform-release-on-*'
 jobs:
   release:
     runs-on: judong
