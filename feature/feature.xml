@@ -2,7 +2,7 @@
 <feature
       id="hu.blackbelt.judo.meta.query.feature"
       label="Judo Query Model Feature"
-      version="1.0.1"
+      version="1.0.2"
       provider-name="BlackBelt Technology">
 
    <description url="http://www.blackbelt.hu">
