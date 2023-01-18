@@ -1,3 +1,6 @@
+:sectnums:
+:toc: left
+
 = judo-meta-query
 
 image::https://github.com/BlackBeltTechnology/judo-meta-query/actions/workflows/build.yml/badge.svg?branch=develop[link="https://github.com/BlackBeltTechnology/judo-meta-query/actions/workflows/build.yml" float="center"]
@@ -23,3 +26,45 @@ Everyone is welcome to contribute to JUDO! As a starter, please read the corresp
 == License
 
 This project is licensed under the https://www.eclipse.org/legal/epl-2.0/[Eclipse Public License - v 2.0].
+
+== Query meta model notes
+
+=== Node
+    * getType(): returns EClass type representing an entity
+    * not all of its relations can be used everywhere
+
+=== Select: actual "select" for an entity
+    * from: the (EClass) entity to be selected
+    * each transferobject has 1 relevant select
+
+=== Subselects
+    * in runtime it is the query
+    * transferRelation: a relation to be used for subselect
+    * used to navigate on relations
+    * embedded select: workaround to be able to contain a select if it's not available from TO-s
+    * base: navigation start
+
+=== SubSelectFeature
+    * subselects used in "where" part
+
+=== Targets: projection
+    * describes how to represent the result returned from the query
+
+=== Join
+    * getBase(): to what it is joined (recursively queries partners)
+
+=== Feature
+    * "Something" (possibly an attribute, calculated value, constants etc.) that the select or join returns
+    * target mapping: the attribute type of the result from feature
+
+=== FeatureWithNode
+    * features that has strong relation to entities
+    * <|-- Attribute: entity attribute
+    * <|-- idAttribute: entity id
+    * <|-- TypeAttribute: entity type, version, create time etc.
+
+===  EntityTypeName
+    * used with inheritance
+
+=== Variable
+    * category and name + type -> e.g.: String!getVariable(..., ...)
