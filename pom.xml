@@ -66,7 +66,7 @@
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
 		<epsilon-runtime-version>1.5.1.20230104_095653_96994f3f_develop</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.4.20230104_100116_1be597ba_develop</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-eclipse-version>1.5.4.20230113_003321_afd2fef0_develop</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
@@ -74,11 +74,11 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<tycho-version>2.7.5</tycho-version>
 
-		<emf-genmodel-generator-version>1.1.0</emf-genmodel-generator-version>
-		<judo-genmodel-generator-version>1.1.1</judo-genmodel-generator-version>
-		<judo-epp-common-version>4.23.1</judo-epp-common-version>
+		<emf-genmodel-generator-version>1.1.1.20230113_003320_df69eef6_develop</emf-genmodel-generator-version>
+		<judo-genmodel-generator-version>1.1.2.20230115_190224_544971d2_develop</judo-genmodel-generator-version>
+		<judo-epp-common-version>4.26.0.20230112_142558_abc6093e_develop</judo-epp-common-version>
 
-		<xtext-version>2.28.0</xtext-version>
+		<xtext-version>2.29.0</xtext-version>
 		<emf-mwe2-launch-version>2.13.0</emf-mwe2-launch-version>
 		<slf4j-version>1.7.36</slf4j-version>
 		<surefire-version>3.0.0-M7</surefire-version>
@@ -109,6 +109,33 @@
 
 	</properties>
 
+	<repositories>
+		<repository>
+			<id>judo-epp-commons</id>
+			<url>mvn:hu.blackbelt.judo.eclipse.epp:hu.blackbelt.judo.eclipse.epp.package.common.site:${judo-epp-common-version}:zip</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>epsilon-runtime-eclipse</id>
+			<url>mvn:hu.blackbelt.epsilon:hu.blackbelt.epsilon.runtime.site:${epsilon-runtime-eclipse-version}:zip</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>emf-genmodel-generator</id>
+			<url>mvn:hu.blackbelt.eclipse:hu.blackbelt.eclipse.emf.genmodel.generator.site:${emf-genmodel-generator-version}:zip</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>judo-genmodel-generator</id>
+			<url>mvn:hu.blackbelt.judo:hu.blackbelt.judo.eclipse.emf.genmodel.generator.site:${judo-genmodel-generator-version}:zip</url>
+			<layout>p2</layout>
+		</repository>
+
+	</repositories>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -122,32 +149,6 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
-				<configuration>
-					<target>
-						<artifact>
-							<groupId>hu.blackbelt.judo.meta</groupId>
-							<artifactId>hu.blackbelt.judo.meta.query.targetdefinition</artifactId>
-							<version>${project.version}</version>
-						</artifact>
-					</target>
-					<environments>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86_64</arch>
-						</environment>
-					</environments>
-				</configuration>
 			</plugin>
 
 			<plugin>
@@ -807,7 +808,6 @@
 				</property>
 			</activation>
 			<modules>
-				<module>targetdefinition</module>
 				<module>model</module>
 				<module>model-test</module>
 				<module>osgi</module>
@@ -895,75 +895,6 @@
 				</repository>
 			</distributionManagement>
 		</profile>
-
-		<profile>
-			<id>release-p2-judong</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>wagon-maven-plugin</artifactId>
-						<version>2.0.2</version>
-						<executions>
-							<execution>
-								<id>upload-repository</id>
-								<phase>deploy</phase>
-								<goals>
-									<goal>upload</goal>
-								</goals>
-								<configuration>
-									<serverId>judong-nexus-distribution</serverId>
-									<fromDir>${basedir}/site/target/repository</fromDir>
-									<includes>*/**</includes>
-									<url>dav:https://nexus.judo.technology/repository/p2-judong/</url>
-									<toDir>${project-shortname}/${project.version}</toDir>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-        <profile>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <id>update-category-versions</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.google.code.maven-replacer-plugin</groupId>
-                        <artifactId>replacer</artifactId>
-                        <version>1.5.3</version>
-                        <executions>
-                            <execution>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>replace</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <file>${project.basedir}/site/category.xml</file>
-                            <replacements>
-                                <!-- EPP Common -->
-                                <replacement>
-                                    <token>(repository-reference\ location\=\")(.*?)(judo-epp-common\/)(.*?)(\")</token>
-                                    <value>repository-reference location="$2$3${judo-epp-common-version}"</value>
-                                </replacement>
-
-                                <!-- Epsilon Runtime -->
-                                <replacement>
-                                    <token>(repository-reference\ location\=\")(.*?)(epsilon-runtime-eclipse\/)(.*?)(\")</token>
-                                    <value>repository-reference location="$2$3${epsilon-runtime-eclipse-version}"</value>
-                                </replacement>
-                            </replacements>
-                            <regex>true</regex>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
 
 		<profile>
 			<id>generate-github-asciidoc-diagrams</id>
