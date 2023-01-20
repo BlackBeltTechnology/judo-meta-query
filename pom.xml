@@ -188,6 +188,10 @@
 				<configuration>
 					<updatePomFile>true</updatePomFile>
 					<flattenMode>resolveCiFriendliesOnly</flattenMode>
+					<pomElements>
+						<dependencies>flatten</dependencies>
+						<repositories>flatten</repositories>
+					</pomElements>
 				</configuration>
 				<executions>
 					<execution>
