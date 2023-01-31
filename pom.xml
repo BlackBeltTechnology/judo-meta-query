@@ -65,8 +65,8 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>1.5.1.20230104_095653_96994f3f_develop</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.4.20230120_152832_e1d8a015_develop</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>1.5.1.20230131_040908_b66123cd_develop</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>1.5.4.20230131_041159_c6df5e76_develop</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
@@ -89,7 +89,7 @@
 		<karaf-version>4.4.1</karaf-version>
 		<cxf-version>3.4.4</cxf-version>
 
-		<osgi-utils-version>1.1.0</osgi-utils-version>
+		<osgi-utils-version>1.1.1.20230131_040731_bda34657_develop</osgi-utils-version>
 		<karaf-features-version>2.0.1</karaf-features-version>
 		<pax-exam-version>4.13.3</pax-exam-version>
 
