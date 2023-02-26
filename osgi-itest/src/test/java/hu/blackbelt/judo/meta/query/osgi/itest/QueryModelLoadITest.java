@@ -85,12 +85,12 @@ public class QueryModelLoadITest {
 
     private InputStream getQueryModelBundle() throws FileNotFoundException {
         return bundle()
-                .add( "model/" + DEMO + ".judo-meta-query",
+                .add( "model/" + queryModel.getName() + "-query.model",
                         new FileInputStream(new File(testTargetDir(getClass()).getAbsolutePath(),  "northwind-query.model")))
                 .set( Constants.BUNDLE_MANIFESTVERSION, "2")
-                .set( Constants.BUNDLE_SYMBOLICNAME, DEMO + "-query" )
+                .set( Constants.BUNDLE_SYMBOLICNAME, queryModel.getName() + "-query" )
                 //set( Constants.IMPORT_PACKAGE, "meta/psm;version=\"" + getConfiguration(META_PSM_IMPORT_RANGE) +"\"")
-                .set( "Query-Models", "file=model/" + DEMO + ".judo-meta-query;version=1.0.0;name=" + DEMO + ";checksum=notset;meta-version-range=\"[1.0.0,2)\"")
+                .set( "Query-Models", "name=" + queryModel.getName() + ";file=model/" + queryModel.getName() + "-query.model")
                 .build( withBnd());
     }
 
