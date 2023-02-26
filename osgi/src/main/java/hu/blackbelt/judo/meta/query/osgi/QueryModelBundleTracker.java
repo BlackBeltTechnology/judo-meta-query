@@ -117,7 +117,7 @@ public class QueryModelBundleTracker {
                         queryModelRegistrations.put(key, modelServiceRegistration);
 
                     } catch (IOException | QueryModel.QueryValidationException e) {
-                        log.error("Could not load Psm model: " + params.get(QueryModel.NAME) + " from bundle: " + trackedBundle.getBundleId(), e);
+                        log.error("Could not load Query model: " + params.get(QueryModel.NAME) + " from bundle: " + trackedBundle.getBundleId(), e);
                     }
                 }
             }
