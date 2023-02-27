@@ -52,19 +52,9 @@ import static java.util.Optional.ofNullable;
 
 @Component(immediate = true)
 @Slf4j
-@Designate(ocd = QueryModelBundleTracker.TrackerConfig.class)
 public class QueryModelBundleTracker {
 
     public static final String QUERY_MODELS = "Query-Models";
-
-    @ObjectClassDefinition(name="Query Model Bundle Tracker")
-    public @interface TrackerConfig {
-        @AttributeDefinition(
-                name = "Tags",
-                description = "Which tags are on the loaded model when there is no one defined in bundle"
-        )
-        String tags() default "";
-    }
 
     @Reference
     BundleTrackerManager bundleTrackerManager;
@@ -73,11 +63,8 @@ public class QueryModelBundleTracker {
 
     Map<String, QueryModel> queryModels = new HashMap<>();
 
-    TrackerConfig config;
-
     @Activate
-    public void activate(final ComponentContext componentContext, final TrackerConfig trackerConfig) {
-        this.config = trackerConfig;
+    public void activate(final ComponentContext componentContext) {
         bundleTrackerManager.registerBundleCallback(this.getClass().getName(),
                 new QueryRegisterCallback(componentContext.getBundleContext()),
                 new QueryUnregisterCallback(),
@@ -115,30 +102,22 @@ public class QueryModelBundleTracker {
                 if (queryModelRegistrations.containsKey(key)) {
                     log.error("Query model already loaded: " + key);
                 } else {
-                    if (params.containsKey(QueryModel.META_VERSION_RANGE)) {
-                        VersionRange versionRange = new VersionRange(params.get(QueryModel.META_VERSION_RANGE).replaceAll("\"", ""));
-                        if (versionRange.includes(bundleContext.getBundle().getVersion())) {
-                            // Unpack model
-                            try {
-                                        QueryModel queryModel = QueryModel.loadQueryModel(
-                                        QueryModel.LoadArguments.queryLoadArgumentsBuilder()
-                                                .inputStream(trackedBundle.getEntry(params.get("file")).openStream())
-                                                .name(params.get(QueryModel.NAME))
-                                                .version(trackedBundle.getVersion().toString())
-                                                .checksum(Optional.ofNullable(params.get(QueryModel.CHECKSUM)).orElse("notset"))
-                                                .tags(Stream.of(ofNullable(params.get(QueryModel.TAGS)).orElse(config.tags()).split(",")).collect(Collectors.toSet()))
-                                                .acceptedMetaVersionRange(Optional.of(versionRange.toString()).orElse("[0,99)")));
+                    // Unpack model
+                    try {
+                                QueryModel queryModel = QueryModel.loadQueryModel(
+                                QueryModel.LoadArguments.queryLoadArgumentsBuilder()
+                                        .inputStream(trackedBundle.getEntry(params.get("file")).openStream())
+                                        .name(params.get(QueryModel.NAME))
+                                        .version(trackedBundle.getVersion().toString()));
 
-                                log.info("Registering Query model: " + queryModel);
+                        log.info("Registering Query model: " + queryModel);
 
-                                ServiceRegistration<QueryModel> modelServiceRegistration = bundleContext.registerService(QueryModel.class, queryModel, queryModel.toDictionary());
-                                queryModels.put(key, queryModel);
-                                queryModelRegistrations.put(key, modelServiceRegistration);
+                        ServiceRegistration<QueryModel> modelServiceRegistration = bundleContext.registerService(QueryModel.class, queryModel, queryModel.toDictionary());
+                        queryModels.put(key, queryModel);
+                        queryModelRegistrations.put(key, modelServiceRegistration);
 
-                            } catch (IOException | QueryModel.QueryValidationException e) {
-                                log.error("Could not load Psm model: " + params.get(QueryModel.NAME) + " from bundle: " + trackedBundle.getBundleId(), e);
-                            }
-                        }
+                    } catch (IOException | QueryModel.QueryValidationException e) {
+                        log.error("Could not load Query model: " + params.get(QueryModel.NAME) + " from bundle: " + trackedBundle.getBundleId(), e);
                     }
                 }
             }
