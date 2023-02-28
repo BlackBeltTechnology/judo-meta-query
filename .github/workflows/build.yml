@@ -144,15 +144,15 @@ jobs:
           deploy
 
 
-#      - name: 🔎 Sonar Metrics
-#        if: steps.context.outputs.branch == 'develop'
-#        continue-on-error: true
-#        run: |-
-#          ./mvnw -B -Dstyle.color=always \
-#          -Dsonar.projectKey=judo-meta-query \
-#          -Dsonar.host.url=https://sonar.judo.technology \
-#          -Dsonar.login=${{ secrets.JUDO_SONAR_TOKEN }} \
-#          sonar:sonar
+      - name: 🔎 Sonar Metrics
+        if: steps.context.outputs.branch == 'develop'
+        continue-on-error: true
+        run: |-
+          ./mvnw -B -Dstyle.color=always \
+          -Dsonar.projectKey=judo-meta-query \
+          -Dsonar.host.url=https://sonar.judo.technology \
+          -Dsonar.login=${{ secrets.JUDO_SONAR_TOKEN }} \
+          sonar:sonar
 
 ##########################
 # MAVEN BUILD END
