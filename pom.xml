@@ -302,6 +302,25 @@
 					<!-- <configuration> <deployAtEnd>true</deployAtEnd> </configuration> -->
 				</plugin>
 
+				<plugin>
+					<groupId>org.projectlombok</groupId>
+					<artifactId>lombok-maven-plugin</artifactId>
+					<version>1.18.24.0</version>
+					<configuration>
+						<sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+						<outputDirectory>${project.basedir}/target/delombok</outputDirectory>
+						<addOutputDirectory>false</addOutputDirectory>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>delombok</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
 				<!--This plugin's configuration is used to store Eclipse m2e settings 
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
@@ -744,7 +763,7 @@
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
-				<version>1.4.1</version>
+				<version>1.2.11</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
