@@ -9,13 +9,13 @@ package hu.blackbelt.judo.meta.query.runtime;
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
  * http://www.eclipse.org/legal/epl-2.0.
- * 
+ *
  * This Source Code may also be made available under the following Secondary
  * Licenses when the conditions for such availability set forth in the Eclipse
  * Public License, v. 2.0 are satisfied: GNU General Public License, version 2
  * with the GNU Classpath Exception which is
  * available at https://www.gnu.org/software/classpath/license.html.
- * 
+ *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  * #L%
  */
@@ -39,55 +39,55 @@ import hu.blackbelt.epsilon.runtime.execution.exceptions.ScriptExecutionExceptio
 import hu.blackbelt.judo.meta.query.runtime.QueryModel;
 
 public class QueryEpsilonValidator {
-	
-	public static void validateQuery(Log log,
+
+    public static void validateQuery(Log log,
                                    QueryModel queryModel,
                                    URI scriptRoot) throws ScriptExecutionException, URISyntaxException
-	{
-		validateQuery(log, queryModel, scriptRoot, emptyList(), emptyList());
-	}
-	
-	public static void validateQuery(Log log,
+    {
+        validateQuery(log, queryModel, scriptRoot, emptyList(), emptyList());
+    }
+
+    public static void validateQuery(Log log,
                                    QueryModel queryModel,
                                    URI scriptRoot,
                                    Collection<String> expectedErrors,
                                    Collection<String> expectedWarnings) throws ScriptExecutionException, URISyntaxException
-	{		
-		ExecutionContext executionContext = executionContextBuilder()
-	            .log(log)
-	            .resourceSet(queryModel.getResourceSet())
-	            .metaModels(emptyList())
-	            .modelContexts(Arrays.asList(
-	                    wrappedEmfModelContextBuilder()
-	                            .log(log)
-	                            .name("QUERY")
-	                            .validateModel(false)
-	                            .resource(queryModel.getResource())
-	                            .build()))
-	            .injectContexts(singletonMap("queryUtils", new QueryUtils()))
-	            .build();
-		
-		 try {
-	            // run the model / metadata loading
-	            executionContext.load();
+    {
+        ExecutionContext executionContext = executionContextBuilder()
+                .log(log)
+                .resourceSet(queryModel.getResourceSet())
+                .metaModels(emptyList())
+                .modelContexts(Arrays.asList(
+                        wrappedEmfModelContextBuilder()
+                                .log(log)
+                                .name("QUERY")
+                                .validateModel(false)
+                                .resource(queryModel.getResource())
+                                .build()))
+                .injectContexts(singletonMap("queryUtils", new QueryUtils()))
+                .build();
 
-	            // Transformation script
-	            executionContext.executeProgram(
-	                    evlExecutionContextBuilder()
-	                            .source(UriUtil.resolve("query.evl", scriptRoot))
-	                            .expectedErrors(expectedErrors)
-	                            .expectedWarnings(expectedWarnings)
-	                            .build());
+         try {
+                // run the model / metadata loading
+                executionContext.load();
 
-	        } finally {
-	            executionContext.commit();
-	            try {
-	                executionContext.close();
-	            } catch (Exception e) {}
-	        }
-	}
-	
-	public static URI calculateQueryValidationScriptURI() throws URISyntaxException {
+                // Transformation script
+                executionContext.executeProgram(
+                        evlExecutionContextBuilder()
+                                .source(UriUtil.resolve("query.evl", scriptRoot))
+                                .expectedErrors(expectedErrors)
+                                .expectedWarnings(expectedWarnings)
+                                .build());
+
+            } finally {
+                executionContext.commit();
+                try {
+                    executionContext.close();
+                } catch (Exception e) {}
+            }
+    }
+
+    public static URI calculateQueryValidationScriptURI() throws URISyntaxException {
         URI queryRoot = QueryModel.class.getProtectionDomain().getCodeSource().getLocation().toURI();
         if (queryRoot.toString().endsWith(".jar")) {
             queryRoot = new URI("jar:" + queryRoot.toString() + "!/validations/");
