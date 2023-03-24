@@ -125,8 +125,8 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/MODULO_DECIMAL"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/LEFT_PAD"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/RIGHT_PAD"/>
-      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIME_FROM_SECONDS"/>
-      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIME_AS_SECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIME_FROM_MILLISECONDS"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/TIME_AS_MILLISECONDS"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DAY_OF_WEEK_OF_DATE"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DAY_OF_YEAR_DATE"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//FunctionSignature/DECIMAL_ROUND"/>
@@ -162,6 +162,7 @@
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/MINUTE"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/SECOND"/>
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="query.ecore#//ParameterName/MILLISECOND"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="query.ecore#//ResultConstraint">
       <genEnumLiterals ecoreEnumLiteral="query.ecore#//ResultConstraint/PRECISION"/>
