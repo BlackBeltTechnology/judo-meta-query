@@ -283,7 +283,7 @@
     </genClasses>
     <genClasses ecoreClass="query.ecore#//ParameterType">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//ParameterType/functionParameters"/>
-      <genOperations ecoreOperation="query.ecore#//ParameterType/getNodes"/>
+      <genOperations ecoreOperation="query.ecore#//ParameterType/getNodes" body="return org.eclipse.emf.common.util.ECollections.emptyEList();"/>
     </genClasses>
     <genClasses ecoreClass="query.ecore#//FeatureWithNode">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//FeatureWithNode/node"/>
