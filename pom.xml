@@ -70,8 +70,8 @@
 
 		<src.dir>src/main</src.dir>
 
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 		<tycho-version>2.7.5</tycho-version>
 
 		<emf-genmodel-generator-version>1.1.1.20230228_151530_7d8a8ba3_develop</emf-genmodel-generator-version>
@@ -288,10 +288,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.10.1</version>
-					<configuration>
-						<source>11</source>
-						<target>11</target>
-					</configuration>
 				</plugin>
 
 				<plugin>
