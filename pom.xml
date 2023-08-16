@@ -52,7 +52,7 @@
 	</developers>
 
 	<properties>
-		<maven>3.8.3</maven>
+		<maven>3.9.4</maven>
 		<revision>1.0.3-SNAPSHOT</revision>
 		<project-shortname>judo-meta-query</project-shortname>
 		<project-repositoryId>BlackBeltTechnology/judo-meta-query</project-repositoryId>
@@ -72,7 +72,7 @@
 
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
-		<tycho-version>2.7.5</tycho-version>
+		<tycho-version>4.0.1</tycho-version>
 
 		<emf-genmodel-generator-version>1.1.1.20230228_151530_7d8a8ba3_develop</emf-genmodel-generator-version>
 		<judo-genmodel-generator-version>1.1.2.20230301_040735_5ae0573d_develop</judo-genmodel-generator-version>
@@ -592,18 +592,13 @@
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-source-plugin</artifactId>
 					<version>${tycho-version}</version>
-
 					<executions>
 						<execution>
 							<id>plugin-source</id>
 							<goals>
 								<goal>plugin-source</goal>
-							</goals>
-						</execution>
-						<execution>
-							<id>feature-source</id>
-							<goals>
 								<goal>feature-source</goal>
+								<goal>generate-pde-source-header</goal>
 							</goals>
 						</execution>
 					</executions>

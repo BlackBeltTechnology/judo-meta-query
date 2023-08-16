@@ -109,7 +109,7 @@ jobs:
           -DnewVersion=${{ steps.version.outputs.version }} \
           -DgenerateBackupPoms=false \
           -Dtycho.mode=maven \
-          tycho-versions:set-version
+          versions:set
 
       - name: 🚧 Set tycho version
         run: |-
