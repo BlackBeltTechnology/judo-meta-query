@@ -65,8 +65,8 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>1.5.1.20230815_121724_da914fa9_develop</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.4.20230815_121947_f0b03f39_develop</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>1.5.1.20230816_013040_d3d50eb1_develop</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>1.5.4.20230816_013350_94ec4e89_develop</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
@@ -89,8 +89,8 @@
 		<karaf-version>4.4.1</karaf-version>
 		<cxf-version>3.4.4</cxf-version>
 
-		<osgi-utils-version>1.1.1.20230815_115756_85182ffc_develop</osgi-utils-version>
-		<karaf-features-version>2.0.2.20230815_104222_27121356_develop</karaf-features-version>
+		<osgi-utils-version>1.1.1.20230816_012857_80f5914e_develop</osgi-utils-version>
+		<karaf-features-version>2.0.2.20230816_002931_444d49a5_develop</karaf-features-version>
 		<pax-exam-version>4.13.3</pax-exam-version>
 
 		<!-- Define overridable properties for tycho-surefire-plugin -->
