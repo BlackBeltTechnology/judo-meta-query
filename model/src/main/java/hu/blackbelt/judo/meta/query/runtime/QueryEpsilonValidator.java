@@ -34,20 +34,20 @@ import java.util.Collection;
 import org.eclipse.epsilon.common.util.UriUtil;
 
 import hu.blackbelt.epsilon.runtime.execution.ExecutionContext;
-import hu.blackbelt.epsilon.runtime.execution.api.Log;
+import org.slf4j.Logger;
 import hu.blackbelt.epsilon.runtime.execution.exceptions.ScriptExecutionException;
 import hu.blackbelt.judo.meta.query.runtime.QueryModel;
 
 public class QueryEpsilonValidator {
 
-    public static void validateQuery(Log log,
+    public static void validateQuery(Logger log,
                                    QueryModel queryModel,
                                    URI scriptRoot) throws ScriptExecutionException, URISyntaxException
     {
         validateQuery(log, queryModel, scriptRoot, emptyList(), emptyList());
     }
 
-    public static void validateQuery(Log log,
+    public static void validateQuery(Logger log,
                                    QueryModel queryModel,
                                    URI scriptRoot,
                                    Collection<String> expectedErrors,
