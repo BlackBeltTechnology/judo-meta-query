@@ -56,12 +56,12 @@
 		<revision>1.0.3-SNAPSHOT</revision>
 		<project-shortname>judo-meta-query</project-shortname>
 		<project-repositoryId>BlackBeltTechnology/judo-meta-query</project-repositoryId>
-		<osgi-default-import>
-			org.osgi.framework;version="[1.8,2.0)",
-			!lombok,
-			javax.annotation;version="[1.0,2)"
-		</osgi-default-import>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <osgi-default-import>
+            org.osgi.framework;version="[1.8,2.0)",
+            !lombok,
+            javax.annotation;version="[1.0,2)",
+            org.slf4j;version="(1.6,3]"
+        </osgi-default-import>		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
@@ -80,7 +80,7 @@
 
 		<xtext-version>2.29.0</xtext-version>
 		<emf-mwe2-launch-version>2.13.0</emf-mwe2-launch-version>
-		<slf4j-version>1.7.36</slf4j-version>
+		<slf4j-version>2.0.7</slf4j-version>
 		<surefire-version>3.0.0-M7</surefire-version>
 		<!--suppress UnresolvedMavenProperty -->
 		<logback-test-config>${maven.multiModuleProjectDirectory}/logback-test.xml</logback-test-config>
