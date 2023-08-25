@@ -118,7 +118,7 @@
 
 		<repository>
 			<id>epsilon-runtime-eclipse</id>
-			<url>mvn:hu.blackbelt.epsilon:hu.blackbelt.epsilon.runtime.site:${epsilon-runtime-eclipse-version}:zip</url>
+			<url>mvn:hu.blackbelt.epsilon:hu.blackbelt.epsilon.runtime.site:${epsilon-runtime-eclipse-version}:zip:site</url>
 			<layout>p2</layout>
 		</repository>
 
