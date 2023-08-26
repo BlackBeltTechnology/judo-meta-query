@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,
  org.eclipse.epsilon.evl.emf.validation,
  org.eclipse.ui.ide,
- hu.blackbelt.epsilon.runtime.execution,
+ hu.blackbelt.epsilon.runtime-execution,
+ hu.blackbelt.epsilon.runtime-utils,
  org.eclipse.epsilon.common
 Export-Package: hu.blackbelt.judo.meta.query,
  hu.blackbelt.judo.meta.query.impl,
@@ -24,4 +25,4 @@ Export-Package: hu.blackbelt.judo.meta.query,
  hu.blackbelt.judo.meta.query.util.builder
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: hu.blackbelt.judo.meta.query.model
-Import-Package: org.slf4j;version="1.7.2"
+Import-Package: org.slf4j;version="[1.6,3)"
