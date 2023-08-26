@@ -20,7 +20,7 @@ package hu.blackbelt.judo.meta.query.osgi.itest;
  * #L%
  */
 
-import hu.blackbelt.epsilon.runtime.execution.api.Log;
+import org.slf4j.Logger;
 import hu.blackbelt.epsilon.runtime.execution.impl.BufferedSlf4jLogger;
 import hu.blackbelt.judo.meta.query.runtime.QueryModel;
 import hu.blackbelt.osgi.utils.osgi.api.BundleTrackerManager;
@@ -96,7 +96,7 @@ public class QueryModelLoadITest {
 
     @Test
     public void testModelValidation() throws Exception {
-        try (Log bufferedLog = new BufferedSlf4jLogger(log)) {
+        try (BufferedSlf4jLogger bufferedLog = new BufferedSlf4jLogger(log)) {
             validateQuery(bufferedLog, queryModel, calculateQueryValidationScriptURI());
         }
     }
