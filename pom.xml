@@ -65,8 +65,8 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>1.5.1.20230826_194510_c3f1e0d5_feature_JNG_5144_ReplaceLogger</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.4.20230826_203813_4b4a008e_feature_JNG_5144_ReplaceLogger</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>1.5.1.20230826_231422_c7121526_develop</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>1.5.4.20230827_071653_c28f9706_develop</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
