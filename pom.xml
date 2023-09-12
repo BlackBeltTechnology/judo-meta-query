@@ -67,7 +67,7 @@
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
 		<epsilon-runtime-version>1.5.1.20230905_073415_4e8adc20_develop</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.4.20230906_120835_364ae931_develop</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-eclipse-version>1.5.4.20230911_125258_f71e1039_develop</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
@@ -75,9 +75,9 @@
 		<maven.compiler.target>17</maven.compiler.target>
 		<tycho-version>4.0.2</tycho-version>
 
-		<emf-genmodel-generator-version>1.1.1.20230906_121549_0a27d76c_develop</emf-genmodel-generator-version>
-		<judo-genmodel-generator-version>1.1.2.20230907_040558_3c0bd49b_develop</judo-genmodel-generator-version>
-		<judo-epp-common-version>4.28.0.20230906_120856_d4e5f2a0_develop</judo-epp-common-version>
+		<emf-genmodel-generator-version>1.1.1.20230911_125256_b2d4aa28_develop</emf-genmodel-generator-version>
+		<judo-genmodel-generator-version>1.1.2.20230912_040620_52c20fcb_develop</judo-genmodel-generator-version>
+		<judo-epp-common-version>4.28.0.20230911_125338_37ffc630_develop</judo-epp-common-version>
 
 		<xtext-version>2.29.0</xtext-version>
 		<emf-mwe2-launch-version>2.13.0</emf-mwe2-launch-version>
