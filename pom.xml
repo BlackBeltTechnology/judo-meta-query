@@ -74,6 +74,7 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 		<tycho-version>4.0.9</tycho-version>
+		<jackson-version>2.17.2</jackson-version>
 
 		<emf-genmodel-generator-version>1.1.1.20240410_065331_3400dfa6_develop</emf-genmodel-generator-version>
 		<judo-genmodel-generator-version>1.1.2.20240410_075618_a6090f79_develop</judo-genmodel-generator-version>
@@ -86,6 +87,7 @@
 		<!--suppress UnresolvedMavenProperty -->
 		<logback-test-config>${maven.multiModuleProjectDirectory}/logback-test.xml</logback-test-config>
 		<logback-version>1.5.12</logback-version>
+		<lombok-version>1.18.34</lombok-version>
 
 		<!-- Pax exam dependencies -->
 		<karaf-version>4.4.5</karaf-version>
@@ -796,7 +798,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.24</version>
+			<version>${lombok-version}</version>
 		</dependency>
 
 		<dependency>
