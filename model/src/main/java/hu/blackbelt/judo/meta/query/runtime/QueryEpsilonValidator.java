@@ -48,10 +48,19 @@ public class QueryEpsilonValidator {
     }
 
     public static void validateQuery(Logger log,
+                                     QueryModel queryModel,
+                                     URI scriptRoot,
+                                     Collection<String> expectedErrors,
+                                     Collection<String> expectedWarnings) throws ScriptExecutionException, URISyntaxException
+    {
+        validateQuery(log, queryModel, scriptRoot, expectedErrors, expectedWarnings, false);
+    }
+
+        public static void validateQuery(Logger log,
                                    QueryModel queryModel,
                                    URI scriptRoot,
                                    Collection<String> expectedErrors,
-                                   Collection<String> expectedWarnings) throws ScriptExecutionException, URISyntaxException
+                                   Collection<String> expectedWarnings, Boolean useCahe) throws ScriptExecutionException, URISyntaxException
     {
         ExecutionContext executionContext = executionContextBuilder()
                 .log(log)
@@ -63,6 +72,7 @@ public class QueryEpsilonValidator {
                                 .name("QUERY")
                                 .validateModel(false)
                                 .resource(queryModel.getResource())
+                                .useCache(useCahe)
                                 .build()))
                 .injectContexts(singletonMap("queryUtils", new QueryUtils()))
                 .build();
@@ -77,6 +87,7 @@ public class QueryEpsilonValidator {
                                 .source(UriUtil.resolve("query.evl", scriptRoot))
                                 .expectedErrors(expectedErrors)
                                 .expectedWarnings(expectedWarnings)
+                                .parallel(true)
                                 .build());
 
             } finally {
