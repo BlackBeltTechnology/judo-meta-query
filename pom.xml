@@ -66,8 +66,8 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>1.5.1.20241126_013841_e14011dd_feature_JNG_5995_UpdateEclipse</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.4.20241126_014059_3ee55f13_feature_JNG_5995_UpdateEclipse</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>1.5.1.20241126_215218_2124427f_feature_JNG_5995_UpdateEclipse</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>1.5.4.20241126_215432_dce4b39a_feature_JNG_5995_UpdateEclipse</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
@@ -93,8 +93,8 @@
 		<karaf-version>4.4.5</karaf-version>
 		<cxf-version>3.4.4</cxf-version>
 
-		<osgi-utils-version>1.1.1.20241126_013611_9413e9b2_feature_JNG_5995_UpdateEclipse</osgi-utils-version>
-		<karaf-features-version>2.0.2.20241126_010802_125d5050_feature_JNG_5995_UpdateEclipse</karaf-features-version>
+		<osgi-utils-version>1.1.1.20241126_214402_3d785a59_feature_JNG_5995_UpdateEclipse</osgi-utils-version>
+		<karaf-features-version>2.0.2.20241126_153048_85d3e09c_feature_JNG_5995_UpdateEclipse</karaf-features-version>
 		<pax-exam-version>4.13.5</pax-exam-version>
 
 		<!-- Define overridable properties for tycho-surefire-plugin -->
