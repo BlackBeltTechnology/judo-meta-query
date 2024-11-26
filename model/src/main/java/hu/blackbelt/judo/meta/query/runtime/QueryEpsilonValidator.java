@@ -71,7 +71,6 @@ public class QueryEpsilonValidator {
                                 .log(log)
                                 .name("QUERY")
                                 .validateModel(false)
-                                .useCache(true)
                                 .resource(queryModel.getResource())
                                 .useCache(useCahe)
                                 .build()))
