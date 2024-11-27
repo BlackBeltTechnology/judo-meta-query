@@ -66,8 +66,8 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>1.5.1.20241126_215218_2124427f_feature_JNG_5995_UpdateEclipse</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.4.20241126_215432_dce4b39a_feature_JNG_5995_UpdateEclipse</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>1.5.1.20241127_155259_a22f4926_develop</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>1.5.4.20241127_155528_da5f3f6f_develop</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
@@ -76,9 +76,9 @@
 		<tycho-version>4.0.9</tycho-version>
 		<jackson-version>2.17.2</jackson-version>
 
-		<emf-genmodel-generator-version>1.1.1.20240410_065331_3400dfa6_develop</emf-genmodel-generator-version>
-		<judo-genmodel-generator-version>1.1.2.20240410_075618_a6090f79_develop</judo-genmodel-generator-version>
-		<judo-epp-common-version>4.33.0.20241102_103326_c584a408_feature_JNG_5995_UpdateEclipse</judo-epp-common-version>
+		<emf-genmodel-generator-version>1.1.1.20241127_145607_0fc2fbf1_develop</emf-genmodel-generator-version>
+		<judo-genmodel-generator-version>1.1.2.20241127_155311_6c4ed3a9_develop</judo-genmodel-generator-version>
+		<judo-epp-common-version>4.29.0.20240410_065423_a90724bb_develop</judo-epp-common-version>
 
 		<xtext-version>2.29.0</xtext-version>
 		<emf-mwe2-launch-version>2.13.0</emf-mwe2-launch-version>
@@ -93,8 +93,8 @@
 		<karaf-version>4.4.5</karaf-version>
 		<cxf-version>3.4.4</cxf-version>
 
-		<osgi-utils-version>1.1.1.20241126_214402_3d785a59_feature_JNG_5995_UpdateEclipse</osgi-utils-version>
-		<karaf-features-version>2.0.2.20241126_153048_85d3e09c_feature_JNG_5995_UpdateEclipse</karaf-features-version>
+		<osgi-utils-version>1.1.1.20241127_155253_2ba3661d_develop</osgi-utils-version>
+		<karaf-features-version>2.0.2.20241127_150036_5c40ade0_develop</karaf-features-version>
 		<pax-exam-version>4.13.5</pax-exam-version>
 
 		<!-- Define overridable properties for tycho-surefire-plugin -->
