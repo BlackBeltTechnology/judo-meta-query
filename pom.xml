@@ -66,8 +66,8 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>1.5.1.20241128_024746_ef61b96f_develop</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.4.20241128_025212_60b0c8e4_develop</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>1.5.1.20241128_093741_e2eaf095_develop</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>1.5.4.20241128_095502_f9006cb0_develop</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
