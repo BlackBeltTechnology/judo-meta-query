@@ -66,8 +66,8 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>1.5.1.20241201_231013_11914e21_feature_JNG_5995_ImproveSpeed</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.4.20241201_232955_badd3b8b_feature_JNG_5995_ImproveSpeed</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>1.5.1.20241202_003816_c9b63ad9_develop</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>1.5.4.20241202_041505_36c67b41_develop</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
