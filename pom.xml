@@ -76,8 +76,8 @@
 		<tycho-version>4.0.9</tycho-version>
 		<jackson-version>2.17.2</jackson-version>
 
-		<emf-genmodel-generator-version>1.1.1.20241127_145607_0fc2fbf1_develop</emf-genmodel-generator-version>
-		<judo-genmodel-generator-version>1.1.2.20241127_155311_6c4ed3a9_develop</judo-genmodel-generator-version>
+		<emf-genmodel-generator-version>1.1.1-SNAPSHOT</emf-genmodel-generator-version>
+		<judo-genmodel-generator-version>1.1.2-SNAPSHOT</judo-genmodel-generator-version>
 		<judo-epp-common-version>4.35.0-SNAPSHOT</judo-epp-common-version>
 
 		<xtext-version>2.39.0</xtext-version>
