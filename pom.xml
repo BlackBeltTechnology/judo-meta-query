@@ -66,21 +66,21 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>1.5.1.20250220_144839_7dae83fe_develop</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>1.5.4.20250221_041403_bc62954e_develop</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>2.8.0.20250601_204925_56fd7ee5_feature_JNG_6310_UpdateEpsilon</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>2.8.0.20250601_205241_a9a09e86_feature_JNG_6310_UpdateEpsilon</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
-		<maven.compiler.source>17</maven.compiler.source>
-		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 		<tycho-version>4.0.9</tycho-version>
 		<jackson-version>2.17.2</jackson-version>
 
-		<emf-genmodel-generator-version>1.1.1.20241127_145607_0fc2fbf1_develop</emf-genmodel-generator-version>
-		<judo-genmodel-generator-version>1.1.2.20241127_155311_6c4ed3a9_develop</judo-genmodel-generator-version>
-		<judo-epp-common-version>4.33.0.20241127_230009_11b7d34a_develop</judo-epp-common-version>
+		<emf-genmodel-generator-version>1.1.1.20250601_200006_4860bd0d_feature_JNG_6310_UpdateEpsilon</emf-genmodel-generator-version>
+		<judo-genmodel-generator-version>1.1.2.20250601_214726_59bc6075_feature_JNG_6310_UpdateEpsilon</judo-genmodel-generator-version>
+		<judo-epp-common-version>4.35.0.20250601_222410_aa5bb708_feature_JNG_6310_UpdateEpsilon</judo-epp-common-version>
 
-		<xtext-version>2.29.0</xtext-version>
+		<xtext-version>2.39.0</xtext-version>
 		<emf-mwe2-launch-version>2.13.0</emf-mwe2-launch-version>
 		<slf4j-version>2.0.16</slf4j-version>
 		<surefire-version>3.5.1</surefire-version>
@@ -90,11 +90,11 @@
 		<lombok-version>1.18.34</lombok-version>
 
 		<!-- Pax exam dependencies -->
-		<karaf-version>4.4.5</karaf-version>
+		<karaf-version>4.4.7</karaf-version>
 		<cxf-version>3.4.4</cxf-version>
 
-		<osgi-utils-version>1.1.1.20250222_004116_31db11f6_develop</osgi-utils-version>
-		<karaf-features-version>2.0.2.20241127_150036_5c40ade0_develop</karaf-features-version>
+		<osgi-utils-version>1.1.1.20250601_204920_01dd6d46_feature_JNG_6310_UpdateEpsilon</osgi-utils-version>
+		<karaf-features-version>2.0.2.20250601_200046_ae1bb67d_feature_JNG_6310_UpdateEpsilon</karaf-features-version>
 		<pax-exam-version>4.13.5</pax-exam-version>
 
 		<!-- Define overridable properties for tycho-surefire-plugin -->
@@ -771,10 +771,12 @@
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.ecore</artifactId>
+			<version>2.38.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.common</artifactId>
+			<version>2.41.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
