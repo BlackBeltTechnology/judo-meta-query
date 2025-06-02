@@ -78,7 +78,7 @@
 
 		<emf-genmodel-generator-version>1.1.1.20250601_200006_4860bd0d_feature_JNG_6310_UpdateEpsilon</emf-genmodel-generator-version>
 		<judo-genmodel-generator-version>1.1.2.20250601_214726_59bc6075_feature_JNG_6310_UpdateEpsilon</judo-genmodel-generator-version>
-		<judo-epp-common-version>4.33.0.20241127_230009_11b7d34a_develop</judo-epp-common-version>
+		<judo-epp-common-version>4.35.0.20250601_222410_aa5bb708_feature_JNG_6310_UpdateEpsilon</judo-epp-common-version>
 
 		<xtext-version>2.39.0</xtext-version>
 		<emf-mwe2-launch-version>2.13.0</emf-mwe2-launch-version>
