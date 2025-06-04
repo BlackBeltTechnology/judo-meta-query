@@ -5,7 +5,7 @@
     editorPluginClass="hu.blackbelt.judo.meta.query.presentation.QueryEditorPlugin"
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     testsDirectory="" testSuiteClass="hu.blackbelt.judo.meta.query.tests.QueryAllTests"
-    importerID="org.eclipse.emf.importer.ecore" featureDelegation="Dynamic" complianceLevel="11.0"
+    importerID="org.eclipse.emf.importer.ecore" featureDelegation="Dynamic" complianceLevel="21.0"
     copyrightFields="false" operationReflection="true" importOrganizing="true" oSGiCompatible="true">
   <foreignModel>query.ecore</foreignModel>
   <genPackages prefix="Query" basePackage="hu.blackbelt.judo.meta" resource="XMI"
