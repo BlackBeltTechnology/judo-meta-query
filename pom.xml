@@ -76,8 +76,8 @@
 		<tycho-version>4.0.13</tycho-version>
 		<jackson-version>2.17.2</jackson-version>
 
-		<emf-genmodel-generator-version>1.1.1.20250604_004501_3882b914_feature_JNG_6310_UpdateEpsilon</emf-genmodel-generator-version>
-		<judo-genmodel-generator-version>1.1.2.20250604_010106_738f271c_feature_JNG_6310_UpdateEpsilon</judo-genmodel-generator-version>
+		<emf-genmodel-generator-version>1.1.1.20250604_121429_d7dbb485_feature_JNG_6310_UpdateEpsilon</emf-genmodel-generator-version>
+		<judo-genmodel-generator-version>1.1.2.20250604_124344_281ddd50_feature_JNG_6310_UpdateEpsilon</judo-genmodel-generator-version>
 		<judo-epp-common-version>4.35.0.20250602_084007_7078e337_feature_JNG_6310_UpdateEpsilon</judo-epp-common-version>
 
 		<xtext-version>2.39.0</xtext-version>
