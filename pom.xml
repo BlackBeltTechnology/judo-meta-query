@@ -94,7 +94,7 @@
 		<cxf-version>3.4.4</cxf-version>
 
 		<osgi-utils-version>1.1.1.20250604_010043_e504c6c3_feature_JNG_6310_UpdateEpsilon</osgi-utils-version>
-		<karaf-features-version>2.0.2.20250604_004740_cd306770_feature_JNG_6310_UpdateEpsilon</karaf-features-version>
+		<karaf-features-version>2.0.2.20250604_194930_75d69105_feature_JNG_6310_UpdateEpsilon</karaf-features-version>
 		<pax-exam-version>4.13.5</pax-exam-version>
 
 		<!-- Define overridable properties for tycho-surefire-plugin -->
