@@ -66,18 +66,18 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>2.8.0.20250601_204925_56fd7ee5_feature_JNG_6310_UpdateEpsilon</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>2.8.0.20250602_084050_dbf00519_feature_JNG_6310_UpdateEpsilon</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>2.8.0.20250604_010048_f8a9a95a_feature_JNG_6310_UpdateEpsilon</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>2.8.0.20250604_010329_52e113a0_feature_JNG_6310_UpdateEpsilon</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
-		<tycho-version>4.0.9</tycho-version>
+		<tycho-version>4.0.13</tycho-version>
 		<jackson-version>2.17.2</jackson-version>
 
-		<emf-genmodel-generator-version>1.1.1.20250601_200006_4860bd0d_feature_JNG_6310_UpdateEpsilon</emf-genmodel-generator-version>
-		<judo-genmodel-generator-version>1.1.2.20250601_214726_59bc6075_feature_JNG_6310_UpdateEpsilon</judo-genmodel-generator-version>
+		<emf-genmodel-generator-version>1.1.1.20250604_004501_3882b914_feature_JNG_6310_UpdateEpsilon</emf-genmodel-generator-version>
+		<judo-genmodel-generator-version>1.1.2.20250604_010106_738f271c_feature_JNG_6310_UpdateEpsilon</judo-genmodel-generator-version>
 		<judo-epp-common-version>4.35.0.20250602_084007_7078e337_feature_JNG_6310_UpdateEpsilon</judo-epp-common-version>
 
 		<xtext-version>2.39.0</xtext-version>
@@ -93,8 +93,8 @@
 		<karaf-version>4.4.7</karaf-version>
 		<cxf-version>3.4.4</cxf-version>
 
-		<osgi-utils-version>1.1.1.20250601_204920_01dd6d46_feature_JNG_6310_UpdateEpsilon</osgi-utils-version>
-		<karaf-features-version>2.0.2.20250601_200046_ae1bb67d_feature_JNG_6310_UpdateEpsilon</karaf-features-version>
+		<osgi-utils-version>1.1.1.20250604_010043_e504c6c3_feature_JNG_6310_UpdateEpsilon</osgi-utils-version>
+		<karaf-features-version>2.0.2.20250604_004740_cd306770_feature_JNG_6310_UpdateEpsilon</karaf-features-version>
 		<pax-exam-version>4.13.5</pax-exam-version>
 
 		<!-- Define overridable properties for tycho-surefire-plugin -->
@@ -844,7 +844,7 @@
 					<plugin>
 						<groupId>org.simplify4u.plugins</groupId>
 						<artifactId>sign-maven-plugin</artifactId>
-						<version>1.0.1</version>
+						<version>1.1.0</version>
 						<executions>
 							<execution>
 								<goals>
