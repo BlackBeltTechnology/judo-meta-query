@@ -26,6 +26,13 @@
 					<instructions>
 						<Import-Package>
                             ${osgi-default-import},
+                            hu.blackbelt.epsilon.runtime.execution;resolution:=optional,
+                            hu.blackbelt.epsilon.runtime.execution.api;resolution:=optional,
+                            hu.blackbelt.epsilon.runtime.execution.contexts;resolution:=optional,
+                            hu.blackbelt.epsilon.runtime.execution.exceptions;resolution:=optional,
+                            hu.blackbelt.epsilon.runtime.execution.impl;resolution:=optional,
+                            hu.blackbelt.epsilon.runtime.execution.model.emf;resolution:=optional,
+                            org.eclipse.epsilon.common.util;resolution:=optional,
 							*
 						</Import-Package>
 						<Export-Package>
