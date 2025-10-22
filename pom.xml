@@ -63,6 +63,7 @@
             javax.annotation;version="[1.0,2)",
             org.slf4j;version="[1.6,3)",
 			org.eclipse.emf.common.notify;version="[2.30,3)",
+			org.eclipse.emf.common.notify.impl;version="[2.30,3)",
 			org.eclipse.emf.common.util;version="[2.30,3)",
 			org.eclipse.emf.ecore;version="[2.21,3)",
 			org.eclipse.emf.ecore.plugin;version="[2.21,3)",
