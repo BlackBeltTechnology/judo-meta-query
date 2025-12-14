@@ -107,6 +107,10 @@
 		<karaf-features-version>2.0.2.20251022_061140_127091e3_develop</karaf-features-version>
 		<pax-exam-version>4.13.5</pax-exam-version>
 
+		<!-- Judo Zeta Validation Framework -->
+		<!-- NOTE: judo-zeta-version requires judo-zeta to be built/installed locally first -->
+		<judo-zeta-version>1.0.0-SNAPSHOT</judo-zeta-version>
+
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties />
 		<moduleProperties />
@@ -769,6 +773,23 @@
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
 				<version>${logback-version}</version>
+			</dependency>
+
+			<!-- Judo Zeta Validation Framework -->
+			<dependency>
+				<groupId>hu.blackbelt.judo.zeta</groupId>
+				<artifactId>hu.blackbelt.judo.zeta.validation-core</artifactId>
+				<version>${judo-zeta-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>hu.blackbelt.judo.zeta</groupId>
+				<artifactId>hu.blackbelt.judo.zeta.annotations</artifactId>
+				<version>${judo-zeta-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>hu.blackbelt.judo.zeta</groupId>
+				<artifactId>hu.blackbelt.judo.zeta.common</artifactId>
+				<version>${judo-zeta-version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

@@ -1,0 +1,131 @@
+# Contributing to JUDO
+
+## Installing the correct versions of Java, Maven and necessary dependencies
+
+Please make sure your development environment complies with the requirements discussed under the relevant section of the parent project's [CONTRIBUTING](https://github.com/BlackBeltTechnology/judo-community/blob/develop/CONTRIBUTING.adoc) guide.
+
+## Code Structure
+
+This project follows a standard Java project structure, governed by Maven, with potential Maven submodules.
+
+**Eclipse-related submodules:**
+
+* `/feature`: Eclipse feature repository - allows us to use this as a feature for eclipse installation
+* `/site`: Eclipse Update Site - all built versions are compiled as an update site.
+
+The Judo update sites are based on versions, therefore all versions have their own update sites. This results in versions being coded in the URL. The category definition in tycho is loaded as an extension, because there is no way to replace the version numbers before tycho is activated.
+
+For this reason, a profile is created which can replace the versions with the dependency versions defined in the parent.
+
+The following command can be used to update the versions:
+
+```sh
+mvn clean install -P update-category-versions -f site/pom.xml
+```
+
+**Model modules:**
+
+* `/model`: Eclipse plugin. It contains the model and ecore generated java classes. Builder and Helpers added with MWE2 workflow.
+* `/model-test`: Module containing model tests
+
+**OSGI wrapper:**
+
+* `/osgi`: OSGi bundle. It repackages the model and adds extra information / services for consumers to be able to use it in transformation pipelines in other platforms.
+* `/osgi-itest`: Wrapper module tests
+
+## Working with Eclipse
+
+### Plugin requirements
+
+- m2e
+- epsilon
+- modeling tools
+
+### Installation
+
+In Eclipse, we can install the plugin via P2 sites.
+
+Go to "Install new software" and add the URL of the site listed on github or the uncompressed ZIP folder. The plugin contains the metamodel and UI provided for the default editor.
+
+### Code generation in Eclipse
+
+Required features to be installed:
+
+* XTend
+* XText
+* MWE
+* MWE2
+
+There are predefined launchers which can be used to regenerate the language model and corresponding model helpers.
+
+Execute the following command in Eclipse
+
+    Generate JSL.launch
+
+Alternatively, run as MWE2 Workflow: `hu.blackbelt.judo.meta.query.model project src/workflow/generateModel.mwe2`
+
+## Troubleshooting
+
+### Running JUnit tests in Eclipse
+
+There is a problem with Eclipse and Tycho. The classpath does not contain JUnit.
+
+```xml
+<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+```
+
+Now a `Required-Bundle` has been added to the OSGi Manifest which is not the Tycho recommended way.
+
+See: https://bugs.eclipse.org/bugs/show_bug.cgi?id=534587
+
+### Problems with Lombok
+
+Tycho does not support Lombok generation directly as mentioned in https://github.com/rzwitserloot/lombok/issues/285. This will be fixed in a later version. No lombok is used in the eclipse projects, every source code file is generated.
+
+### Problems with Tycho
+
+Tycho 1.4.0 and below does not handle repository references inside site definitions, so all the referenced plugin sites have to be added manually. See: https://bugs.eclipse.org/bugs/show_bug.cgi?id=453708
+
+## Version Policy
+
+Two worlds collide in this project. Maven and Eclipse have a different view about versions. While Maven is using `SNAPSHOT` versions, Eclipse is using `.qualifier` in the qualifier part of semantic version.
+
+Which means that: `1.0.0.qualifier` is the equivalent of Maven's `1.0.0-SNAPSHOT` notation.
+
+To address this, the Tycho Versions Plugin is used to replace the qualifier and Maven versions for a technical version number in every build.
+
+## Submission Guidelines
+
+### Submitting an Issue
+
+Before you submit an issue, please search the issue tracker. An issue for your problem may already exist and has been resolved, or the discussion might inform you of workarounds readily available.
+
+We want to fix all the issues as soon as possible, but before fixing a bug we need to reproduce and confirm it. Having a reproducible scenario gives us wealth of important information without going back and forth with you requiring additional information, such as:
+
+- the output of `java -version`, `mvn -version`
+- `pom.xml` or `.flattened-pom.xml` (when applicable)
+- and most importantly - a use-case that fails
+
+A minimal reproduction allows us to quickly confirm a bug (or point out a coding problem) as well as confirm that we are fixing the right problem.
+
+We will be insisting on a minimal reproduction in order to save maintainers' time and ultimately be able to fix more bugs. We understand that sometimes it might be hard to extract essentials bits of code from a larger codebase, but we really need to isolate the problem before we can fix it.
+
+You can file new issues by filling out our [issue form](https://github.com/BlackBeltTechnology/judo-meta-query/issues/new/choose).
+
+### Submitting a PR
+
+This project follows [GitHub's standard forking model](https://guides.github.com/activities/forking/). Please fork the project to submit pull requests.
+
+## Commands
+
+### Run Tests
+
+```sh
+mvn clean test
+```
+
+### Run Full build
+
+```sh
+mvn clean install
+```

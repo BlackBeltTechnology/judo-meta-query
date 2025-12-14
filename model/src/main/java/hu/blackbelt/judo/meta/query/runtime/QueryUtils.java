@@ -22,21 +22,34 @@ package hu.blackbelt.judo.meta.query.runtime;
 
 import hu.blackbelt.judo.meta.query.Join;
 import hu.blackbelt.judo.meta.query.Select;
+import hu.blackbelt.judo.zeta.common.ModelProvider;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static hu.blackbelt.judo.meta.query.runtime.StringUtils.leftPad;
 
-public class QueryUtils {
+/**
+ * Utility class for Query model operations.
+ *
+ * <p>Implements {@link ModelProvider} to integrate with judo-zeta validation and
+ * transformation frameworks.</p>
+ */
+public class QueryUtils implements ModelProvider {
 
     private static final Logger log = LoggerFactory.getLogger(QueryUtils.class);
 
@@ -107,5 +120,26 @@ public class QueryUtils {
 
     public static String getNextSubSelectAlias(final AtomicInteger nextSubSelectIndex) {
         return MessageFormat.format(SUBSELECT_ALIAS_FORMAT, nextSubSelectIndex.incrementAndGet());
+    }
+
+    /**
+     * Get all instances of a given type from the resource set.
+     *
+     * {@inheritDoc}
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public <T extends EObject> Collection<T> getAllContents(ResourceSet resourceSet, Class<T> type) {
+        List<T> result = new ArrayList<>();
+        for (Resource resource : resourceSet.getResources()) {
+            Iterator<EObject> it = resource.getAllContents();
+            while (it.hasNext()) {
+                EObject obj = it.next();
+                if (type.isInstance(obj)) {
+                    result.add((T) obj);
+                }
+            }
+        }
+        return result;
     }
 }
