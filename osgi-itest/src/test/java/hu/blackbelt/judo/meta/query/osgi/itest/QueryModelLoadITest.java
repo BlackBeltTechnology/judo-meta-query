@@ -23,6 +23,7 @@ package hu.blackbelt.judo.meta.query.osgi.itest;
 import org.slf4j.Logger;
 import hu.blackbelt.epsilon.runtime.execution.impl.BufferedSlf4jLogger;
 import hu.blackbelt.judo.meta.query.runtime.QueryModel;
+import hu.blackbelt.judo.meta.query.validation.QueryValidator;
 import hu.blackbelt.osgi.utils.osgi.api.BundleTrackerManager;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Ignore;
@@ -39,6 +40,7 @@ import org.osgi.framework.Constants;
 import javax.inject.Inject;
 import java.io.*;
 import java.net.MalformedURLException;
+import java.util.Collections;
 
 import static hu.blackbelt.judo.meta.query.osgi.itest.KarafFeatureProvider.karafConfig;
 import static hu.blackbelt.judo.meta.query.osgi.itest.KarafFeatureProvider.testTargetDir;
@@ -74,6 +76,23 @@ public class QueryModelLoadITest {
                         .groupId("hu.blackbelt.judo.meta")
                         .artifactId("hu.blackbelt.judo.meta.query.osgi")
                         .versionAsInProject()),
+
+                // Zeta validation framework bundles
+                mavenBundle(maven()
+                        .groupId("hu.blackbelt.judo.zeta")
+                        .artifactId("hu.blackbelt.judo.zeta.annotations")
+                        .versionAsInProject()),
+
+                mavenBundle(maven()
+                        .groupId("hu.blackbelt.judo.zeta")
+                        .artifactId("hu.blackbelt.judo.zeta.common")
+                        .versionAsInProject()),
+
+                mavenBundle(maven()
+                        .groupId("hu.blackbelt.judo.zeta")
+                        .artifactId("hu.blackbelt.judo.zeta.validation-core")
+                        .versionAsInProject()),
+
                 getProvisonModelBundle());
     }
 
@@ -95,9 +114,21 @@ public class QueryModelLoadITest {
     }
 
     @Test
-    public void testModelValidation() throws Exception {
+    public void testEvlModelValidation() throws Exception {
         try (BufferedSlf4jLogger bufferedLog = new BufferedSlf4jLogger(log)) {
             validateQuery(bufferedLog, queryModel, calculateQueryValidationScriptURI());
+        }
+    }
+
+    @Test
+    public void testJavaModelValidation() throws Exception {
+        try (BufferedSlf4jLogger bufferedLog = new BufferedSlf4jLogger(log)) {
+            QueryValidator.validateQuery(
+                    bufferedLog,
+                    queryModel,
+                    Collections.emptyList(),
+                    Collections.emptyList()
+            );
         }
     }
 }
