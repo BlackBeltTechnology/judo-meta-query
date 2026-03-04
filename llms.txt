@@ -33,6 +33,18 @@ Key facts:
 - [feature/feature.xml](feature/feature.xml): Eclipse feature definition for plugin installation
 - [site/pom.xml](site/pom.xml): Eclipse P2 update site for distribution
 
+## Depends on
+
+- [osgi-utils](../../runtime/osgi-utils): runtime/osgi-utils
+- [epsilon-runtime](../../tools/epsilon-runtime): tools/epsilon-runtime
+
+## Used by
+
+- [judo-platform](../../runtime/judo-platform): runtime/judo-platform
+- [judo-runtime-core](../../runtime/judo-runtime-core): runtime/judo-runtime-core
+- [judo-runtime-core-esm-itest](../../runtime/judo-runtime-core-esm-itest): runtime/judo-runtime-core-esm-itest
+- [judo-services](../../runtime/judo-services): runtime/judo-services
+
 ## Optional
 
 - [.github/workflows/build.yml](.github/workflows/build.yml): Main CI/CD build pipeline
