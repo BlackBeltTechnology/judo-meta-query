@@ -1,0 +1,41 @@
+# judo-meta-query
+
+> Defines the Query metamodel — an EMF Ecore model representing expression-based transformation logic for generating RDBMS queries, part of the JUDO ecosystem.
+
+Key facts:
+- Java 21, Eclipse EMF (Ecore) metamodel framework
+- Maven 3.9.4+ with Tycho 4.0.13 (Eclipse integration), 6 modules
+- Distributed as Eclipse plugin, standalone Maven artifact, and OSGi bundle
+- Uses MWE2 code generation and Epsilon EVL validation
+- Part of the [judo-community](https://github.com/BlackBeltTechnology/judo-community) ecosystem
+- License: Eclipse Public License 2.0 (EPL-2.0)
+
+## Docs
+
+- [README.md](README.md): Project overview with metamodel class diagram and build commands
+- [AGENTS.md](AGENTS.md): Developer guide — build commands, directory structure, coding conventions, and key configuration files
+- [CONTRIBUTING.md](CONTRIBUTING.md): Development setup, code generation workflow, and contribution guidelines
+- [.github/CIFLOW.md](.github/CIFLOW.md): Branching strategy and CI/CD workflow documentation
+
+## Modules — Core
+
+- [model/model/query.ecore](model/model/query.ecore): Ecore metamodel definition — the source of truth for the Query model
+- [model/pom.xml](model/pom.xml): Core Eclipse plugin — Ecore model, generated EMF classes, hand-written runtime utilities, and Epsilon validation rules
+
+## Modules — Testing
+
+- [model-test/pom.xml](model-test/pom.xml): JUnit 5 tests for model validation, loading, and execution context
+- [osgi-itest/pom.xml](osgi-itest/pom.xml): OSGi integration tests using Pax Exam with Karaf container
+
+## Modules — Distribution
+
+- [osgi/pom.xml](osgi/pom.xml): Repackages the model as an OSGi bundle for non-Eclipse consumers
+- [feature/feature.xml](feature/feature.xml): Eclipse feature definition for plugin installation
+- [site/pom.xml](site/pom.xml): Eclipse P2 update site for distribution
+
+## Optional
+
+- [.github/workflows/build.yml](.github/workflows/build.yml): Main CI/CD build pipeline
+- [.github/workflows/release.yml](.github/workflows/release.yml): Manual release workflow
+- [LICENSE.txt](LICENSE.txt): EPL-2.0 license text
+- [logback-test.xml](logback-test.xml): Shared test logging configuration
