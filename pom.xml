@@ -76,8 +76,8 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
 
-		<epsilon-runtime-version>2.8.0.20251022_112123_14c440b1_develop</epsilon-runtime-version>
-		<epsilon-runtime-eclipse-version>2.8.0.20251022_112418_29e91090_develop</epsilon-runtime-eclipse-version>
+		<epsilon-runtime-version>2.8.0.20260312_044533_9e4fdaca_develop</epsilon-runtime-version>
+		<epsilon-runtime-eclipse-version>2.8.0.20260312_044849_4792675f_develop</epsilon-runtime-eclipse-version>
 
 		<src.dir>src/main</src.dir>
 
@@ -86,9 +86,9 @@
 		<tycho-version>4.0.13</tycho-version>
 		<jackson-version>2.17.2</jackson-version>
 
-		<emf-genmodel-generator-version>1.1.1.20260125_182755_4c7faa0b_develop</emf-genmodel-generator-version>
-		<judo-genmodel-generator-version>1.1.2.20260202_143510_ebcd57a5_develop</judo-genmodel-generator-version>
-		<judo-epp-common-version>4.35.0.20250605_190936_39ca7ff3_develop</judo-epp-common-version>
+		<emf-genmodel-generator-version>1.1.1.20260311_102906_f74e81b5_develop</emf-genmodel-generator-version>
+		<judo-genmodel-generator-version>1.1.2.20260312_044532_2c69d4ce_develop</judo-genmodel-generator-version>
+		<judo-epp-common-version>4.35.0.20260311_104305_9e9af70d_develop</judo-epp-common-version>
 
 		<xtext-version>2.39.0</xtext-version>
 		<emf-mwe2-launch-version>2.13.0</emf-mwe2-launch-version>
@@ -103,8 +103,8 @@
 		<karaf-version>4.4.7</karaf-version>
 		<cxf-version>3.4.4</cxf-version>
 
-		<osgi-utils-version>1.1.1.20251022_091331_32e8ad08_develop</osgi-utils-version>
-		<karaf-features-version>2.0.2.20251022_061140_127091e3_develop</karaf-features-version>
+		<osgi-utils-version>1.1.1.20260312_044531_b5e27500_develop</osgi-utils-version>
+		<karaf-features-version>2.0.2.20260311_090833_f7f05880_develop</karaf-features-version>
 		<pax-exam-version>4.13.5</pax-exam-version>
 
 		<!-- Define overridable properties for tycho-surefire-plugin -->
