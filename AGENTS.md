@@ -1,198 +1,173 @@
-<!-- OPENSPEC:START -->
-# OpenSpec Instructions
-
-These instructions are for AI assistants working in this project.
-
-Always open `@/openspec/AGENTS.md` when the request:
-- Mentions planning or proposals (words like proposal, spec, change, plan)
-- Introduces new capabilities, breaking changes, architecture shifts, or big performance/security work
-- Sounds ambiguous and you need the authoritative spec before coding
-
-Use `@/openspec/AGENTS.md` to learn:
-- How to create and apply change proposals
-- Spec format and conventions
-- Project structure and guidelines
-
-Keep this managed block so 'openspec update' can refresh the instructions.
-
-<!-- OPENSPEC:END -->
-
-# Judo Query Meta - Project Documentation
+# judo-meta-query - Project Documentation
 
 ## Project Overview
 
+
 **Repository:** BlackBeltTechnology/judo-meta-query
 **License:** Eclipse Public License 2.0 (EPL-2.0)
-**Java Version:** 21
-**Build System:** Maven 3.9.4+ with Tycho (Eclipse build tooling)
+**Java Version:** 21 (JavaSE-21)
+**Build System:** Maven 3.9.4+ with Tycho 4.0.13 (Eclipse integration)
 
-This is an Eclipse/Tycho-based metamodel project that:
-1. **Defines** a Query metamodel via EMF/Ecore for Expression-based query transformation
-2. **Generates** Java code from the model using MWE2 workflows
-3. **Provides** both Eclipse plugin and OSGi standalone runtime
-4. **Distributes** via both Maven Central and Eclipse P2 repositories
+1. Defines the **Query metamodel** — an EMF Ecore model representing expression-based transformation logic for generating RDBMS queries
+2. Provides **runtime utilities** for model loading, validation (via Epsilon EVL), and query formatting
+3. Distributes the metamodel as an **Eclipse plugin** (with feature and P2 update site), a **standalone Maven artifact**, and an **OSGi bundle**
+4. Uses **MWE2 code generation** to produce model classes, fluent builders, and helper utilities from the Ecore definition
+5. Part of the [judo-community](https://github.com/BlackBeltTechnology/judo-community) ecosystem
 
-This is not an SQL model, but a model representing transformation logic for Expression-based queries. The output is used later for RDBMS query generation.
+## Code Instructions
+
+1. First think through the problem, read the codebase for relevant files.
+2. Before you make any major changes, check in with me and I will verify the plan.
+3. Please every step of the way just give me a high level explanation of what changes you made.
+4. Make every task and code change you do as simple as possible. We want to avoid making any massive or complex changes. Every change should impact as little code as possible. Everything is about simplicity.
+5. Maintain a documentation file that describes how the architecture of the app works inside and out.
+6. Never speculate about code you have not opened. If the user references a specific file, you MUST read the file before answering. Make sure to investigate and read relevant files BEFORE answering questions about the codebase. Never make any claims about code before investigating unless you are certain of the correct answer - give grounded and hallucination-free answers.
+7. For implementation use TDD (Test-Driven Development): write or update tests first to define the expected behaviour, verify they fail, then write the minimal implementation to make them pass.
+8. Use DRY (Don't Repeat Yourself): extract reusable logic into separate classes, utilities, or components. If the same pattern appears in multiple places, refactor it into a shared helper.
 
 ## Directory Structure
 
 ```
 judo-meta-query/
-├── model/                          # Core Query metamodel (Ecore)
-├── model-test/                     # Unit tests for metamodel
-├── osgi/                           # OSGi bundle repackaging
-├── osgi-itest/                     # OSGi integration tests (Pax Exam)
-├── feature/                        # Eclipse feature (model)
-├── site/                           # Eclipse P2 update site
-└── openspec/                       # OpenSpec change management (if present)
+├── model/                  # Core Eclipse plugin — Ecore model + generated code + runtime
+│   ├── model/              # query.ecore and query.genmodel definitions
+│   ├── src/main/java/      # Hand-written runtime utilities
+│   ├── src/main/epsilon/   # EVL validation rules
+│   ├── src/workflow/        # MWE2 code generation workflow
+│   ├── src-gen/            # Generated EMF model code (DO NOT EDIT)
+│   └── META-INF/           # OSGi MANIFEST.MF
+├── model-test/             # JUnit 5 tests for model validation and loading
+├── osgi/                   # OSGi bundle repackaging
+├── osgi-itest/             # Pax Exam + Karaf integration tests
+├── feature/                # Eclipse feature definition
+├── site/                   # Eclipse P2 update site
+├── .github/workflows/      # CI/CD GitHub Actions
+└── openspec/               # OpenSpec configuration
 ```
 
 ## Core Modules
 
-### Model Definition Layer
+### Model Layer
 
 | Module | Type | Purpose |
 |--------|------|---------|
-| `model/` | eclipse-plugin | Core Query metamodel via Ecore (`query.ecore`). Generates EMF code, builders, helpers. Contains Epsilon validation rules. |
-| `model-test/` | test | Unit tests for Query metamodel using JUnit 5 and Epsilon runtime |
+| `model/` | eclipse-plugin | Ecore metamodel (`query.ecore`), GenModel, MWE2 workflow, generated EMF classes (`src-gen/`), hand-written runtime code, and Epsilon validation rules |
 
-### Runtime/OSGi Layer
-
-| Module | Type | Purpose |
-|--------|------|---------|
-| `osgi/` | bundle | Repackages model for OSGi environments using Apache Felix Bundle Plugin |
-| `osgi-itest/` | test | Pax Exam integration tests for Karaf container (4.4.7) |
-
-### Distribution Layer
+### Testing
 
 | Module | Type | Purpose |
 |--------|------|---------|
-| `feature/` | eclipse-feature | Bundles model and plugins |
-| `site/` | eclipse-repository | P2 update site for Eclipse distribution |
+| `model-test/` | jar | JUnit 5 tests — `QueryValidationTest`, `QueryExecutionContextTest`, `QueryModelLoaderTest` |
+| `osgi-itest/` | jar | OSGi integration tests using Pax Exam 4.13.5 with Karaf 4.4.7 container |
 
-## Query Metamodel Structure
+### Distribution
 
-The core metamodel (`model/model/query.ecore`) defines these key concepts:
-
-| Class | Purpose |
-|-------|---------|
-| `Node` | Abstract base with `getType()` returning EClass representing an entity |
-| `Select` | Actual "select" for an entity; `from` is the EClass entity to be selected |
-| `SubSelect` | Runtime query representation; navigates on relations |
-| `SubSelectFeature` | Subselects used in "where" part |
-| `Target` | Projection - describes how to represent query results |
-| `Join` | `getBase()` returns what it is joined to (recursively queries partners) |
-| `Feature` | Abstract - attribute, calculated value, constants etc. that select/join returns |
-| `FeatureWithNode` | Features with strong relation to entities (Attribute, IdAttribute, TypeAttribute) |
-| `Attribute` | Entity attribute |
-| `IdAttribute` | Entity ID |
-| `TypeAttribute` | Entity type, version, create time etc. |
-| `EntityTypeName` | Used with inheritance |
-| `Variable` | Category, name + type (e.g., `String!getVariable(...)`) |
-| `Function` | Operations with signature (AND, OR, EQUALS, COUNT, SUM, etc.) |
-| `Constant` | Constant values in queries |
-| `Filter` | Filter expressions |
-| `OrderBy` | Ordering specification |
-
-**Validation Rules:**
-- **EVL (Epsilon):** Located in `model/src/main/epsilon/validations/`
-  - `query.evl` - Core query validation rules
-  - `query-plugin-validation.evl` - Plugin-specific validations
+| Module | Type | Purpose |
+|--------|------|---------|
+| `osgi/` | bundle (maven-bundle-plugin) | Repackages the model as an OSGi bundle with service metadata for non-Eclipse consumers |
+| `feature/` | eclipse-feature | Eclipse feature definition for plugin installation |
+| `site/` | eclipse-repository | Eclipse P2 update site for distribution |
 
 ## Technology Stack
 
 ### Core Technologies
-- **Eclipse Modeling Framework (EMF)** 2.38.0+ - Metamodel foundation
-- **Ecore** - Model definition language
-- **MWE2** (Model Workflow Engine) 2.13.0 - Code generation workflows
-- **Epsilon** 2.8.0 - Model validation and transformation
-- **Tycho** 4.0.13 - Eclipse plugin build
-
-### Runtime
-- **Apache Karaf** 4.4.7 - OSGi container
-- **Apache Felix** 6.0.0 - OSGi bundle plugin
-- **Pax Exam** 4.13.5 - OSGi testing
+- **Eclipse EMF (Ecore)** — metamodel framework; `org.eclipse.emf.ecore` 2.38.0, `org.eclipse.emf.common` 2.41.0
+- **Epsilon Runtime** — model validation via EVL (Epsilon Validation Language); version 2.8.0
+- **Xtext 2.39.0 / MWE2** — code generation workflows
+- **OSGi** — `osgi.core` 7.0.0, `osgi.cmpn` 7.0.0
 
 ### Build & Quality
-- **Maven** 3.9.4+ with wrapper
-- **JaCoCo** 0.8.12 - Code coverage
-- **SonarQube** 3.9.1 - Code quality
-- **Lombok** 1.18.34 - Annotation processing
+- **Maven 3.9.4+** with Maven wrapper (`./mvnw`)
+- **Tycho 4.0.13** — Eclipse plugin building, version management, P2 metadata
+- **JUnit Jupiter 5.9.1** — unit testing
+- **Pax Exam 4.13.5** — OSGi integration testing with Karaf 4.4.7
+- **JaCoCo 0.8.12** — code coverage
+- **SLF4J 2.0.16 + Logback 1.5.12** — logging
+- **Lombok 1.18.34** — used in non-Eclipse modules only (Tycho incompatibility)
+- **Flatten Maven Plugin 1.3.0** — CI-friendly POM resolution
 
 ## Build Commands
 
 ```bash
-# Standard build
-mvn clean install
-# or with wrapper
+# Full build (all modules)
 ./mvnw clean install
 
-# Memory requirements (configured in .mvn/jvm.config)
-# -Xms1024m -Xmx2048m
+# Run all tests
+./mvnw clean test
+
+# Run a single test class
+./mvnw test -pl model-test -Dtest=QueryValidationTest
+
+# Skip tests
+./mvnw clean install -DskipTests
+
+# Code coverage
+./mvnw clean test jacoco:report
+
+# Update Eclipse site category versions
+mvn clean install -P update-category-versions -f site/pom.xml
 ```
 
 ### Maven Profiles
 
 | Profile | Purpose |
 |---------|---------|
-| `modules` | Includes all 6 submodules (default) |
-| `sign-artifacts` | GPG signing for release |
-| `release-central` | Maven Central deployment |
-| `release-judong` | Internal Judo repository |
-
-## Code Generation Flow
-
-1. **MWE2 Workflow** (`model/src/workflow/generateModel.mwe2`)
-   - Generates EMF code from `query.ecore`
-   - Produces GenModel-based Java classes
-   - Generates builders and helpers
-
-2. **Model Compilation**
-   - Tycho compiles eclipse-plugin modules
-   - OSGi bundle compilation with Felix
-
-3. **Feature/Site Building**
-   - P2 metadata generation
-   - Feature packaging
-   - Update site assembly
+| `modules` | Active by default — includes all submodules. Deactivate with `-DskipModules=true` |
+| `sign-artifacts` | Signs artifacts using `sign-maven-plugin` (CI releases) |
+| `release-dummy` | Deploys to local `/tmp/` directory for testing |
+| `release-judong` | Deploys to Judong Nexus snapshot repository |
+| `release-central` | Deploys to Maven Central via Sonatype OSSRH |
+| `generate-github-asciidoc-diagrams` | Generates PNG diagrams from PlantUML in AsciiDoc |
+| `update-source-code-license` | Updates EPL-2.0 license headers in source files |
 
 ## Key Configuration Files
 
 | File | Purpose |
 |------|---------|
-| `pom.xml` | Parent POM with module definitions and plugin management |
-| `.mvn/jvm.config` | JVM arguments for Maven build |
-| `.mvn/extensions.xml` | Maven extensions |
-| `model/model/query.ecore` | Core metamodel definition |
-| `model/model/query.genmodel` | EMF code generation model |
+| `model/model/query.ecore` | Ecore metamodel definition — the source of truth for the Query model |
+| `model/model/query.genmodel` | EMF generator model — configures code generation parameters |
+| `model/src/workflow/generateModel.mwe2` | MWE2 workflow — orchestrates code generation pipeline |
+| `model/META-INF/MANIFEST.MF` | OSGi bundle manifest for the Eclipse plugin |
+| `model/plugin.xml` | Eclipse plugin extensions (EVL validation, EMF parsers, utilities) |
+| `model/src/main/epsilon/validations/query.evl` | Main Epsilon validation rules |
+| `model/src/main/epsilon/validations/query-plugin-validation.evl` | Eclipse plugin-specific validation rules |
+| `logback-test.xml` | Shared test logging configuration (SLF4J/Logback) |
+| `pom.xml` | Root Maven POM — version management, dependency BOMs, plugin configuration |
 
 ## Development Environment
 
 **Required:**
 - Java 21 JDK
-- Maven 3.9.4+
-- Eclipse IDE with:
-  - m2e (Maven integration)
-  - Epsilon plugin
-  - Modeling tools
-  - Xtext/Xtend plugins
+- Maven 3.9.4+ (or use `./mvnw`)
+
+**Eclipse IDE (optional):**
+- m2e, Epsilon, Modeling Tools plugins
+- For code generation: Xtext, MWE, MWE2 plugins
+- Install the metamodel via P2 update site for editor support
 
 ## Git Workflow
 
 - **Main Branch:** `develop`
-- **Versioning:** SNAPSHOT-based development (currently 1.0.3-SNAPSHOT)
-- **Version Placeholder:** `$VERSION_PLACEHOLDER$` in model metadata
-- **Release Process:** CI/CD via GitHub Actions with Maven Central and P2 deployment
+- **Versioning:** `revision` property (currently `1.0.3-SNAPSHOT`); Tycho bridges Maven SNAPSHOT ↔ Eclipse `.qualifier`
+- **Branching:** GitFlow — `feature/JNG-*`, `release/*`, `bugfix/JNG-*`, `support/JNG-*`, `hotfix/JNG-*`
+- **CI/CD:** GitHub Actions — `build.yml` (main pipeline), `release.yml` (manual releases), `merge-pr-tagged.yml` (auto-merge)
+- **Rule:** Every commit must reference a JIRA ticket (`JNG-xxx`)
 
 ## Important Notes
 
-1. **Understand EMF/Ecore patterns** before modifying model code
-2. **Respect Tycho build constraints** when modifying Eclipse plugins
-3. **Validation rules** are in EVL (Epsilon) format in `model/src/main/epsilon/validations/`
-4. **Use OpenSpec for significant changes** - See `openspec/AGENTS.md` for proposal workflow (if present)
+1. **Never edit `model/src-gen/`** — all code there is generated from `query.ecore` via the MWE2 workflow. Regenerate after model changes.
+2. **No Lombok in Eclipse plugin modules** — Tycho does not support Lombok annotation processing. Only use Lombok in `model-test/`, `osgi/`, and `osgi-itest/`.
+3. **Hand-written runtime code** lives in `model/src/main/java/hu/blackbelt/judo/meta/query/runtime/`:
+   - `QueryUtils` — join alias formatting, recursive join collection, select tree formatting
+   - `QueryEpsilonValidator` — programmatic EVL validation runner
+   - `StringUtils` — string padding helper
+4. **Generated code** includes `QueryModel` (model loader with fluent builder API) and `QueryModelResourceSupport` (EMF ResourceSet factory) in the `runtime` and `support` packages respectively.
+5. **Validation rules** are currently minimal (`query.evl` contains only a TODO comment for JNG-4275). The `query-plugin-validation.evl` provides Eclipse-specific constraints.
+6. **Version updates** must be applied through the `revision` property in the root `pom.xml`. Do not change individual module versions directly.
 
 ## Related Documentation
 
-- `README.md` - Project overview
-- `AGENTS.md` - Detailed project documentation for AI assistants
-- `openspec/AGENTS.md` - OpenSpec workflow for spec-driven development (if present)
+- [README.md](README.md) — project overview with metamodel class diagram
+- [CONTRIBUTING.md](CONTRIBUTING.md) — development setup, build lifecycle, code generation details
+- [.github/CIFLOW.md](.github/CIFLOW.md) — branching strategy and CI/CD workflow documentation
+- [judo-community](https://github.com/BlackBeltTechnology/judo-community) — parent ecosystem documentation
