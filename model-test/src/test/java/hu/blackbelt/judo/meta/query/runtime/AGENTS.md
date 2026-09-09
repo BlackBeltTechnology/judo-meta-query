@@ -1,0 +1,7 @@
+# `model-test/src/test/java/hu/blackbelt/judo/meta/query/runtime` — tests over the generated `runtime` package: model construction, XMI loading, validation
+
+| File | Purpose |
+|---|---|
+| `QueryExecutionContextTest.java` | Smoke test of `queryModelResourceSupportBuilder()` under URI `urn:query.judo-meta-query`. Single test `testQueryReflectiveCreated()`; it builds the `QueryModelResourceSupport` and stops there — the model body is an unfilled `// Build model here` placeholder, so it proves only that the generated support class instantiates and registers its `ResourceSet`. Passing this asserts nothing about model content. |
+| `QueryModelLoaderTest.java` | Loads a persisted Query XMI through `QueryModel.loadQueryModel(queryLoadArgumentsBuilder()...)` off `QueryModelResourceSupport.createQueryResourceSet()` and logs every `EObject` from `getAllContents()`. Class-level `@Disabled`: it needs `target/test-classes/model/northwind-query.model`, which the build does not produce, so removing the annotation without supplying that fixture breaks the suite. |
+| `QueryValidationTest.java` | Concrete `AbstractQueryValidationTest` subclass; the target of the documented `./mvnw test -pl model-test -Dtest=QueryValidationTest` run. Exports `testEmptyModelValidates(ValidatorType)` as `@ParameterizedTest` + `@EnumSource(ValidatorType.class)`, so an empty model must be accepted by both EVL and Java engines identically. Further per-constraint cases are a commented-out template pending JNG-4275 rules. |
