@@ -109,17 +109,20 @@ mvn clean install -P update-category-versions -f site/pom.xml
 
 ## Architecture pointers
 
-Source-of-truth artifacts (detail lives in the nearest directory `AGENTS.md`):
+Source-of-truth artifacts, and where each is recorded in full — per-file detail
+lives in the nearest directory `AGENTS.md`, never here:
 
-| Path | Role |
-|---|---|
-| `model/model/query.ecore` | Ecore metamodel definition — source of truth for the Query model |
-| `model/model/query.genmodel` | EMF generator model — code generation parameters |
-| `model/src/workflow/generateModel.mwe2` | MWE2 workflow — orchestrates the generation pipeline |
-| `model/META-INF/MANIFEST.MF` | OSGi bundle manifest for the Eclipse plugin |
-| `model/plugin.xml` | Eclipse plugin extensions (EVL validation, EMF parsers, utilities) |
-| `model/src/main/epsilon/validations/query.evl` | Main Epsilon validation rules |
-| `model/src/main/epsilon/validations/query-plugin-validation.evl` | Eclipse plugin-specific validation rules |
+- **Metamodel definition.** `model/model/` holds `query.ecore` (the source of truth
+  for the Query model) beside its `query.genmodel` code-generation parameters.
+  Editing the `.ecore` without regenerating leaves the Java surface stale.
+- **Generation pipeline.** `model/src/workflow/generateModel.mwe2` orchestrates the
+  MWE2 run that turns the `.ecore` into the generated EMF classes.
+- **Eclipse/OSGi packaging.** `model/META-INF/MANIFEST.MF` declares the bundle, and
+  `model/plugin.xml` registers the Eclipse extensions — EVL validation, EMF parsers,
+  and the utility contributions.
+- **Validation rules.** `model/src/main/epsilon/validations/` carries `query.evl` (the
+  main Epsilon rule set) and `query-plugin-validation.evl` (the rules that apply only
+  inside the Eclipse plugin).
 
 The module-root `pom.xml` is the aggregator: it owns the `revision` property,
 the dependency BOMs and shared plugin configuration for every submodule. The
