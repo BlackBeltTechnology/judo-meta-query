@@ -371,4 +371,46 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QueryModelInfo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="formatVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modelName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="asmDigest" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="measureDigest" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expressionDigest" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nextSourceIndex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nextTargetIndex" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="queries" upperBound="-1" eType="#//QueryEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="navigations" upperBound="-1" eType="#//NavigationEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataQueries" upperBound="-1" eType="#//DataQueryEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderedTransferRelations" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="staticEntityAttributes" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="staticEntityReferences" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entityTypeExpressions" upperBound="-1" eType="#//EntityTypeExpressionsEntry" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QueryEntry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="select" lowerBound="1" eType="#//Select"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NavigationEntry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subSelect" lowerBound="1" eType="#//SubSelect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataQueryEntry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subSelect" lowerBound="1" eType="#//SubSelect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityTypeExpressionsEntry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entityType" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="getterAttributes" upperBound="-1" eType="#//GetterAttributeEntry" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="getterReferences" upperBound="-1" eType="#//GetterReferenceEntry" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GetterAttributeEntry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attribute" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GetterReferenceEntry">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
 </ecore:EPackage>
