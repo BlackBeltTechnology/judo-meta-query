@@ -1,0 +1,7 @@
+# `model/model` — Query metamodel source (Ecore) and its GenModel
+
+| File | Purpose |
+|---|---|
+| `query.aird` | Sirius diagram of the metamodel. Untouched by generation. |
+| `query.ecore` | Source of truth of the Query metamodel (nsURI `http://blackbelt.hu/judo/meta/query`). Query plan classes (`Select`, `SubSelect`, joins, features, targets). Persisted index root `QueryModelInfo`: stamps (`formatVersion`, `modelName`, `generator`, `asmDigest`, `measureDigest`, `expressionDigest`), counters (`nextSourceIndex`, `nextTargetIndex`), contained entries `QueryEntry` (EClass → Select), `NavigationEntry` (EReference → SubSelect), `DataQueryEntry` (EAttribute → SubSelect), `EntityTypeExpressionsEntry` (+ `GetterAttributeEntry` / `GetterReferenceEntry`), non-containment lists `orderedTransferRelations`, `staticEntityAttributes`, `staticEntityReferences`. Every ref from the index to Select / SubSelect / ASM element / expression object is non-containment; `Select` / `SubSelect` stay resource roots. Expression refs typed `EObject` — no dependency on judo-meta-expression (rank 5). At most one `QueryModelInfo` per query resource. See change: persisted-query-model |
+| `query.genmodel` | GenModel for `query.ecore` (`featureDelegation=Dynamic`, builders / helpers / runtime model via `src/workflow/generateModel.mwe2`). Each new `genClasses` entry hand-added next to `query.ecore` classes, incl. the `QueryModelInfo` family. See change: persisted-query-model |

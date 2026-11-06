@@ -1,0 +1,9 @@
+{
+  "worktreeInit": {
+    "gate": "test ! -d target",
+    "run": {
+      "type": "script",
+      "command": "./mvnw -q dependency:go-offline"
+    }
+  }
+}
