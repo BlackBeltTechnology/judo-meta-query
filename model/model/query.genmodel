@@ -334,5 +334,47 @@
       <genOperations ecoreOperation="query.ecore#//Variable/getNodes" body="return org.eclipse.emf.common.util.ECollections.emptyEList();"/>
       <genOperations ecoreOperation="query.ecore#//Variable/toString" body="return &quot;${&quot; + getCategory() + &quot;:&quot; + getName() + &quot;}&quot; + &quot; AS &quot; + getTargetsAsString();"/>
     </genClasses>
+    <genClasses ecoreClass="query.ecore#//QueryModelInfo">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QueryModelInfo/formatVersion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QueryModelInfo/modelName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QueryModelInfo/generator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QueryModelInfo/asmDigest"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QueryModelInfo/measureDigest"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QueryModelInfo/expressionDigest"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QueryModelInfo/nextSourceIndex"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute query.ecore#//QueryModelInfo/nextTargetIndex"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//QueryModelInfo/queries"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//QueryModelInfo/navigations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//QueryModelInfo/dataQueries"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//QueryModelInfo/orderedTransferRelations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//QueryModelInfo/staticEntityAttributes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//QueryModelInfo/staticEntityReferences"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//QueryModelInfo/entityTypeExpressions"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//QueryEntry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//QueryEntry/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//QueryEntry/select"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//NavigationEntry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//NavigationEntry/reference"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//NavigationEntry/subSelect"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//DataQueryEntry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//DataQueryEntry/attribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//DataQueryEntry/subSelect"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//EntityTypeExpressionsEntry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//EntityTypeExpressionsEntry/entityType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//EntityTypeExpressionsEntry/getterAttributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference query.ecore#//EntityTypeExpressionsEntry/getterReferences"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//GetterAttributeEntry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//GetterAttributeEntry/attribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//GetterAttributeEntry/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="query.ecore#//GetterReferenceEntry">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//GetterReferenceEntry/reference"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference query.ecore#//GetterReferenceEntry/expression"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

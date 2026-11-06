@@ -20,5 +20,15 @@
         }
       }
     }
+  },
+  "languages": {
+    "XML": {
+      "format_on_save": "off",
+      "formatter": null
+    },
+    "Java": {
+      "format_on_save": "off",
+      "formatter": null
+    }
   }
 }
