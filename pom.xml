@@ -109,7 +109,7 @@
 
 		<!-- Judo Zeta Validation Framework -->
 		<!-- NOTE: judo-zeta-version requires judo-zeta to be built/installed locally first -->
-		<judo-zeta-version>1.0.0.20261103_232955_e4f2b661_feature_JNG_6349_AddZetaValidatiob</judo-zeta-version>
+		<judo-zeta-version>1.0.0.20261106_234507_b887f52c_develop</judo-zeta-version>
 
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties />
